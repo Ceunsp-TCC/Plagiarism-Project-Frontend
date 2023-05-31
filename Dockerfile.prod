@@ -33,7 +33,7 @@ ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
 COPY --from=builder /app/plagiarism-platform-frontend/public ./public
-COPY --from=builder /app/.env.production ./
+COPY --from=builder /app/plagiarism-platform-frontend/.env.production ./
 COPY --from=builder  /app/plagiarism-platform-frontend/.next/standalone ./
 COPY --from=builder /app/plagiarism-platform-frontend/.next/static ./.next/static
 
