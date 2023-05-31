@@ -17,11 +17,9 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v2.3.0
         with:
-          # Contexto onde está o arquivo Dockerfile, normalmente é .
           context: .
-          file: Dockerfile.production
-          # Qual a tag
-          tags: gabrielsoaresdev/default-project-nextjs:latest
+          file: Dockerfile.prod
+          tags: gabrielsoaresdev/plagiarism-front:latest
           no-cache: true
           push: true
           github-token: ${{ secrets.GIT_ACCESS_TOKEN }}
