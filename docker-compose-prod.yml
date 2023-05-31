@@ -10,6 +10,8 @@ services:
     networks:
       - proxy-reverse-network
       - plagiarism-platform-network
+    env_file:
+      - stack.env
 networks:
   plagiarism-platform-network:
     name: plagiarism-platform-network
