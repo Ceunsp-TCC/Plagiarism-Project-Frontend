@@ -3,7 +3,7 @@ version: "3.5"
 services:
   plagiarism-platform-frontend:
     container_name: plagiarism-platform-frontend
-    image: gabrielsoaresdev/default-project-nextjs:latest
+    image: gabrielsoaresdev/plagiarism-front:latest
     ports:
       - "3336:3336"
     restart: always
