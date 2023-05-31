@@ -1,9 +1,19 @@
 version: "3.5"
 
 services:
-  default-project-nextjs:
-   container_name: default-project-nextjs
-   image: gabrielsoaresdev/default-project-nextjs:latest
-   ports:
-    - "3005:3005"
-   restart: always
+  plagiarism-platform-frontend:
+    container_name: plagiarism-platform-frontend
+    image: gabrielsoaresdev/default-project-nextjs:latest
+    ports:
+      - "3336:3336"
+    restart: always
+    networks:
+      - proxy-reverse-network
+      - plagiarism-platform-network
+networks:
+  plagiarism-platform-network:
+    name: plagiarism-platform-network
+    external: true
+  proxy-reverse-network:
+    name: proxy-reverse-network
+    external: true

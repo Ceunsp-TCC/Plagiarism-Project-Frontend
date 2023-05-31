@@ -3,15 +3,15 @@ FROM node:16.14-alpine3.14 AS base
 FROM base AS deps
 
 RUN apk add --no-cache libc6-compat
-WORKDIR /app/default-project-nextjs
+WORKDIR /app/plagiarism-platform-frontend
 
 COPY package*.json .
 RUN npm ci --production --omit=dev
 
 
 FROM base AS builder
-WORKDIR /app/default-project-nextjs
-COPY --from=deps /app/default-project-nextjs/node_modules ./node_modules
+WORKDIR /app/plagiarism-platform-frontend
+COPY --from=deps /app/plagiarism-platform-frontend/node_modules ./node_modules
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
@@ -26,18 +26,18 @@ RUN npm run build && \
 
 
 FROM base AS runner 
-WORKDIR /app/default-project-nextjs
+WORKDIR /app/plagiarism-platform-frontend
 
 ENV NODE_ENV production
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-COPY --from=builder /app/default-project-nextjs/public ./public
-COPY --from=builder  /app/default-project-nextjs/.next/standalone ./
-COPY --from=builder /app/default-project-nextjs/.next/static ./.next/static
+COPY --from=builder /app/plagiarism-platform-frontend/public ./public
+COPY --from=builder  /app/plagiarism-platform-frontend/.next/standalone ./
+COPY --from=builder /app/plagiarism-platform-frontend/.next/static ./.next/static
 
 
 
-ENV PORT 3005
+ENV PORT 3336
 
 CMD ["node", "server.js"]
