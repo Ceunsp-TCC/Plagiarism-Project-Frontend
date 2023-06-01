@@ -1,36 +1,22 @@
 name: CI
 on:
-  push:
+  pull_request:
     branches:
       - production
+      - development
 jobs:
-  build:
+  CI:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do repositorio
-        uses: actions/checkout@v1
-        if: github.event_name == 'push'
-      - name: Criando env production
-        run: |
-          touch .env.production
-          echo "NEXT_PUBLIC_PLAGIARISM_API=${{secrets.NEXT_PUBLIC_PLAGIARISM_API_ENV}}" >> .env.production
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{secrets.DOCKER_HUB_USERNAME}}
-          password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v2.3.0
-        with:
-          context: .
-          file: Dockerfile.prod
-          tags: gabrielsoaresdev/plagiarism-front:latest
-          no-cache: true
-          push: true
-          github-token: ${{ secrets.GIT_ACCESS_TOKEN }}
-      - name: Update image in stack
-        uses: distributhor/workflow-webhook@v2
-        env:
-         webhook_url: ${{secrets.WEB_HOOK_DOCKER_URL}}
-         webhook_secret: "Y0uR5ecr3t"
-         verify_ssl: false
+       - name: Checkout do repositorio
+         uses: actions/checkout@v1
+       - name: Criando env
+         run: |
+          touch .env
+          cat .env.example >> .env
+       - name: Setup Node
+         uses: actions/setup-node@v1
+         with:
+           node-version: "16.x"
+       - run: npm ci
+       - run: npm test
