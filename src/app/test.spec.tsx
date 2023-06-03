@@ -7,6 +7,8 @@ describe('Home', () => {
   it('renders a heading', () => {
     const { getByText } = render(<Home />)
 
-    expect(getByText('Plagiarism Front')).toBeInTheDocument()
+    expect(
+      getByText('INOVAÇÃO ACADÊMICA: LIBERTE SUA CRIATIVIDADE COM ÉTICA'),
+    ).toBeInTheDocument()
   })
 })
