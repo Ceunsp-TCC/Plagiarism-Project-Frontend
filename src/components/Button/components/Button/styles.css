@@ -1,0 +1,3 @@
+.btn-primary{
+    @apply block px-8 py-3.5 text-lg text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full
+}
