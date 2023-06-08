@@ -1,5 +1,6 @@
 import type { InputProps } from '@/components/types'
 import { FieldValues } from 'react-hook-form'
+import './styles.css'
 export function Input<TFormValues extends FieldValues>({
   children,
   className = '',
@@ -11,11 +12,7 @@ export function Input<TFormValues extends FieldValues>({
   ...rest
 }: InputProps<TFormValues>) {
   return (
-    <div
-      className={`input-container ${className} ${
-        hasError && 'input-has-error'
-      }`}
-    >
+    <div className={`${className} ${hasError && 'input-has-error'}`}>
       {children}
       {register ? (
         <input {...register(name!)} type={type} {...rest} className="input" />

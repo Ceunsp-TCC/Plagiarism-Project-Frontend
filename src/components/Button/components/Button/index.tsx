@@ -1,5 +1,6 @@
 import { ButtonProps } from '@/components/types'
 import { transformVariant } from '@/components/Button/functions'
+import './styles.css'
 
 export function Button({
   children,
