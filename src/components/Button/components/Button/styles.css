@@ -1,3 +1,7 @@
 .btn-primary{
-    @apply block px-8 py-3.5 text-lg text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full
+    @apply block px-8 py-3.5 text-lg text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full cursor-pointer
+}
+
+.btn-secondary{
+    @apply block px-8 py-3.5 text-center text-blue-500 font-bold bg-white hover:bg-gray-100 focus:ring-4 focus:ring-blue-200 rounded-full cursor-pointer border-2 border-blue-500
 }

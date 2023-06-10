@@ -10,3 +10,4 @@ export {
   ErrorMessage,
 } from './Form'
 //
+export { LinkCustom } from './Link'
