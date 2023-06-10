@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import { Button, Input, LinkCustom } from '@/components/.'
+import { Button, Input, LinkCustom, ButtonLoading } from '@/components/.'
 import Lottie from 'react-lottie'
 import boy from '@public/animations-lottie/boy-studying.json'
 
@@ -26,7 +26,13 @@ export default function Login() {
                       </div>
                     </div>
                     <div className="w-auto p-2 flex-none">
-                      <Button variant="secondary">Criar uma conta</Button>
+                      <Button
+                        variant="secondary"
+                        loading={() => <ButtonLoading />}
+                        isLoading
+                      >
+                        Criar uma conta
+                      </Button>
                     </div>
                   </div>
                   <div className="mb-10">
@@ -71,7 +77,9 @@ export default function Login() {
                       <div className="w-full p-3">
                         <div className="flex flex-wrap md:justify-end -m-2">
                           <div className="w-full p-2">
-                            <Button>Entrar</Button>
+                            <Button loading={() => <ButtonLoading />} isLoading>
+                              Entrar
+                            </Button>
                           </div>
                         </div>
                       </div>
