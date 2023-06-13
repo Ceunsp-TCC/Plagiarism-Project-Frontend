@@ -1,7 +1,7 @@
 FROM node:16.14-alpine3.14 AS base
 
 
-WORKDIR /app/plagiarism-platform-frontend
+WORKDIR /app/school-guardian-frontend
 COPY package*.json .
 
 RUN npm install

@@ -1,18 +1,18 @@
 version: "3.5"
 
 services:
-  plagiarism-platform-frontend:
-    container_name: plagiarism-platform-frontend
-    image: gabrielsoaresdev/plagiarism-front:latest
+  school-guardian-frontend:
+    container_name: school-guardian-frontend
+    image: gabrielsoaresdev/school-guardian-frontend:latest
     ports:
       - "3336:3336"
     restart: always
     networks:
       - proxy-reverse-network
-      - plagiarism-platform-network
+      - school-guardian-network
 networks:
-  plagiarism-platform-network:
-    name: plagiarism-platform-network
+  school-guardian-network:
+    name: school-guardian-network
     external: true
   proxy-reverse-network:
     name: proxy-reverse-network

@@ -6,7 +6,7 @@ export default function Home() {
   useEffect(() => {
     const handleAxios = async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_PLAGIARISM_API}health`,
+        `${process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_API}health`,
       )
       console.log(response.data)
       return response.data
