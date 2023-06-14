@@ -17,7 +17,10 @@ jobs:
        - name: Setup Node
          uses: actions/setup-node@v1
          with:
-           node-version: "16.x"
-       - run: npm ci --force
-       - run: npm test
-       - run: npx tsc
+           node-version: "16.x" 
+       - name: Install dependencies
+         run: npm ci --force
+       - name: Running tests
+         run: npm test
+       - name: Checking types
+         run: npx tsc
