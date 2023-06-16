@@ -5,13 +5,12 @@ import './styles.css'
 export function Button({
   children,
   variant = 'primary',
-  label = '',
   type = 'button',
-  onClick,
-  loading,
   className = '',
   isLoading = false,
   disabled = false,
+  onClick,
+  loading,
   ...rest
 }: ButtonProps) {
   return (
@@ -22,9 +21,8 @@ export function Button({
       }`}
     >
       {loading && isLoading && loading()}
-      {children}
       <button disabled={disabled || isLoading} type={type} {...rest}>
-        {isLoading ? 'Processando...' : label}
+        {isLoading ? 'Processando...' : children}
       </button>
     </div>
   )
