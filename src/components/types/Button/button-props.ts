@@ -5,7 +5,6 @@ import type { ReactNode } from 'react'
 export type variant = 'primary' | 'secondary' | 'terciary'
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  label?: string
   variant?: variant
   onClick?: () => void
   className?: string
