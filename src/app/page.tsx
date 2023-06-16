@@ -1,20 +1,6 @@
-'use client'
-import axios from 'axios'
-import { useEffect } from 'react'
-
 export default function Home() {
-  useEffect(() => {
-    const handleAxios = async () => {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_API}health`,
-      )
-      console.log(response.data)
-      return response.data
-    }
-    handleAxios()
-  }, [])
   return (
-    <section className="pt-6 pb-20 bg-gray-50 overflow-hidden">
+    <section className="pt-6 pb-20  overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="mb-6">
           <div className="flex items-center justify-between px-6 py-3.5 bg-white rounded-full">
