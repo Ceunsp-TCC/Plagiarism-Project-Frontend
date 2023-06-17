@@ -11,11 +11,17 @@ export function Input<TFormValues extends FieldValues>({
   register,
   ...rest
 }: InputProps<TFormValues>) {
+  const isInputNumber = type === 'number'
   return (
     <div className={`${className} ${hasError && 'input-has-error'}`}>
       {children}
       {register ? (
-        <input {...register(name!)} type={type} {...rest} className="input" />
+        <input
+          {...register(name!, { valueAsNumber: isInputNumber })}
+          type={type}
+          {...rest}
+          className="input"
+        />
       ) : (
         <input type={type} {...rest} className="input" />
       )}
