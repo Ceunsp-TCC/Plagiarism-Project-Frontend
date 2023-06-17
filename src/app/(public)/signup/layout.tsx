@@ -33,7 +33,14 @@ export default function LayoutSignup({ children }: LayoutSignupProps) {
                     </a>
                   </div>
                 </div>
-
+                <div className="mb-10">
+                  <h3 className="font-heading mb-3 text-3xl text-white font-black tracking-tight">
+                    Cadastre sua Escola!
+                  </h3>
+                  <p className="text-gray-500 font-bold">
+                    Fortalecendo a proteção e a excelência educacional.
+                  </p>
+                </div>
                 {children}
               </div>
             </div>
