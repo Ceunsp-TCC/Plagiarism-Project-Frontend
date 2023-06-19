@@ -1,26 +1,66 @@
-import { Button, Input } from '@/components'
+'use client'
+import { Button, Input, ErrorMessage } from '@/components'
+import { useFormSchool } from '@/app/(public)/signup/hooks'
+import type { FormSchoolFields } from '@/app/(public)/signup/types'
+import { checkHasError } from '@/functions'
 
 export default function FormSchool() {
+  const { errors, handleSubmit, onSubmit, register, push } = useFormSchool()
   return (
-    <form>
+    <form method="post">
       <div className="flex flex-wrap -m-3">
         <div className="w-full p-3">
-          <Input type="text" placeholder="Nome" name="name" />
+          <Input<FormSchoolFields>
+            register={register}
+            hasError={checkHasError(errors.name)}
+            type="text"
+            placeholder="Nome"
+            name="name"
+            errorMessage={() =>
+              checkHasError(errors.name) && (
+                <ErrorMessage>{errors.name?.message}</ErrorMessage>
+              )
+            }
+          />
         </div>
         <div className="w-full p-3">
-          <Input type="email" placeholder="Email" />
+          <Input<FormSchoolFields>
+            register={register}
+            hasError={checkHasError(errors.email)}
+            type="text"
+            placeholder="Email"
+            name="email"
+            errorMessage={() =>
+              checkHasError(errors.email) && (
+                <ErrorMessage>{errors.email?.message}</ErrorMessage>
+              )
+            }
+          />
         </div>
         <div className="w-full p-3">
-          <Input type="text" placeholder="Número de telefone" />
+          <Input<FormSchoolFields>
+            register={register}
+            hasError={checkHasError(errors.phoneNumber)}
+            type="text"
+            placeholder="Número de telefone"
+            name="phoneNumber"
+            errorMessage={() =>
+              checkHasError(errors.phoneNumber) && (
+                <ErrorMessage>{errors.phoneNumber?.message}</ErrorMessage>
+              )
+            }
+          />
         </div>
 
         <div className="w-full p-3">
           <div className="flex flex-wrap md:justify-end -m-2">
             <div className="w-full p-2">
-              <Button>Avançar</Button>
+              <Button onClick={handleSubmit(onSubmit)}>Avançar</Button>
             </div>
             <div className="w-full p-2">
-              <Button variant="secondary">Voltar</Button>
+              <Button onClick={() => push('/')} variant="secondary">
+                Voltar
+              </Button>
             </div>
           </div>
         </div>

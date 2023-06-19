@@ -13,20 +13,27 @@ export function Input<TFormValues extends FieldValues>({
 }: InputProps<TFormValues>) {
   const isInputNumber = type === 'number'
   return (
-    <div className={`${className} ${hasError && 'input-has-error'}`}>
+    <div className={`${className} `}>
       {children}
       {register ? (
         <input
           {...register(name!, { valueAsNumber: isInputNumber })}
           type={type}
           {...rest}
-          className="input"
+          autoComplete="disabled-autocomplete"
+          className={`input ${hasError && 'input-has-error'}`}
         />
       ) : (
-        <input type={type} {...rest} className="input" />
+        <input
+          autoComplete="disabled-autocomplete"
+          type={type}
+          {...rest}
+          className={`input ${hasError && 'input-has-error'}`}
+        />
       )}
-
-      {errorMessage && errorMessage()}
+      <div className="container-error-message-input">
+        {errorMessage && errorMessage()}
+      </div>
     </div>
   )
 }
