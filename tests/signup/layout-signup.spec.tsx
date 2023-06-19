@@ -2,7 +2,7 @@ import LayoutSignup from '@/app/(public)/signup/layout'
 import { render } from '@testing-library/react'
 import React from 'react'
 
-jest.mock('react-lottie')
+jest.mock('lottie-react')
 describe('Layout signup', () => {
   it('Should be render a layout', async () => {
     const { getByText, getByAltText } = render(

@@ -1,7 +1,7 @@
 'use client'
 import type { ReactNode } from 'react'
 import Image from 'next/image'
-import Lottie from 'react-lottie'
+import Lottie from 'lottie-react'
 import boy from '@public/animations-lottie/boy-studying.json'
 type LayoutSignupProps = {
   children: ReactNode
@@ -47,12 +47,7 @@ export default function LayoutSignup({ children }: LayoutSignupProps) {
             <div className="w-full md:w-1/2 p-8">
               <div className="hidden lg:flex flex-col justify-end py-16 px-8 text-center h-full rounded-3xl">
                 <div className="md:max-w-md mx-auto ">
-                  <Lottie
-                    options={{ animationData: boy, autoplay: true, loop: true }}
-                    isClickToPauseDisabled
-                    width={400}
-                    height={400}
-                  />
+                  <Lottie animationData={boy} width={400} height={400} />
                   <h3 className="font-heading mb-3 text-3xl text-white font-black tracking-tight">
                     Melhore suas correções!
                   </h3>
