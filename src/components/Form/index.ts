@@ -4,6 +4,7 @@ export {
   SelectOption,
   Input,
   InputLabel,
+  InputMask,
   TextArea,
   TextAreaLabel,
   ErrorMessage,

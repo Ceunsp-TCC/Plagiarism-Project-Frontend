@@ -14,4 +14,10 @@ export const formSchoolSchema = z.object({
     .regex(new RegExp(/^\([1-9]{2}\) 9[0-9]{4}\-[0-9]{4}$/), {
       message: 'Por favor, insira um telefone válido',
     }),
+  CNPJ: z
+    .string()
+    .nonempty('Por favor, insira o cnpj da escola')
+    .regex(new RegExp(/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$/), {
+      message: 'Por favor, insira um cnpj válido',
+    }),
 })

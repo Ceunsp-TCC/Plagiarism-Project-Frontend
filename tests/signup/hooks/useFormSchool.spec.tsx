@@ -7,6 +7,7 @@ jest.mock('next/navigation', () => require('next-router-mock'))
 const schoolNameMock = faker.company.name()
 const schoolEmailMock = faker.internet.email()
 const schoolPhoneNumberMock = faker.phone.number('119########')
+const schoolCNPJMock = faker.string.numeric(14)
 
 describe('useFormSchool', () => {
   it('Should return correct properties', () => {
@@ -27,6 +28,7 @@ describe('useFormSchool', () => {
       name: schoolNameMock,
       email: schoolEmailMock,
       phoneNumber: schoolPhoneNumberMock,
+      CNPJ: schoolCNPJMock,
     }
     act(() => {
       result.current.onSubmit(mockData)

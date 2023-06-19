@@ -1,6 +1,5 @@
 export type { ErrorMessageProps } from './ErrorMessage/error-message-props'
-export type { InputLabelProps } from './Input/input-label-props'
-export type { InputProps } from './Input/input-props'
+export type { InputProps, InputLabelProps, InputMaskProps } from './Input'
 export type {
   SelectLabelProps,
   SelectOptionProps,

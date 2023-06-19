@@ -1,1 +1,1 @@
-export { Input, InputLabel } from './components'
+export { Input, InputLabel, InputMask } from './components'
