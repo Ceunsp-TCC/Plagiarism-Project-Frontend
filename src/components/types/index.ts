@@ -10,6 +10,7 @@ export type {
   SelectLabelProps,
   InputLabelProps,
   InputProps,
+  InputMaskProps,
   TextAreaProps,
   TextAreaLabelProps,
   ErrorMessageProps,

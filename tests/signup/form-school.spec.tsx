@@ -1,11 +1,9 @@
 import FormSchool from '@/app/(public)/signup/form-school/page'
 import { render, waitFor, fireEvent, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-
 import React from 'react'
 import { act } from 'react-dom/test-utils'
-
-jest.mock('next/navigation', () => require('next-router-mock'))
+import mockRouter from 'next-router-mock'
 
 describe('FormSchool', () => {
   afterEach(cleanup)
@@ -15,12 +13,14 @@ describe('FormSchool', () => {
     const schoolNameInput = getByPlaceholderText('Nome')
     const schoolEmailInput = getByPlaceholderText('Email')
     const schoolPhoneNumberInput = getByPlaceholderText('Número de telefone')
+    const schoolCNPJInput = getByPlaceholderText('CNPJ')
     const nextStepButton = getByText('Avançar')
     const backStepButton = getByText('Voltar')
 
     expect(schoolNameInput).toBeInTheDocument()
     expect(schoolEmailInput).toBeInTheDocument()
     expect(schoolPhoneNumberInput).toBeInTheDocument()
+    expect(schoolCNPJInput).toBeInTheDocument()
     expect(nextStepButton).toBeInTheDocument()
     expect(backStepButton).toBeInTheDocument()
   })
@@ -42,9 +42,13 @@ describe('FormSchool', () => {
       const errorMessageSchoolPhoneNumber = getByText(
         'Por favor, insira o telefone da escola',
       )
+      const errorMessageSchoolCNPJ = getByText(
+        'Por favor, insira o cnpj da escola',
+      )
       expect(errorMessageSchoolName).toBeVisible()
       expect(errorMessageSchoolEmail).toBeVisible()
       expect(errorMessageSchoolPhoneNumber).toBeVisible()
+      expect(errorMessageSchoolCNPJ).toBeVisible()
     })
   })
   it('Should be email is invalid ', async () => {
@@ -64,6 +68,23 @@ describe('FormSchool', () => {
       expect(errorMessageSchoolEmail).toBeVisible()
     })
   })
+  it('Should be cnpj is invalid ', async () => {
+    const { getByText, getByPlaceholderText } = render(<FormSchool />)
+    const schoolCPJInput = getByPlaceholderText('CNPJ')
+    const nextStepButton = getByText('Avançar')
+
+    act(() => {
+      fireEvent.change(schoolCPJInput, { target: { value: '2333' } })
+      userEvent.click(nextStepButton)
+    })
+
+    await waitFor(() => {
+      const errorMessageSchoolCNPJ = getByText(
+        'Por favor, insira um cnpj válido',
+      )
+      expect(errorMessageSchoolCNPJ).toBeVisible()
+    })
+  })
   it('Should be validation phone number is invalid ', async () => {
     const { getByText, getByPlaceholderText } = render(<FormSchool />)
     const schoolPhoneNumberInput = getByPlaceholderText('Número de telefone')
@@ -71,7 +92,7 @@ describe('FormSchool', () => {
 
     act(() => {
       fireEvent.change(schoolPhoneNumberInput, {
-        target: { value: 'test' },
+        target: { value: '2222' },
       })
       userEvent.click(nextStepButton)
     })
@@ -81,6 +102,21 @@ describe('FormSchool', () => {
         'Por favor, insira um telefone válido',
       )
       expect(errorMessageSchoolPhoneNumber).toBeVisible()
+    })
+  })
+  it('Should be navigate to back', async () => {
+    const { getByText } = render(<FormSchool />)
+
+    const backStepButton = getByText('Voltar')
+    mockRouter.push('/signup/form-school')
+
+    act(() => {
+      fireEvent.click(backStepButton)
+    })
+
+    await waitFor(() => {
+      const atualPath = mockRouter.asPath
+      expect(atualPath).toBe('/')
     })
   })
 })
