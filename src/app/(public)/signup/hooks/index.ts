@@ -1,0 +1,1 @@
+export { useFormSchool } from './useFormSchool'
