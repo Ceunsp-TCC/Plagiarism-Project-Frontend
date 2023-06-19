@@ -2,6 +2,7 @@ export { Button, ButtonIcon, ButtonLoading } from './Button'
 export {
   Input,
   InputLabel,
+  InputMask,
   Select,
   SelectLabel,
   SelectOption,
@@ -9,5 +10,4 @@ export {
   TextAreaLabel,
   ErrorMessage,
 } from './Form'
-//
 export { LinkCustom } from './Link'

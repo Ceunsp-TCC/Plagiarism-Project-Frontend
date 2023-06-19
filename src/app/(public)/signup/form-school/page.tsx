@@ -1,5 +1,5 @@
 'use client'
-import { Button, Input, ErrorMessage } from '@/components'
+import { Button, Input, InputMask, ErrorMessage } from '@/components'
 import { useFormSchool } from '@/app/(public)/signup/hooks'
 import type { FormSchoolFields } from '@/app/(public)/signup/types'
 import { checkHasError } from '@/functions'
@@ -38,15 +38,31 @@ export default function FormSchool() {
           />
         </div>
         <div className="w-full p-3">
-          <Input<FormSchoolFields>
+          <InputMask<FormSchoolFields>
             register={register}
             hasError={checkHasError(errors.phoneNumber)}
             type="text"
             placeholder="Número de telefone"
+            mask="(99) 99999-9999"
             name="phoneNumber"
             errorMessage={() =>
               checkHasError(errors.phoneNumber) && (
                 <ErrorMessage>{errors.phoneNumber?.message}</ErrorMessage>
+              )
+            }
+          />
+        </div>
+        <div className="w-full p-3">
+          <InputMask<FormSchoolFields>
+            mask="99.999.999/9999-99"
+            register={register}
+            hasError={checkHasError(errors.CNPJ)}
+            type="text"
+            placeholder="CNPJ"
+            name="CNPJ"
+            errorMessage={() =>
+              checkHasError(errors.CNPJ) && (
+                <ErrorMessage>{errors.CNPJ?.message}</ErrorMessage>
               )
             }
           />
