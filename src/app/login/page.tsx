@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Button, Input, LinkCustom, ButtonLoading } from '@/components/.'
-import Lottie from 'react-lottie'
+import Lottie from 'lottie-react'
 import boy from '@public/animations-lottie/boy-studying.json'
 
 export default function Login() {
@@ -99,12 +99,7 @@ export default function Login() {
               </div>
               <div className="w-full md:w-1/2 p-8">
                 <div className=" hidden md:flex flex-col justify-end py-16 px-8 text-center h-full rounded-3xl bg-gray-100">
-                  <Lottie
-                    options={{ animationData: boy, autoplay: true, loop: true }}
-                    isClickToPauseDisabled
-                    width={550}
-                    height={550}
-                  />
+                  <Lottie animationData={boy} width={550} height={550} />
                   <div className="md:max-w-md mx-auto">
                     <h3 className="font-heading mb-3 text-3xl text-black font-black tracking-tight">
                       Melhore suas correções!
