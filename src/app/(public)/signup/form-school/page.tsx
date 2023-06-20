@@ -4,8 +4,9 @@ import { useFormSchool } from '@/app/(public)/signup/hooks'
 import type { FormSchoolFields } from '@/app/(public)/signup/types'
 import { checkHasError } from '@/functions'
 
-export default function FormSchool() {
-  const { errors, handleSubmit, onSubmit, register, push } = useFormSchool()
+export default function FormSchoolAddress() {
+  const { errors, handleSubmit, onSubmit, register, handleNavigate } =
+    useFormSchool()
   return (
     <form method="post">
       <div className="flex flex-wrap -m-3">
@@ -14,6 +15,7 @@ export default function FormSchool() {
             register={register}
             hasError={checkHasError(errors.name)}
             type="text"
+            maxLength={255}
             placeholder="Nome"
             name="name"
             errorMessage={() =>
@@ -29,6 +31,7 @@ export default function FormSchool() {
             hasError={checkHasError(errors.email)}
             type="text"
             placeholder="Email"
+            maxLength={255}
             name="email"
             errorMessage={() =>
               checkHasError(errors.email) && (
@@ -74,7 +77,7 @@ export default function FormSchool() {
               <Button onClick={handleSubmit(onSubmit)}>Avançar</Button>
             </div>
             <div className="w-full p-2">
-              <Button onClick={() => push('/')} variant="secondary">
+              <Button onClick={() => handleNavigate('/')} variant="secondary">
                 Voltar
               </Button>
             </div>
@@ -84,15 +87,3 @@ export default function FormSchool() {
     </form>
   )
 }
-
-// table.string('password').notNullable() table.bigInteger('userId').notNullable()
-// table.string('CNPJ', 16).notNullable().unique()
-// table.string('CEP', 50).notNullable()
-// table.string('street', 255).notNullable()
-// table.string('district', 150).notNullable()
-// table.string('city', 100).notNullable()
-// table.string('state', 5).notNullable()
-// table.string('complement', 100).nullable()
-// table.integer('number').nullable()
-// table.enum('status', ['INREVIEW', 'CANCELED', 'COMPLETED']).defaultTo('INREVIEW')
-// table.foreign('userId').references('users.id').onDelete('CASCADE')

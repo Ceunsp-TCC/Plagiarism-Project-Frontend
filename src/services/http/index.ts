@@ -1,0 +1,1 @@
+export { getAddressService } from './AutoCompleteAddress'

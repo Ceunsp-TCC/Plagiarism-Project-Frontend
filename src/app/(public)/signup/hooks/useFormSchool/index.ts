@@ -10,6 +10,7 @@ export function useFormSchool() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormSchoolFields>({
     mode: 'onSubmit',
@@ -22,11 +23,16 @@ export function useFormSchool() {
     console.log('fields', data)
   }
 
+  const handleNavigate = (url: string) => {
+    push(url)
+    reset()
+  }
+
   return {
     errors,
     register,
     handleSubmit,
     onSubmit,
-    push,
+    handleNavigate,
   }
 }
