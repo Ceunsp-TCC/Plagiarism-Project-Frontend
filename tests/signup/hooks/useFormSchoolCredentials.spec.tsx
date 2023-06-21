@@ -1,22 +1,18 @@
-import { renderHook, waitFor } from '@testing-library/react'
-import { useFormSchoolAddress } from '@/app/(public)/signup/hooks'
-import { faker } from '@faker-js/faker'
+import { renderHook } from '@testing-library/react'
+import { useFormSchoolCredentials } from '@/app/(public)/signup/hooks'
 import { act } from 'react-dom/test-utils'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
-import mockRouter from 'next-router-mock'
 
-const schoolCepMock = faker.location.zipCode()
-const schoolComplementMock = faker.location.country()
-const schoolNumberMock = faker.location.buildingNumber()
+const schoolPasswordMock = 'Alpha@12'
 
-describe('useFormSchoolAddress', () => {
+describe('useFormSchoolCredentials', () => {
   it('Should return correct properties', () => {
     const queryClient = new QueryClient()
     const wrapper = ({ children }: { children: ReactNode }) => (
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     )
-    const { result } = renderHook(() => useFormSchoolAddress(), {
+    const { result } = renderHook(() => useFormSchoolCredentials(), {
       wrapper,
     })
 
@@ -27,28 +23,27 @@ describe('useFormSchoolAddress', () => {
     expect(result.current.handleNavigate).toBeDefined()
   })
 
-  it('Should call onSubmit with data when is submitted', async () => {
+  it('Should call onSubmit with data when is submitted', () => {
     const queryClient = new QueryClient()
     const wrapper = ({ children }: { children: ReactNode }) => (
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     )
-    const { result } = renderHook(() => useFormSchoolAddress(), {
+    const { result } = renderHook(() => useFormSchoolCredentials(), {
       wrapper,
     })
-    mockRouter.push('/signup/form-school-address')
+    const mockConsoleLog = jest.spyOn(console, 'log')
 
     const mockData = {
-      CEP: schoolCepMock,
-      number: schoolNumberMock,
-      complement: schoolComplementMock,
+      password: schoolPasswordMock,
+      confirmPassword: schoolPasswordMock,
     }
     act(() => {
       result.current.onSubmit(mockData)
     })
 
-    await waitFor(() => {
-      const atualPath = mockRouter.asPath
-      expect(atualPath).toBe('/signup/form-school-credentials')
-    })
+    expect(mockConsoleLog).toHaveBeenCalledWith('fields', mockData)
+
+    mockConsoleLog.mockReset()
+    mockConsoleLog.mockRestore()
   })
 })

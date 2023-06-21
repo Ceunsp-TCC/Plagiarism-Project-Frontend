@@ -1,10 +1,22 @@
 import FormSchool from '@/app/(public)/signup/form-school/page'
-import { render, waitFor, fireEvent, cleanup } from '@testing-library/react'
+import {
+  render,
+  waitFor,
+  fireEvent,
+  cleanup,
+  renderHook,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { act } from 'react-dom/test-utils'
 import mockRouter from 'next-router-mock'
+import { useSignupStore } from '@/store'
+import { faker } from '@faker-js/faker'
 
+const schoolNameMock = faker.company.name()
+const schoolEmailMock = faker.internet.email()
+const schoolPhoneNumberMock = faker.phone.number('119########')
+const schoolCNPJMock = faker.string.numeric(14)
 describe('FormSchool', () => {
   afterEach(cleanup)
   it('Should be render a form school', async () => {
@@ -23,6 +35,46 @@ describe('FormSchool', () => {
     expect(schoolCNPJInput).toBeInTheDocument()
     expect(nextStepButton).toBeInTheDocument()
     expect(backStepButton).toBeInTheDocument()
+  })
+  it('Should be submit form with success', async () => {
+    const { result } = renderHook(() => useSignupStore())
+    const { getByPlaceholderText, getByText } = render(<FormSchool />)
+
+    const mockData = {
+      name: schoolNameMock,
+      email: schoolEmailMock,
+      phoneNumber: schoolPhoneNumberMock,
+      CNPJ: schoolCNPJMock,
+    }
+    const schoolNameInput = getByPlaceholderText('Nome')
+    const schoolEmailInput = getByPlaceholderText('Email')
+    const schoolPhoneNumberInput = getByPlaceholderText('Número de telefone')
+    const schoolCNPJInput = getByPlaceholderText('CNPJ')
+    const nextStepButton = getByText('Avançar')
+    mockRouter.push('/signup/form-school')
+
+    act(() => {
+      fireEvent.change(schoolNameInput, {
+        target: { value: mockData.name },
+      })
+      fireEvent.change(schoolEmailInput, {
+        target: { value: mockData.email },
+      })
+      fireEvent.change(schoolPhoneNumberInput, {
+        target: { value: mockData.phoneNumber },
+      })
+      fireEvent.change(schoolCNPJInput, {
+        target: { value: mockData.CNPJ },
+      })
+      userEvent.click(nextStepButton)
+    })
+
+    await waitFor(() => {
+      expect(result.current.step).toBe('FORMSCHOOLADDRESS')
+      expect(result.current.payload.school).toStrictEqual(mockData)
+      const atualPath = mockRouter.asPath
+      expect(atualPath).toBe('/signup/form-school-address')
+    })
   })
   it('Should be validation in fields if is empty ', async () => {
     const { getByText } = render(<FormSchool />)
