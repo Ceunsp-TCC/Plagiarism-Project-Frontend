@@ -5,14 +5,9 @@ import type { FormSchoolAddressFields } from '@/app/(public)/signup/types'
 import { checkHasError } from '@/functions'
 
 export default function FormSchoolAddress() {
-  const {
-    errors,
-    handleSubmit,
-    onSubmit,
-    register,
-    handleNavigate,
-    handleAutoCompleteAddress,
-  } = useFormSchoolAddress()
+  const { errors, handleSubmit, onSubmit, register, handleNavigate } =
+    useFormSchoolAddress()
+
   return (
     <form method="post">
       <div className="flex flex-wrap -m-3">
@@ -23,7 +18,6 @@ export default function FormSchoolAddress() {
             type="text"
             mask="99999-999"
             placeholder="CEP"
-            onBlur={handleAutoCompleteAddress}
             name="CEP"
             errorMessage={() =>
               checkHasError(errors.CEP) && (
@@ -32,67 +26,7 @@ export default function FormSchoolAddress() {
             }
           />
         </div>
-        <div className="w-full p-3">
-          <Input<FormSchoolAddressFields>
-            register={register}
-            hasError={checkHasError(errors.street)}
-            type="text"
-            placeholder="Rua"
-            name="street"
-            readOnly
-            errorMessage={() =>
-              checkHasError(errors.street) && (
-                <ErrorMessage>{errors.street?.message}</ErrorMessage>
-              )
-            }
-          />
-        </div>
-        <div className="w-full p-3">
-          <Input<FormSchoolAddressFields>
-            register={register}
-            hasError={checkHasError(errors.district)}
-            type="text"
-            readOnly
-            placeholder="Bairro"
-            name="district"
-            errorMessage={() =>
-              checkHasError(errors.district) && (
-                <ErrorMessage>{errors.district?.message}</ErrorMessage>
-              )
-            }
-          />
-        </div>
-        <div className="w-full p-3">
-          <Input<FormSchoolAddressFields>
-            register={register}
-            hasError={checkHasError(errors.city)}
-            type="text"
-            readOnly
-            placeholder="Cidade"
-            name="city"
-            errorMessage={() =>
-              checkHasError(errors.city) && (
-                <ErrorMessage>{errors.city?.message}</ErrorMessage>
-              )
-            }
-          />
-        </div>
-        <div className="w-full p-3">
-          <Input<FormSchoolAddressFields>
-            register={register}
-            hasError={checkHasError(errors.state)}
-            type="text"
-            placeholder="Estado"
-            readOnly
-            maxLength={2}
-            name="state"
-            errorMessage={() =>
-              checkHasError(errors.state) && (
-                <ErrorMessage>{errors.state?.message}</ErrorMessage>
-              )
-            }
-          />
-        </div>
+
         <div className="w-full p-3">
           <Input<FormSchoolAddressFields>
             register={register}
