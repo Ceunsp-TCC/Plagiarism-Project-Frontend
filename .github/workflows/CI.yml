@@ -23,5 +23,5 @@ jobs:
        - name: Checking types
          run: npx tsc
        - name: Running tests
-         run: npm test
+         run: npm run test:silent 
       

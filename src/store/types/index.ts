@@ -1,1 +1,1 @@
-export type { ExampleZustandState } from './example-zustand'
+export type { PayloadSignUp, SignupState, StepsSignUp } from './Signup'

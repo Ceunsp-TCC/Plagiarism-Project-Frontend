@@ -5,12 +5,16 @@ import type { FormSchoolFields } from '@/app/(public)/signup/types'
 import { checkHasError } from '@/functions'
 
 export default function FormSchoolAddress() {
-  const { errors, handleSubmit, onSubmit, register, handleNavigate } =
-    useFormSchool()
+  const { errors, handleSubmit, onSubmit, register } = useFormSchool()
   return (
     <form method="post">
+      <div className="mb-10">
+        <p className="text-gray-500 font-bold">
+          Primeiro precisamos de algumas informações da sua escola
+        </p>
+      </div>
       <div className="flex flex-wrap -m-3">
-        <div className="w-full p-3">
+        <div className="w-full  p-3">
           <Input<FormSchoolFields>
             register={register}
             hasError={checkHasError(errors.name)}
@@ -75,11 +79,6 @@ export default function FormSchoolAddress() {
           <div className="flex flex-wrap md:justify-end -m-2">
             <div className="w-full p-2">
               <Button onClick={handleSubmit(onSubmit)}>Avançar</Button>
-            </div>
-            <div className="w-full p-2">
-              <Button onClick={() => handleNavigate('/')} variant="secondary">
-                Voltar
-              </Button>
             </div>
           </div>
         </div>

@@ -1,7 +1,9 @@
-import { renderHook } from '@testing-library/react'
+import { renderHook, waitFor } from '@testing-library/react'
 import { useFormSchool } from '@/app/(public)/signup/hooks'
+import { useSignupStore } from '@/store'
 import { faker } from '@faker-js/faker'
 import { act } from 'react-dom/test-utils'
+import mockRouter from 'next-router-mock'
 
 const schoolNameMock = faker.company.name()
 const schoolEmailMock = faker.internet.email()
@@ -19,23 +21,27 @@ describe('useFormSchool', () => {
     expect(result.current.handleNavigate).toBeDefined()
   })
 
-  it('Should call onSubmit with data when is submitted', () => {
+  it('Should call onSubmit with data when is submitted', async () => {
+    const { result: resultSignUpStore } = renderHook(() => useSignupStore())
     const { result } = renderHook(() => useFormSchool())
 
-    const mockConsoleLog = jest.spyOn(console, 'log')
     const mockData = {
       name: schoolNameMock,
       email: schoolEmailMock,
       phoneNumber: schoolPhoneNumberMock,
       CNPJ: schoolCNPJMock,
     }
+    mockRouter.push('/signup/form-school')
+
     act(() => {
       result.current.onSubmit(mockData)
     })
 
-    expect(mockConsoleLog).toHaveBeenCalledWith('fields', mockData)
-
-    mockConsoleLog.mockReset()
-    mockConsoleLog.mockRestore()
+    await waitFor(() => {
+      expect(resultSignUpStore.current.step).toBe('FORMSCHOOLADDRESS')
+      expect(resultSignUpStore.current.payload.school).toBe(mockData)
+      const atualPath = mockRouter.asPath
+      expect(atualPath).toBe('/signup/form-school-address')
+    })
   })
 })

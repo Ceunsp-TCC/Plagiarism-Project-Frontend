@@ -1,24 +1,20 @@
 import { renderHook, waitFor } from '@testing-library/react'
-import { useFormSchoolAddress } from '@/app/(public)/signup/hooks'
-import { faker } from '@faker-js/faker'
+import { useFormSchoolCredentials } from '@/app/(public)/signup/hooks'
 import { act } from 'react-dom/test-utils'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
-import mockRouter from 'next-router-mock'
 import { useSignupStore } from '@/store'
+import mockRouter from 'next-router-mock'
 
-const schoolCepMock = faker.location.zipCode()
-const schoolComplementMock = faker.location.country()
-const schoolNumberMock = faker.location.buildingNumber()
+const schoolPasswordMock = 'Alpha@12'
 
-describe('useFormSchoolAddress', () => {
+describe('useFormSchoolCredentials', () => {
   it('Should return correct properties', () => {
     const queryClient = new QueryClient()
     const wrapper = ({ children }: { children: ReactNode }) => (
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     )
-
-    const { result } = renderHook(() => useFormSchoolAddress(), {
+    const { result } = renderHook(() => useFormSchoolCredentials(), {
       wrapper,
     })
 
@@ -35,26 +31,30 @@ describe('useFormSchoolAddress', () => {
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     )
     const { result: resultSignUpStore } = renderHook(() => useSignupStore())
-    const { result } = renderHook(() => useFormSchoolAddress(), {
+    resultSignUpStore.current.setStepState('FORMSCHOOLCREDENTIALS')
+    const { result } = renderHook(() => useFormSchoolCredentials(), {
       wrapper,
     })
-    resultSignUpStore.current.setStepState('FORMSCHOOLADDRESS')
-    mockRouter.push('/signup/form-school-address')
+    act(() => {
+      resultSignUpStore.current.setStepState('FORMSCHOOLCREDENTIALS')
+      mockRouter.push('/signup/form-school-credentials')
+    })
 
     const mockData = {
-      CEP: schoolCepMock,
-      number: schoolNumberMock,
-      complement: schoolComplementMock,
+      password: schoolPasswordMock,
+      confirmPassword: schoolPasswordMock,
     }
     act(() => {
       result.current.onSubmit(mockData)
     })
 
-    await waitFor(() => {
-      expect(resultSignUpStore.current.step).toBe('FORMSCHOOLCREDENTIALS')
-      expect(resultSignUpStore.current.payload.address).toBe(mockData)
+    await waitFor(async () => {
+      expect(resultSignUpStore.current.step).toBe('WARNINGACCOUNTINREVIEW')
+      expect(resultSignUpStore.current.payload.credentials).toStrictEqual(
+        mockData,
+      )
       const atualPath = mockRouter.asPath
-      expect(atualPath).toBe('/signup/form-school-credentials')
+      expect(atualPath).toBe('/signup/warning-account-in-review')
     })
   })
 })
