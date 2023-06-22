@@ -1,8 +1,10 @@
-import { renderHook } from '@testing-library/react'
+import { renderHook, waitFor } from '@testing-library/react'
 import { useFormSchoolCredentials } from '@/app/(public)/signup/hooks'
 import { act } from 'react-dom/test-utils'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
+import { useSignupStore } from '@/store'
+import mockRouter from 'next-router-mock'
 
 const schoolPasswordMock = 'Alpha@12'
 
@@ -23,15 +25,20 @@ describe('useFormSchoolCredentials', () => {
     expect(result.current.handleNavigate).toBeDefined()
   })
 
-  it('Should call onSubmit with data when is submitted', () => {
+  it('Should call onSubmit with data when is submitted', async () => {
     const queryClient = new QueryClient()
     const wrapper = ({ children }: { children: ReactNode }) => (
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     )
+    const { result: resultSignUpStore } = renderHook(() => useSignupStore())
+    resultSignUpStore.current.setStepState('FORMSCHOOLCREDENTIALS')
     const { result } = renderHook(() => useFormSchoolCredentials(), {
       wrapper,
     })
-    const mockConsoleLog = jest.spyOn(console, 'log')
+    act(() => {
+      resultSignUpStore.current.setStepState('FORMSCHOOLCREDENTIALS')
+      mockRouter.push('/signup/form-school-credentials')
+    })
 
     const mockData = {
       password: schoolPasswordMock,
@@ -41,9 +48,13 @@ describe('useFormSchoolCredentials', () => {
       result.current.onSubmit(mockData)
     })
 
-    expect(mockConsoleLog).toHaveBeenCalledWith('fields', mockData)
-
-    mockConsoleLog.mockReset()
-    mockConsoleLog.mockRestore()
+    await waitFor(async () => {
+      expect(resultSignUpStore.current.step).toBe('WARNINGACCOUNTINREVIEW')
+      expect(resultSignUpStore.current.payload.credentials).toStrictEqual(
+        mockData,
+      )
+      const atualPath = mockRouter.asPath
+      expect(atualPath).toBe('/signup/warning-account-in-review')
+    })
   })
 })

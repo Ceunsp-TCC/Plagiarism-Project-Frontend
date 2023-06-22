@@ -9,6 +9,7 @@ import { useSignupStore } from '@/store'
 export function useFormSchool() {
   const { push } = useRouter()
   const { setSchoolState, setStepState } = useSignupStore()
+
   const {
     register,
     handleSubmit,

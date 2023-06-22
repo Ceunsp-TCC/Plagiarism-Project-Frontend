@@ -4,13 +4,17 @@ import type { FormSchoolAddressFields } from '@/app/(public)/signup/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import { useSignupStore } from '@/store'
+import { useEffect } from 'react'
 
 export function useFormSchoolAddress() {
+  const { setSchoolAddressState, setStepState, step } = useSignupStore()
+  const isWrongStep = step !== 'FORMSCHOOLADDRESS'
   const { push } = useRouter()
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm<FormSchoolAddressFields>({
     mode: 'onSubmit',
@@ -22,10 +26,18 @@ export function useFormSchoolAddress() {
     push(url)
     reset()
   }
-  const onSubmit = (data: FormSchoolAddressFields) => {
+
+  const onSubmit = async (data: FormSchoolAddressFields) => {
+    await setStepState('FORMSCHOOLCREDENTIALS')
     handleNavigate('/signup/form-school-credentials')
+    setSchoolAddressState(data)
   }
 
+  useEffect(() => {
+    if (isWrongStep && !isSubmitting) {
+      handleNavigate('/signup/form-school')
+    }
+  }, [step])
   return {
     errors,
     register,

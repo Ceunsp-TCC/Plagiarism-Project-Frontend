@@ -22,19 +22,21 @@ describe('FormSchool', () => {
   it('Should be render a form school', async () => {
     const { getByPlaceholderText, getByText } = render(<FormSchool />)
 
+    const description = getByText(
+      'Primeiro precisamos de algumas informações da sua escola',
+    )
     const schoolNameInput = getByPlaceholderText('Nome')
     const schoolEmailInput = getByPlaceholderText('Email')
     const schoolPhoneNumberInput = getByPlaceholderText('Número de telefone')
     const schoolCNPJInput = getByPlaceholderText('CNPJ')
     const nextStepButton = getByText('Avançar')
-    const backStepButton = getByText('Voltar')
 
     expect(schoolNameInput).toBeInTheDocument()
     expect(schoolEmailInput).toBeInTheDocument()
     expect(schoolPhoneNumberInput).toBeInTheDocument()
     expect(schoolCNPJInput).toBeInTheDocument()
+    expect(description).toBeInTheDocument()
     expect(nextStepButton).toBeInTheDocument()
-    expect(backStepButton).toBeInTheDocument()
   })
   it('Should be submit form with success', async () => {
     const { result } = renderHook(() => useSignupStore())
@@ -154,21 +156,6 @@ describe('FormSchool', () => {
         'Por favor, insira um telefone válido',
       )
       expect(errorMessageSchoolPhoneNumber).toBeVisible()
-    })
-  })
-  it('Should be navigate to back', async () => {
-    const { getByText } = render(<FormSchool />)
-
-    const backStepButton = getByText('Voltar')
-    mockRouter.push('/signup/form-school')
-
-    act(() => {
-      fireEvent.click(backStepButton)
-    })
-
-    await waitFor(() => {
-      const atualPath = mockRouter.asPath
-      expect(atualPath).toBe('/')
     })
   })
 })

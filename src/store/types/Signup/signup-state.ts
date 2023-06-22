@@ -8,6 +8,7 @@ export type StepsSignUp =
   | 'FORMSCHOOL'
   | 'FORMSCHOOLADDRESS'
   | 'FORMSCHOOLCREDENTIALS'
+  | 'WARNINGACCOUNTINREVIEW'
 
 export type PayloadSignUp = {
   school: FormSchoolFields

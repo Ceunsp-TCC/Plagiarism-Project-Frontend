@@ -1,9 +1,16 @@
 import FormSchoolCredentials from '@/app/(public)/signup/form-school-credentials/page'
-import { render, waitFor, fireEvent, cleanup } from '@testing-library/react'
+import {
+  render,
+  waitFor,
+  fireEvent,
+  cleanup,
+  renderHook,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { act } from 'react-dom/test-utils'
 import mockRouter from 'next-router-mock'
+import { useSignupStore } from '@/store'
 
 describe('FormSchoolCredentials', () => {
   afterEach(cleanup)
@@ -11,19 +18,51 @@ describe('FormSchoolCredentials', () => {
     const { getByPlaceholderText, getByText } = render(
       <FormSchoolCredentials />,
     )
+    const description = getByText('Agora preencha uma senha de acesso')
+    const schoolPasswordInput = getByPlaceholderText('Digite uma senha')
+    const schoolConfirmPasswordInput =
+      getByPlaceholderText('Confirme sua senha')
+    const confirmButton = getByText('Confirmar')
 
+    expect(schoolPasswordInput).toBeInTheDocument()
+    expect(schoolConfirmPasswordInput).toBeInTheDocument()
+    expect(description).toBeInTheDocument()
+    expect(confirmButton).toBeInTheDocument()
+  })
+  it('Should be submit form with success', async () => {
+    const { result } = renderHook(() => useSignupStore())
+    const { getByPlaceholderText, getByText } = render(
+      <FormSchoolCredentials />,
+    )
+
+    const mockData = {
+      password: 'Alpha@12',
+      confirmPassword: 'Alpha@12',
+    }
     const schoolPasswordInput = getByPlaceholderText('Digite uma senha')
     const schoolConfirmPasswordInput =
       getByPlaceholderText('Confirme sua senha')
 
     const confirmButton = getByText('Confirmar')
-    const backStepButton = getByText('Voltar')
+    mockRouter.push('/signup/form-school-credentials')
 
-    expect(schoolPasswordInput).toBeInTheDocument()
-    expect(schoolConfirmPasswordInput).toBeInTheDocument()
+    act(() => {
+      fireEvent.change(schoolPasswordInput, {
+        target: { value: mockData.password },
+      })
+      fireEvent.change(schoolConfirmPasswordInput, {
+        target: { value: mockData.confirmPassword },
+      })
 
-    expect(confirmButton).toBeInTheDocument()
-    expect(backStepButton).toBeInTheDocument()
+      userEvent.click(confirmButton)
+    })
+
+    await waitFor(() => {
+      expect(result.current.step).toBe('WARNINGACCOUNTINREVIEW')
+      expect(result.current.payload.credentials).toStrictEqual(mockData)
+      const atualPath = mockRouter.asPath
+      expect(atualPath).toBe('/signup/warning-account-in-review')
+    })
   })
   it('Should be validation in fields if is empty', async () => {
     const { getByText } = render(<FormSchoolCredentials />)
@@ -86,20 +125,15 @@ describe('FormSchoolCredentials', () => {
       expect(errorMessageConfirmPassword).toBeVisible()
     })
   })
-
-  it('Should be navigate to back', async () => {
-    const { getByText } = render(<FormSchoolCredentials />)
-
-    const backStepButton = getByText('Voltar')
+  it('Should be redirect if step is wrong', async () => {
+    const { result } = renderHook(() => useSignupStore())
+    render(<FormSchoolCredentials />)
+    result.current.setStepState('FORMSCHOOL')
     mockRouter.push('/signup/form-school-credentials')
-
-    act(() => {
-      fireEvent.click(backStepButton)
-    })
 
     await waitFor(() => {
       const atualPath = mockRouter.asPath
-      expect(atualPath).toBe('/signup/form-school-address')
+      expect(atualPath).toBe('/signup/form-school')
     })
   })
 })

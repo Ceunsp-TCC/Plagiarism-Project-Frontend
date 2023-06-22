@@ -5,10 +5,16 @@ import { checkHasError } from '@/functions'
 import type { FormSchoolCredentialsFields } from '@/app/(public)/signup/types'
 
 export default function FormSchoolCredentials() {
-  const { errors, handleSubmit, onSubmit, register, handleNavigate } =
+  const { errors, handleSubmit, onSubmit, register } =
     useFormSchoolCredentials()
+
   return (
     <form method="post">
+      <div className="mb-10">
+        <p className="text-gray-500 font-bold">
+          Agora preencha uma senha de acesso
+        </p>
+      </div>
       <div className="flex flex-wrap -m-3">
         <div className="w-full p-3">
           <Input<FormSchoolCredentialsFields>
@@ -43,14 +49,6 @@ export default function FormSchoolCredentials() {
           <div className="flex flex-wrap md:justify-end -m-2">
             <div className="w-full p-2">
               <Button onClick={handleSubmit(onSubmit)}>Confirmar</Button>
-            </div>
-            <div className="w-full p-2">
-              <Button
-                onClick={() => handleNavigate('/signup/form-school-address')}
-                variant="secondary"
-              >
-                Voltar
-              </Button>
             </div>
           </div>
         </div>
