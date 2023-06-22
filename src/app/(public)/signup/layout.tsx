@@ -9,13 +9,13 @@ type LayoutSignupProps = {
 
 export default function LayoutSignup({ children }: LayoutSignupProps) {
   return (
-    <section className="py-10 bg-gray-900 overflow-hidden">
+    <section className="py-10  bg-gray-900 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="p-1 xs:p-5 bg-gray-900 border border-gray-800 rounded-3xl">
+        <div className="p-1 px-10 md:px-0 xs:p-5 bg-gray-900 border border-gray-800 rounded-3xl">
           <div className="flex flex-wrap -m-8">
             <div className="w-full md:w-1/2 p-8">
               <div className="py-12 md:max-w-md mx-auto">
-                <div className="flex flex-wrap items-center justify-between -m-2 mb-10">
+                <div className="flex flex-wrap items-center justify-between -m-2 mb-2">
                   <div className="w-auto p-2">
                     <Image
                       width={100}
@@ -29,17 +29,14 @@ export default function LayoutSignup({ children }: LayoutSignupProps) {
                       className="text-blue-500 hover:text-blue-600 font-bold"
                       href="#"
                     >
-                      Entrar
+                      Já tem uma conta?
                     </a>
                   </div>
                 </div>
-                <div className="mb-10">
+                <div className="mb-3">
                   <h3 className="font-heading mb-3 text-3xl text-white font-black tracking-tight">
                     Cadastre sua Escola!
                   </h3>
-                  <p className="text-gray-500 font-bold">
-                    Fortalecendo a proteção e a excelência educacional.
-                  </p>
                 </div>
                 {children}
               </div>

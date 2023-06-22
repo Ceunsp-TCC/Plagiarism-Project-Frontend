@@ -21,7 +21,9 @@ export const useSignupStore = create<SignupState>((set) => ({
       confirmPassword: '',
     },
   },
-  setStepState: (step) => set(() => ({ step })),
+  setStepState: async (step) => {
+    await set(() => ({ step }))
+  },
   setSchoolState: (school) =>
     set((state) => ({ payload: { ...state.payload, school } })),
   setSchoolAddressState: (address) =>
