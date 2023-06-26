@@ -1,2 +1,2 @@
-export { Input } from './Input'
-export { InputLabel } from './InputLabel'
+export * from './Input'
+export * from './InputMask'

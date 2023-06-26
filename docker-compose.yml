@@ -1,8 +1,8 @@
 version: "3.5"
 
 services:
-  plagiarism-platform-frontend:
-    container_name: plagiarism-platform-frontend
+   school-guardian-frontend:
+    container_name: school-guardian-frontend
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -10,12 +10,12 @@ services:
     ports:
       - 3336:3336
     volumes:
-      - .:/app/plagiarism-platform-frontend
-      - /app/plagiarism-platform-frontend/node_modules
-      - /app/plagiarism-platform-frontend/.next
+      - .:/app/school-guardian-frontend
+      - /app/school-guardian-frontend/node_modules
+      - /app/school-guardian-frontend/.next
     networks:
-      - plagiarism-platform-network
+      - school-guardian-frontend-network
 networks:
-  plagiarism-platform-network:
-    name: plagiarism-platform-network
+  school-guardian-frontend-network:
+    name: school-guardian-frontend-network
     external: true
