@@ -1,8 +1,7 @@
 'use client'
-import { Button, ButtonLoadingLottie, Input, ErrorMessage } from '@/components'
+import { Button, ButtonLoadingLottie, Input, ErrorMessage } from '@components'
 import { useFormSchoolCredentials } from '@/app/(public)/signup/hooks'
 import { checkHasError } from '@/functions'
-import type { FormSchoolCredentialsFields } from '@/app/(public)/signup/types'
 
 export default function FormSchoolCredentials() {
   const { errors, isLoading, handleSubmit, onSubmit, register } =
@@ -17,8 +16,8 @@ export default function FormSchoolCredentials() {
       </div>
       <div className="flex flex-wrap -m-3">
         <div className="w-full p-3">
-          <Input<FormSchoolCredentialsFields>
-            register={register}
+          <Input
+            {...register('password')}
             hasError={checkHasError(errors.password)}
             type="password"
             placeholder="Digite uma senha"
@@ -32,8 +31,8 @@ export default function FormSchoolCredentials() {
           />
         </div>
         <div className="w-full p-3">
-          <Input<FormSchoolCredentialsFields>
-            register={register}
+          <Input
+            {...register('confirmPassword')}
             hasError={checkHasError(errors.confirmPassword)}
             type="password"
             placeholder="Confirme sua senha"

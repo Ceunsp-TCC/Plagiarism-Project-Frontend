@@ -7,7 +7,6 @@ import {
   ErrorMessage,
 } from '@/components'
 import { useFormSchoolAddress } from '@/app/(public)/signup/hooks'
-import type { FormSchoolAddressFields } from '@/app/(public)/signup/types'
 import { checkHasError } from '@/functions'
 
 export default function FormSchoolAddress() {
@@ -21,11 +20,11 @@ export default function FormSchoolAddress() {
       </div>
       <div className="flex flex-wrap -m-3">
         <div className="w-full p-3">
-          <InputMask<FormSchoolAddressFields>
-            register={register}
+          <InputMask
+            {...register('CEP')}
+            mask="99999-999"
             hasError={checkHasError(errors.CEP)}
             type="text"
-            mask="99999-999"
             placeholder="CEP"
             name="CEP"
             errorMessage={() =>
@@ -37,16 +36,16 @@ export default function FormSchoolAddress() {
         </div>
 
         <div className="w-full p-3">
-          <Input<FormSchoolAddressFields>
-            register={register}
+          <Input
+            {...register('complement')}
             type="text"
             placeholder="Complemento"
             name="complement"
           />
         </div>
         <div className="w-full p-3">
-          <Input<FormSchoolAddressFields>
-            register={register}
+          <Input
+            {...register('number')}
             type="text"
             placeholder="Número"
             name="number"

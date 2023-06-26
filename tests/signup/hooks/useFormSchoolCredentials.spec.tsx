@@ -33,7 +33,6 @@ describe('useFormSchoolCredentials', () => {
       wrapper,
     })
     act(() => {
-      resultSignUpStore.current.setStepState('FORMSCHOOLCREDENTIALS')
       mockRouter.push('/signup/form-school-credentials')
     })
     const mockHandleSubmit = jest.spyOn(result.current, 'handleSubmit')

@@ -130,15 +130,34 @@ describe('FormSchool', () => {
       expect(errorMessageSchoolEmail).toBeVisible()
     })
   })
+  it('Should be email already exists ', async () => {
+    validDocumentMock(200)
+    validEmailMock(400)
+    const { getByText, getByPlaceholderText } = render(<FormSchool />)
+    const schoolEmailInput = getByPlaceholderText('Email')
+    const nextStepButton = getByText('Avançar')
+
+    act(() => {
+      fireEvent.change(schoolEmailInput, { target: { value: schoolEmailMock } })
+      userEvent.click(nextStepButton)
+    })
+
+    await waitFor(() => {
+      const errorMessageSchoolEmail = getByText('Email já cadastrado')
+      expect(errorMessageSchoolEmail).toBeVisible()
+    })
+  })
   it('Should be cnpj is invalid ', async () => {
-    validDocumentMock(400)
+    validDocumentMock(200)
     validEmailMock(200)
     const { getByText, getByPlaceholderText } = render(<FormSchool />)
     const schoolCPJInput = getByPlaceholderText('CNPJ')
     const nextStepButton = getByText('Avançar')
 
     act(() => {
-      fireEvent.change(schoolCPJInput, { target: { value: '2333' } })
+      fireEvent.change(schoolCPJInput, {
+        target: { value: '122' },
+      })
       userEvent.click(nextStepButton)
     })
 
@@ -146,6 +165,25 @@ describe('FormSchool', () => {
       const errorMessageSchoolCNPJ = getByText(
         'Por favor, insira um cnpj válido',
       )
+      expect(errorMessageSchoolCNPJ).toBeVisible()
+    })
+  })
+  it('Should be cnpj already exists', async () => {
+    validDocumentMock(400)
+    validEmailMock(200)
+    const { getByText, getByPlaceholderText } = render(<FormSchool />)
+    const schoolCPJInput = getByPlaceholderText('CNPJ')
+    const nextStepButton = getByText('Avançar')
+
+    act(() => {
+      fireEvent.change(schoolCPJInput, {
+        target: { value: '12121212131313' },
+      })
+      userEvent.click(nextStepButton)
+    })
+
+    await waitFor(() => {
+      const errorMessageSchoolCNPJ = getByText('CNPJ já cadastrado')
       expect(errorMessageSchoolCNPJ).toBeVisible()
     })
   })
