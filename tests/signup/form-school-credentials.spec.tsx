@@ -1,5 +1,11 @@
 import FormSchoolCredentials from '@/app/(public)/signup/form-school-credentials/page'
-import { render, waitFor, fireEvent, renderHook } from '@testing-library/react'
+import {
+  render,
+  waitFor,
+  fireEvent,
+  renderHook,
+  cleanup,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
@@ -18,7 +24,21 @@ const wrapper = ({ children }: { children: ReactNode }) => (
   </QueryClientProvider>
 )
 describe('FormSchoolCredentials', () => {
+  beforeEach(() => {
+    const { result } = renderHook(() => useSignupStore())
+    act(() => {
+      result.current.setStepState('FORMSCHOOLCREDENTIALS')
+      mockRouter.push('/signup/form-school-credentials')
+    })
+  })
+  afterEach(() => cleanup())
   it('Should be render a form school credentials', async () => {
+    const { result } = renderHook(() => useSignupStore())
+
+    act(() => {
+      result.current.setStepState('FORMSCHOOLCREDENTIALS')
+      mockRouter.push('/signup/form-school-credentials')
+    })
     const { getByPlaceholderText, getByText } = render(
       <FormSchoolCredentials />,
       { wrapper },
@@ -38,12 +58,6 @@ describe('FormSchoolCredentials', () => {
   it('Should be submit form with success', async () => {
     createSchoolMock(200)
     const { result } = renderHook(() => useSignupStore())
-
-    act(() => {
-      result.current.setStepState('FORMSCHOOLCREDENTIALS')
-      mockRouter.push('/signup/form-school-credentials')
-    })
-
     const { getByPlaceholderText, getByText } = render(
       <FormSchoolCredentials />,
       { wrapper },
@@ -79,6 +93,7 @@ describe('FormSchoolCredentials', () => {
 
   it('Should be validation in fields if is empty', async () => {
     createSchoolMock(400)
+
     const { getByText } = render(<FormSchoolCredentials />, { wrapper })
 
     const confirmButton = getByText('Confirmar')
