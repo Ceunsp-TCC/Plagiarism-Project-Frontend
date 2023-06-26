@@ -4,12 +4,11 @@ import { useRouter } from 'next/navigation'
 import { useSignupStore } from '@/store'
 
 export function useWarningAccountInReview() {
-  const { step, setStepState } = useSignupStore()
+  const { step } = useSignupStore()
   const isWrongStep = step !== 'WARNINGACCOUNTINREVIEW'
   const { push } = useRouter()
 
-  const handleNavigate = async (url: string) => {
-    await setStepState('FORMSCHOOL')
+  const handleNavigate = (url: string) => {
     push(url)
   }
 

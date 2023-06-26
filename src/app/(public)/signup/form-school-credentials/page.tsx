@@ -1,11 +1,11 @@
 'use client'
-import { Button, Input, ErrorMessage } from '@/components'
+import { Button, ButtonLoadingLottie, Input, ErrorMessage } from '@/components'
 import { useFormSchoolCredentials } from '@/app/(public)/signup/hooks'
 import { checkHasError } from '@/functions'
 import type { FormSchoolCredentialsFields } from '@/app/(public)/signup/types'
 
 export default function FormSchoolCredentials() {
-  const { errors, handleSubmit, onSubmit, register } =
+  const { errors, isLoading, handleSubmit, onSubmit, register } =
     useFormSchoolCredentials()
 
   return (
@@ -48,7 +48,13 @@ export default function FormSchoolCredentials() {
         <div className="w-full p-3">
           <div className="flex flex-wrap md:justify-end -m-2">
             <div className="w-full p-2">
-              <Button onClick={handleSubmit(onSubmit)}>Confirmar</Button>
+              <Button
+                loading={() => <ButtonLoadingLottie />}
+                isLoading={isLoading}
+                onClick={handleSubmit(onSubmit)}
+              >
+                Confirmar
+              </Button>
             </div>
           </div>
         </div>

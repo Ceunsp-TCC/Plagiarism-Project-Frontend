@@ -1,11 +1,18 @@
 'use client'
-import { Button, Input, InputMask, ErrorMessage } from '@/components'
+import {
+  Button,
+  ButtonLoadingLottie,
+  Input,
+  InputMask,
+  ErrorMessage,
+} from '@/components'
 import { useFormSchoolAddress } from '@/app/(public)/signup/hooks'
 import type { FormSchoolAddressFields } from '@/app/(public)/signup/types'
 import { checkHasError } from '@/functions'
 
 export default function FormSchoolAddress() {
-  const { errors, handleSubmit, onSubmit, register } = useFormSchoolAddress()
+  const { errors, isSubmitting, handleSubmit, onSubmit, register } =
+    useFormSchoolAddress()
 
   return (
     <form method="post">
@@ -49,7 +56,13 @@ export default function FormSchoolAddress() {
         <div className="w-full p-3">
           <div className="flex flex-wrap md:justify-end -m-2">
             <div className="w-full p-2">
-              <Button onClick={handleSubmit(onSubmit)}>Avançar</Button>
+              <Button
+                loading={() => <ButtonLoadingLottie />}
+                isLoading={isSubmitting}
+                onClick={handleSubmit(onSubmit)}
+              >
+                Avançar
+              </Button>
             </div>
           </div>
         </div>

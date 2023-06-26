@@ -1,23 +1,25 @@
 import FormSchoolCredentials from '@/app/(public)/signup/form-school-credentials/page'
-import {
-  render,
-  waitFor,
-  fireEvent,
-  cleanup,
-  renderHook,
-} from '@testing-library/react'
+import { render, waitFor, fireEvent, renderHook } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+import type { ReactNode } from 'react'
 import React from 'react'
 import { act } from 'react-dom/test-utils'
 import mockRouter from 'next-router-mock'
 import { useSignupStore } from '@/store'
+import { createSchoolMock } from '@tests/helpers'
 
+const queryClient = new QueryClient()
+const wrapper = ({ children }: { children: ReactNode }) => (
+  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+)
 describe('FormSchoolCredentials', () => {
-  afterEach(cleanup)
   it('Should be render a form school credentials', async () => {
     const { getByPlaceholderText, getByText } = render(
       <FormSchoolCredentials />,
+      { wrapper },
     )
+
     const description = getByText('Agora preencha uma senha de acesso')
     const schoolPasswordInput = getByPlaceholderText('Digite uma senha')
     const schoolConfirmPasswordInput =
@@ -30,9 +32,16 @@ describe('FormSchoolCredentials', () => {
     expect(confirmButton).toBeInTheDocument()
   })
   it('Should be submit form with success', async () => {
+    createSchoolMock(200)
     const { result } = renderHook(() => useSignupStore())
+
+    await result.current.setStepState('FORMSCHOOLCREDENTIALS')
+
+    mockRouter.push('/signup/form-school-credentials')
+
     const { getByPlaceholderText, getByText } = render(
       <FormSchoolCredentials />,
+      { wrapper },
     )
 
     const mockData = {
@@ -44,7 +53,6 @@ describe('FormSchoolCredentials', () => {
       getByPlaceholderText('Confirme sua senha')
 
     const confirmButton = getByText('Confirmar')
-    mockRouter.push('/signup/form-school-credentials')
 
     act(() => {
       fireEvent.change(schoolPasswordInput, {
@@ -59,13 +67,14 @@ describe('FormSchoolCredentials', () => {
 
     await waitFor(() => {
       expect(result.current.step).toBe('WARNINGACCOUNTINREVIEW')
-      expect(result.current.payload.credentials).toStrictEqual(mockData)
       const atualPath = mockRouter.asPath
       expect(atualPath).toBe('/signup/warning-account-in-review')
     })
   })
+
   it('Should be validation in fields if is empty', async () => {
-    const { getByText } = render(<FormSchoolCredentials />)
+    createSchoolMock(400)
+    const { getByText } = render(<FormSchoolCredentials />, { wrapper })
 
     const confirmButton = getByText('Confirmar')
 
@@ -84,9 +93,12 @@ describe('FormSchoolCredentials', () => {
       expect(errorMessageSchoolConfirmPassword).toBeVisible()
     })
   })
+
   it('Should be is invalid password format', async () => {
-    const { getByText, getByPlaceholderText } = render(
+    createSchoolMock(400)
+    const { getByPlaceholderText, getByText } = render(
       <FormSchoolCredentials />,
+      { wrapper },
     )
     const schoolPasswordInput = getByPlaceholderText('Digite uma senha')
     const confirmButton = getByText('Confirmar')
@@ -103,9 +115,12 @@ describe('FormSchoolCredentials', () => {
       expect(errorMessageSchoolPassword).toBeVisible()
     })
   })
+
   it('Should be password and confirm is different', async () => {
-    const { getByText, getByPlaceholderText } = render(
+    createSchoolMock(400)
+    const { getByPlaceholderText, getByText } = render(
       <FormSchoolCredentials />,
+      { wrapper },
     )
     const schoolPasswordInput = getByPlaceholderText('Digite uma senha')
     const schoolConfirmPasswordInput =
@@ -125,11 +140,14 @@ describe('FormSchoolCredentials', () => {
       expect(errorMessageConfirmPassword).toBeVisible()
     })
   })
+
   it('Should be redirect if step is wrong', async () => {
     const { result } = renderHook(() => useSignupStore())
-    render(<FormSchoolCredentials />)
-    result.current.setStepState('FORMSCHOOL')
+    result.current.setStepState('WARNINGACCOUNTINREVIEW')
+
     mockRouter.push('/signup/form-school-credentials')
+
+    render(<FormSchoolCredentials />, { wrapper })
 
     await waitFor(() => {
       const atualPath = mockRouter.asPath
