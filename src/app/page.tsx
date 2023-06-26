@@ -1,6 +1,9 @@
 'use client'
 import axios from 'axios'
 import { useEffect } from 'react'
+import { Hero } from './(components)/Hero'
+import { Hero1 } from './(components)/Hero1'
+import { Hero2 } from './(components)/Hero2'
 
 export default function Home() {
   useEffect(() => {
@@ -33,15 +36,15 @@ export default function Home() {
                   <ul className="flex items-center justify-center">
                     <li className="mr-9">
                       <a
-                        className="inline-block text-sm font-bold text-gray-900 hover:text-gray-700"
+                        className="inline-block text-xl text-left font-bold text-gray-900 hover:text-gray-700"
                         href="#"
                       >
-                        Features
+                        Home
                       </a>
                     </li>
                     <li className="mr-9">
                       <a
-                        className="inline-block text-sm font-bold text-gray-900 hover:text-gray-700"
+                        className="inline-block text-xl font-bold text-gray-900 hover:text-gray-700"
                         href="#"
                       >
                         Solutions
@@ -49,7 +52,7 @@ export default function Home() {
                     </li>
                     <li className="mr-9">
                       <a
-                        className="inline-block text-sm font-bold text-gray-900 hover:text-gray-700"
+                        className="inline-block text-xl font-bold text-gray-900 hover:text-gray-700"
                         href="#"
                       >
                         Resources
@@ -57,7 +60,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="inline-block text-sm font-bold text-gray-900 hover:text-gray-700"
+                        className="inline-block text-xl font-bold text-gray-900 hover:text-gray-700"
                         href="#"
                       >
                         Pricing
@@ -76,7 +79,7 @@ export default function Home() {
                         className="block w-full px-4 py-2.5 text-sm text-center text-gray-900 font-bold bg-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-200 border rounded-full"
                         href="#"
                       >
-                        Log In
+                        Entrar
                       </a>
                     </div>
                     <div className="w-full md:w-auto p-2">
@@ -84,7 +87,7 @@ export default function Home() {
                         className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full"
                         href="#"
                       >
-                        Get Started
+                        Cadastrar-se
                       </a>
                     </div>
                   </div>
@@ -154,15 +157,15 @@ export default function Home() {
                   <ul>
                     <li className="mb-9">
                       <a
-                        className="inline-block text-sm font-bold text-gray-900 hover:text-gray-700"
+                        className="inline-block text-xl font-bold text-gray-900 hover:text-gray-700"
                         href="#"
                       >
-                        Features
+                        Home
                       </a>
                     </li>
                     <li className="mb-9">
                       <a
-                        className="inline-block text-sm font-bold text-gray-900 hover:text-gray-700"
+                        className="inline-block text-xl font-bold text-gray-900 hover:text-gray-700"
                         href="#"
                       >
                         Solutions
@@ -170,7 +173,7 @@ export default function Home() {
                     </li>
                     <li className="mb-9">
                       <a
-                        className="inline-block text-sm font-bold text-gray-900 hover:text-gray-700"
+                        className="inline-block text-xl font-bold text-gray-900 hover:text-gray-700"
                         href="#"
                       >
                         Resources
@@ -178,7 +181,7 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        className="inline-block text-sm font-bold text-gray-900 hover:text-gray-700"
+                        className="inline-block text-xl font-bold text-gray-900 hover:text-gray-700"
                         href="#"
                       >
                         Pricing
@@ -193,7 +196,7 @@ export default function Home() {
                         className="block w-full px-4 py-2.5 text-sm text-center text-gray-900 font-bold bg-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-200 border rounded-full"
                         href="#"
                       >
-                        Log In
+                        Entrar
                       </a>
                     </div>
                     <div className="w-full p-2">
@@ -201,7 +204,7 @@ export default function Home() {
                         className="block w-full px-4 py-2.5 text-sm text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full"
                         href="#"
                       >
-                        Get Started
+                        Cadastrar-se
                       </a>
                     </div>
                   </div>
@@ -234,6 +237,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Hero />
+      <Hero1 />
+      <Hero2 />
     </section>
   )
 }
