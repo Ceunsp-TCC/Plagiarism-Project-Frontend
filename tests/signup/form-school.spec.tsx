@@ -12,6 +12,7 @@ import { act } from 'react-dom/test-utils'
 import mockRouter from 'next-router-mock'
 import { useSignupStore } from '@/store'
 import { faker } from '@faker-js/faker'
+import { validDocumentMock, validEmailMock } from '../helpers'
 
 const schoolNameMock = faker.company.name()
 const schoolEmailMock = faker.internet.email()
@@ -39,7 +40,10 @@ describe('FormSchool', () => {
     expect(nextStepButton).toBeInTheDocument()
   })
   it('Should be submit form with success', async () => {
+    validDocumentMock(200)
+    validEmailMock(200)
     const { result } = renderHook(() => useSignupStore())
+
     const { getByPlaceholderText, getByText } = render(<FormSchool />)
 
     const mockData = {
@@ -79,6 +83,8 @@ describe('FormSchool', () => {
     })
   })
   it('Should be validation in fields if is empty ', async () => {
+    validDocumentMock(400)
+    validEmailMock(400)
     const { getByText } = render(<FormSchool />)
 
     const nextStepButton = getByText('Avançar')
@@ -106,6 +112,8 @@ describe('FormSchool', () => {
     })
   })
   it('Should be email is invalid ', async () => {
+    validDocumentMock(200)
+    validEmailMock(400)
     const { getByText, getByPlaceholderText } = render(<FormSchool />)
     const schoolEmailInput = getByPlaceholderText('Email')
     const nextStepButton = getByText('Avançar')
@@ -123,6 +131,8 @@ describe('FormSchool', () => {
     })
   })
   it('Should be cnpj is invalid ', async () => {
+    validDocumentMock(400)
+    validEmailMock(200)
     const { getByText, getByPlaceholderText } = render(<FormSchool />)
     const schoolCPJInput = getByPlaceholderText('CNPJ')
     const nextStepButton = getByText('Avançar')
@@ -140,6 +150,8 @@ describe('FormSchool', () => {
     })
   })
   it('Should be validation phone number is invalid ', async () => {
+    validDocumentMock(400)
+    validEmailMock(400)
     const { getByText, getByPlaceholderText } = render(<FormSchool />)
     const schoolPhoneNumberInput = getByPlaceholderText('Número de telefone')
     const nextStepButton = getByText('Avançar')

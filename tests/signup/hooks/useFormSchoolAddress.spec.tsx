@@ -23,10 +23,10 @@ describe('useFormSchoolAddress', () => {
     })
 
     expect(result.current.errors).toBeDefined()
+    expect(result.current.isSubmitting).toBeDefined()
     expect(result.current.register).toBeDefined()
     expect(result.current.handleSubmit).toBeDefined()
     expect(result.current.onSubmit).toBeDefined()
-    expect(result.current.handleNavigate).toBeDefined()
   })
 
   it('Should call onSubmit with data when is submitted', async () => {

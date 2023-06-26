@@ -1,7 +1,7 @@
 .btn-primary{
-    @apply w-full block px-8 py-3.5 text-lg text-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full cursor-pointer;
+    @apply w-full flex px-8  text-lg justify-center text-white font-bold bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 rounded-full cursor-pointer;
 }
 
 .btn-secondary{
-    @apply w-full block px-8 py-3.5 text-lg text-center text-white font-bold bg-gray-900 hover:bg-gray-800 border border-gray-800 focus:ring-4 focus:ring-blue-200 rounded-full cursor-pointer;
+    @apply w-full flex px-8 text-lg justify-center text-white font-bold bg-gray-900 hover:bg-gray-800 border border-gray-800 focus:ring-4 focus:ring-blue-200 rounded-full cursor-pointer;
 } 

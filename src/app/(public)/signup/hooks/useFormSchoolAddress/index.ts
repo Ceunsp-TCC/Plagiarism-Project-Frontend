@@ -40,9 +40,9 @@ export function useFormSchoolAddress() {
   }, [step])
   return {
     errors,
+    isSubmitting,
     register,
     handleSubmit,
     onSubmit,
-    handleNavigate,
   }
 }

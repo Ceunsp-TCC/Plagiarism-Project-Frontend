@@ -17,12 +17,11 @@ export function Button({
     <div
       onClick={onClick}
       className={`${transformVariant(variant)} ${className} ${
-        disabled || isLoading ? 'cursor-default pointer-events-none' : ''
-      }`}
+        isLoading ? 'py-1' : 'py-4'
+      }${disabled || isLoading ? 'cursor-default pointer-events-none' : ''}`}
     >
-      {loading && isLoading && loading()}
       <button disabled={disabled || isLoading} type={type} {...rest}>
-        {isLoading ? 'Processando...' : children}
+        {isLoading ? loading && loading() : children}
       </button>
     </div>
   )
