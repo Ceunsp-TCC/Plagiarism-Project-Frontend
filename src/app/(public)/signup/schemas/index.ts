@@ -1,3 +1,3 @@
-export { formSchoolSchema } from './form-school-schema'
-export { formSchoolAddressSchema } from './form-school-address'
-export { formSchoolCredentialsSchema } from './form-school-credentials'
+export * from './form-school-schema'
+export * from './form-school-address'
+export * from './form-school-credentials'

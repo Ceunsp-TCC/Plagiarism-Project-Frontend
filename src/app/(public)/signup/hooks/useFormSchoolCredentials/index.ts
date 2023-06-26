@@ -9,7 +9,7 @@ import { useSignupStore } from '@/store'
 import { schoolServices } from '@/services'
 import { useMutation } from '@tanstack/react-query'
 import { transformObjectToApi } from '@/app/(public)/signup/functions'
-import { AxiosError } from 'axios'
+import { ShowToast } from '@components'
 
 export function useFormSchoolCredentials() {
   const { setSchoolCredentialsState, setStepState, step, payload } =
@@ -35,14 +35,26 @@ export function useFormSchoolCredentials() {
   const onSuccess = async () => {
     await setStepState('WARNINGACCOUNTINREVIEW')
     handleNavigate('/signup/warning-account-in-review')
+    ShowToast({
+      title: 'Conta criada!',
+      description: 'Sua conta foi criada com sucesso',
+      toastType: 'SUCCESS',
+    })
+  }
+
+  const onError = async () => {
+    ShowToast({
+      title: 'Ocorreu um erro',
+      description:
+        'Houve um erro ao criar sua conta. Tente Novamente mais tarde!',
+      toastType: 'ERROR',
+    })
   }
   const { mutate, isLoading } = useMutation(
     () => schoolServices.create(transformObjectToApi(payload)),
     {
       onSuccess,
-      onError: (error: AxiosError) => {
-        console.log(error.response?.data)
-      },
+      onError,
     },
   )
 

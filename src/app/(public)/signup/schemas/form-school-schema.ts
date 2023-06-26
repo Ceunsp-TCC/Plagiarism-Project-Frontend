@@ -1,5 +1,3 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable prefer-regex-literals */
 import z from 'zod'
 import {
   checkIfEmailIsValid,

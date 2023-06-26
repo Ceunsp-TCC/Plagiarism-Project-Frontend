@@ -7,7 +7,6 @@ import {
   ButtonLoadingLottie,
 } from '@/components'
 import { useFormSchool } from '@/app/(public)/signup/hooks'
-import type { FormSchoolFields } from '@/app/(public)/signup/types'
 import { checkHasError } from '@/functions'
 
 export default function FormSchoolAddress() {
@@ -23,8 +22,8 @@ export default function FormSchoolAddress() {
       </div>
       <div className="flex flex-wrap -m-3">
         <div className="w-full  p-3">
-          <Input<FormSchoolFields>
-            register={register}
+          <Input
+            {...register('name')}
             hasError={checkHasError(errors.name)}
             type="text"
             maxLength={255}
@@ -38,8 +37,8 @@ export default function FormSchoolAddress() {
           />
         </div>
         <div className="w-full p-3">
-          <Input<FormSchoolFields>
-            register={register}
+          <Input
+            {...register('email')}
             hasError={checkHasError(errors.email)}
             type="text"
             placeholder="Email"
@@ -53,8 +52,8 @@ export default function FormSchoolAddress() {
           />
         </div>
         <div className="w-full p-3">
-          <InputMask<FormSchoolFields>
-            register={register}
+          <InputMask
+            {...register('phoneNumber')}
             hasError={checkHasError(errors.phoneNumber)}
             type="text"
             placeholder="Número de telefone"
@@ -68,9 +67,9 @@ export default function FormSchoolAddress() {
           />
         </div>
         <div className="w-full p-3">
-          <InputMask<FormSchoolFields>
+          <InputMask
+            {...register('CNPJ')}
             mask="99.999.999/9999-99"
-            register={register}
             hasError={checkHasError(errors.CNPJ)}
             type="text"
             placeholder="CNPJ"
