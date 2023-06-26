@@ -18,7 +18,7 @@ describe('useFormSchool', () => {
     expect(result.current.register).toBeDefined()
     expect(result.current.handleSubmit).toBeDefined()
     expect(result.current.onSubmit).toBeDefined()
-    expect(result.current.handleNavigate).toBeDefined()
+    expect(result.current.isSubmitting).toBeDefined()
   })
 
   it('Should call onSubmit with data when is submitted', async () => {

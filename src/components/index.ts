@@ -1,4 +1,9 @@
-export { Button, ButtonIcon, ButtonLoading } from './Button'
+export {
+  Button,
+  ButtonIcon,
+  ButtonLoading,
+  ButtonLoadingLottie,
+} from './Button'
 export {
   Input,
   InputLabel,

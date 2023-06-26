@@ -1,4 +1,4 @@
-import { Button, ButtonLoading } from '@/components'
+import { Button, ButtonLoadingLottie } from '@/components'
 import { render, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { act } from 'react-dom/test-utils'
@@ -9,15 +9,14 @@ describe('Button', () => {
 
     expect(getByText('Test')).toBeInTheDocument()
   })
-  it('Should be render a button in loading', () => {
-    const { getByText } = render(
-      <Button loading={() => <ButtonLoading />} isLoading>
+  it('Should be render a button in loading', async () => {
+    const { getByRole } = render(
+      <Button loading={() => <ButtonLoadingLottie />} isLoading>
         Test
       </Button>,
     )
-    const button = getByText('Processando...')
-    expect(button).toBeInTheDocument()
-    expect(button).toBeDisabled()
+    const loading = getByRole('loading')
+    expect(loading).toBeInTheDocument()
   })
 
   it('Should be call function when click in button', () => {

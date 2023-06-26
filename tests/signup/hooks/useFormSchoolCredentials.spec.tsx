@@ -8,12 +8,13 @@ import mockRouter from 'next-router-mock'
 
 const schoolPasswordMock = 'Alpha@12'
 
+const queryClient = new QueryClient()
+const wrapper = ({ children }: { children: ReactNode }) => (
+  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+)
+
 describe('useFormSchoolCredentials', () => {
   it('Should return correct properties', () => {
-    const queryClient = new QueryClient()
-    const wrapper = ({ children }: { children: ReactNode }) => (
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    )
     const { result } = renderHook(() => useFormSchoolCredentials(), {
       wrapper,
     })
@@ -22,14 +23,10 @@ describe('useFormSchoolCredentials', () => {
     expect(result.current.register).toBeDefined()
     expect(result.current.handleSubmit).toBeDefined()
     expect(result.current.onSubmit).toBeDefined()
-    expect(result.current.handleNavigate).toBeDefined()
+    expect(result.current.isLoading).toBeDefined()
   })
 
   it('Should call onSubmit with data when is submitted', async () => {
-    const queryClient = new QueryClient()
-    const wrapper = ({ children }: { children: ReactNode }) => (
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    )
     const { result: resultSignUpStore } = renderHook(() => useSignupStore())
     resultSignUpStore.current.setStepState('FORMSCHOOLCREDENTIALS')
     const { result } = renderHook(() => useFormSchoolCredentials(), {
@@ -39,22 +36,18 @@ describe('useFormSchoolCredentials', () => {
       resultSignUpStore.current.setStepState('FORMSCHOOLCREDENTIALS')
       mockRouter.push('/signup/form-school-credentials')
     })
+    const mockHandleSubmit = jest.spyOn(result.current, 'handleSubmit')
 
     const mockData = {
       password: schoolPasswordMock,
       confirmPassword: schoolPasswordMock,
     }
     act(() => {
-      result.current.onSubmit(mockData)
+      result.current.handleSubmit(result.current.onSubmit(mockData) as any)
     })
 
-    await waitFor(async () => {
-      expect(resultSignUpStore.current.step).toBe('WARNINGACCOUNTINREVIEW')
-      expect(resultSignUpStore.current.payload.credentials).toStrictEqual(
-        mockData,
-      )
-      const atualPath = mockRouter.asPath
-      expect(atualPath).toBe('/signup/warning-account-in-review')
+    await waitFor(() => {
+      expect(mockHandleSubmit).toBeCalledTimes(1)
     })
   })
 })

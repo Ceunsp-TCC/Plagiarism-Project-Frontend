@@ -14,7 +14,7 @@ export function useFormSchool() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormSchoolFields>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
@@ -33,9 +33,9 @@ export function useFormSchool() {
 
   return {
     errors,
+    isSubmitting,
     register,
     handleSubmit,
     onSubmit,
-    handleNavigate,
   }
 }

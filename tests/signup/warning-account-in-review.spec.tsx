@@ -1,5 +1,5 @@
 import WarningAccountInReview from '@/app/(public)/signup/warning-account-in-review/page'
-import { render, waitFor, cleanup, renderHook } from '@testing-library/react'
+import { render, waitFor, renderHook } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { act } from 'react-dom/test-utils'
@@ -7,7 +7,6 @@ import mockRouter from 'next-router-mock'
 import { useSignupStore } from '@/store'
 
 describe('WarningAccountInReview', () => {
-  afterEach(cleanup)
   it('Should be render a warning account in review', async () => {
     const { getByText } = render(<WarningAccountInReview />)
 
@@ -39,9 +38,11 @@ describe('WarningAccountInReview', () => {
 
   it('Should be redirect if step is wrong', async () => {
     const { result } = renderHook(() => useSignupStore())
+    await act(async () => {
+      await result.current.setStepState('FORMSCHOOL')
+      mockRouter.push('/signup/warning-account-in-review')
+    })
     render(<WarningAccountInReview />)
-    result.current.setStepState('FORMSCHOOL')
-    mockRouter.push('/signup/warning-account-in-review')
 
     await waitFor(() => {
       const atualPath = mockRouter.asPath
