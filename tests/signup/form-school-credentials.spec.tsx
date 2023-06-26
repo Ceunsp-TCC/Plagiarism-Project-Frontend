@@ -8,10 +8,14 @@ import { act } from 'react-dom/test-utils'
 import mockRouter from 'next-router-mock'
 import { useSignupStore } from '@/store'
 import { createSchoolMock } from '@tests/helpers'
+import { ToastContainerCustom } from '@/components'
 
 const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: ReactNode }) => (
-  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  <QueryClientProvider client={queryClient}>
+    <ToastContainerCustom />
+    {children}
+  </QueryClientProvider>
 )
 describe('FormSchoolCredentials', () => {
   it('Should be render a form school credentials', async () => {
@@ -35,9 +39,10 @@ describe('FormSchoolCredentials', () => {
     createSchoolMock(200)
     const { result } = renderHook(() => useSignupStore())
 
-    await result.current.setStepState('FORMSCHOOLCREDENTIALS')
-
-    mockRouter.push('/signup/form-school-credentials')
+    act(() => {
+      result.current.setStepState('FORMSCHOOLCREDENTIALS')
+      mockRouter.push('/signup/form-school-credentials')
+    })
 
     const { getByPlaceholderText, getByText } = render(
       <FormSchoolCredentials />,

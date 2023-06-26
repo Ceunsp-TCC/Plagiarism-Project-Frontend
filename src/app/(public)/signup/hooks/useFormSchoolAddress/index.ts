@@ -27,8 +27,8 @@ export function useFormSchoolAddress() {
     reset()
   }
 
-  const onSubmit = async (data: FormSchoolAddressFields) => {
-    await setStepState('FORMSCHOOLCREDENTIALS')
+  const onSubmit = (data: FormSchoolAddressFields) => {
+    setStepState('FORMSCHOOLCREDENTIALS')
     handleNavigate('/signup/form-school-credentials')
     setSchoolAddressState(data)
   }
@@ -38,6 +38,7 @@ export function useFormSchoolAddress() {
       handleNavigate('/signup/form-school')
     }
   }, [step])
+
   return {
     errors,
     isSubmitting,

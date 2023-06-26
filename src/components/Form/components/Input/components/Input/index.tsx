@@ -1,39 +1,36 @@
 import type { InputProps } from '@/components/types'
-import { FieldValues } from 'react-hook-form'
-import './styles.css'
-export function Input<TFormValues extends FieldValues>({
-  children,
-  className = '',
-  hasError = false,
-  name,
-  type = 'text',
-  errorMessage,
-  register,
-  ...rest
-}: InputProps<TFormValues>) {
-  const isInputNumber = type === 'number'
-  return (
-    <div className={`${className} `}>
-      {children}
-      {register ? (
-        <input
-          {...register(name!, { valueAsNumber: isInputNumber })}
+import { forwardRef } from 'react'
+import * as S from './styles'
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    {
+      children,
+      className = '',
+      type = 'text',
+      name = '',
+      hasError = false,
+      errorMessage,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <>
+        <S.Input
+          $hasError={hasError}
+          ref={ref}
           type={type}
-          {...rest}
+          name={name}
+          {...props}
           autoComplete="disabled-autocomplete"
-          className={`input ${hasError && 'input-has-error'}`}
+          className={className}
         />
-      ) : (
-        <input
-          autoComplete="disabled-autocomplete"
-          type={type}
-          {...rest}
-          className={`input ${hasError && 'input-has-error'}`}
-        />
-      )}
-      <div className="container-error-message-input">
-        {errorMessage && errorMessage()}
-      </div>
-    </div>
-  )
-}
+        {children}
+        <S.ContainerErrorMessage>
+          {errorMessage && errorMessage()}
+        </S.ContainerErrorMessage>
+      </>
+    )
+  },
+)

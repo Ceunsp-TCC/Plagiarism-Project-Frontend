@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:silent": "jest --silent"
+    "test:silent": "jest --silent",
+    "test:coverage": "jest --collectCoverage",
+    "test:clear-cache": "jest --clearCache"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
@@ -30,6 +32,8 @@
     "react-hook-form": "^7.44.3",
     "react-icons": "^4.9.0",
     "react-input-mask": "^2.0.4",
+    "react-toastify": "^9.1.3",
+    "tailwind-styled-components": "^2.2.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4",
     "zod": "^3.21.4",

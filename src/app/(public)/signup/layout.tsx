@@ -1,5 +1,6 @@
 'use client'
 import type { ReactNode } from 'react'
+import { LinkCustom } from '@components'
 import Image from 'next/image'
 import Lottie from 'lottie-react'
 import boy from '@public/animations-lottie/boy-studying.json'
@@ -25,12 +26,7 @@ export default function LayoutSignup({ children }: LayoutSignupProps) {
                     />
                   </div>
                   <div className="w-auto p-2">
-                    <a
-                      className="text-blue-500 hover:text-blue-600 font-bold"
-                      href="#"
-                    >
-                      Já tem uma conta?
-                    </a>
+                    <LinkCustom href="/login">Já tem uma conta?</LinkCustom>
                   </div>
                 </div>
                 <div className="mb-3">

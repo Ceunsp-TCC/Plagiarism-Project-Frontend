@@ -1,4 +1,4 @@
-export { useFormSchool } from './useFormSchool'
-export { useFormSchoolAddress } from './useFormSchoolAddress'
-export { useFormSchoolCredentials } from './useFormSchoolCredentials'
-export { useWarningAccountInReview } from './useWarningAccountInReview'
+export * from './useFormSchool'
+export * from './useFormSchoolAddress'
+export * from './useFormSchoolCredentials'
+export * from './useWarningAccountInReview'

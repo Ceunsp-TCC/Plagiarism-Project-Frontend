@@ -2,6 +2,8 @@ import React from 'react'
 import './globals.css'
 import { LayoutProvider } from '@/providers'
 import { Roboto } from 'next/font/google'
+import 'react-toastify/dist/ReactToastify.css'
+
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['100', '300', '400', '700', '900'],

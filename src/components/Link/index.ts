@@ -1,1 +1,1 @@
-export { LinkCustom } from './components/Link'
+export * from './components'
