@@ -5,7 +5,7 @@ import { Button } from '@components'
 
 export const Container = tw.section`
 pt-6 
-pb-20  
+pb-10  
 overflow-hidden
 flex
 lg:hidden
