@@ -2,7 +2,7 @@ import tw from 'tailwind-styled-components'
 
 export const Container = tw.section`
 pt-6 
-pb-20 
+pb-10 
 overflow-hidden
 `
 export const Content = tw.div`

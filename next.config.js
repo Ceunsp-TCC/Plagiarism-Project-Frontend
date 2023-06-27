@@ -3,6 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   swcMinify: true,
+  images: {
+    domains: ['images.unsplash.com'],
+  },
   webpack: (config, options) => {
     config.watchOptions = {
       poll: 1000,
