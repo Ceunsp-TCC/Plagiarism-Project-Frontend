@@ -61,6 +61,7 @@ export function useFormSchoolCredentials() {
   const onSubmit = async (data: FormSchoolCredentialsFields) => {
     setSchoolCredentialsState(data)
     mutate()
+
   }
 
   useEffect(() => {
@@ -68,6 +69,8 @@ export function useFormSchoolCredentials() {
       handleNavigate('/signup/form-school')
     }
   }, [step])
+
+
   return {
     errors,
     isLoading,
