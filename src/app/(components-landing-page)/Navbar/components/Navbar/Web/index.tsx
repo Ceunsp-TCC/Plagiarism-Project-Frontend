@@ -15,7 +15,9 @@ export function NavbarWeb() {
           </S.ContainerLogo>
           <S.ContainerLinks>
             <S.WrapperLink>
-              <LinkWebLandingPage href="#">Funcionalidades</LinkWebLandingPage>
+              <LinkWebLandingPage href="#feature">
+                Funcionalidades
+              </LinkWebLandingPage>
             </S.WrapperLink>
             <S.WrapperLink>
               <LinkWebLandingPage href="#">Preços</LinkWebLandingPage>

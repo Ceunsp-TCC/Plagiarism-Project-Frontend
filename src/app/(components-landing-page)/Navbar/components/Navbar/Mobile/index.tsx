@@ -62,7 +62,7 @@ export function NavBarMobile() {
                       <S.ListLinks>
                         <S.LinkWrapper>
                           <LinkMobileLandingPage
-                            href="#"
+                            href="#feature"
                             onClick={() => handleOpenNav(false)}
                           >
                             Funcionalidades
