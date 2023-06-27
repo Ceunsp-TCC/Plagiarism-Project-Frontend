@@ -12,7 +12,7 @@ import { act } from 'react-dom/test-utils'
 import mockRouter from 'next-router-mock'
 import { useSignupStore } from '@/store'
 import { faker } from '@faker-js/faker'
-import { validDocumentMock, validEmailMock } from '../helpers'
+import { validDocumentMock, validEmailMock } from '@tests/helpers'
 
 const schoolNameMock = faker.company.name()
 const schoolEmailMock = faker.internet.email()
