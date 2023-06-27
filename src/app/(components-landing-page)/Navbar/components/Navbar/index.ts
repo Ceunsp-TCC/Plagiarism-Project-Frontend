@@ -1,2 +1,2 @@
-export * from './Web'
-export * from './Mobile'
+export { NavbarWeb } from './Web'
+export { NavBarMobile } from './Mobile'
