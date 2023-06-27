@@ -1,8 +1,11 @@
+'use client'
 import { LinkWebLandingPage } from '@/app/(components-landing-page)/Navbar/components'
 import Image from 'next/image'
+import { useNav } from '@/app/(components-landing-page)/Navbar/hooks'
 import * as S from './styles'
 
 export function NavbarWeb() {
+  const { handleNavigation } = useNav()
   return (
     <S.Container>
       <S.Content>
@@ -26,7 +29,9 @@ export function NavbarWeb() {
               <S.ButtonLanding variant="secondary">Entrar</S.ButtonLanding>
             </S.WrapperButton>
             <S.WrapperButton>
-              <S.ButtonLanding className="text-base">
+              <S.ButtonLanding
+                onClick={() => handleNavigation('/signup/form-school')}
+              >
                 Cadastrar-se
               </S.ButtonLanding>
             </S.WrapperButton>

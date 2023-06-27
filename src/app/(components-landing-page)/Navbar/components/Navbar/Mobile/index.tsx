@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import * as S from './styles'
 
 export function NavBarMobile() {
-  const { isOpen, handleOpenNav } = useNav()
+  const { isOpen, handleOpenNav, handleNavigation } = useNav()
   return (
     <S.Container>
       <S.Content>
@@ -98,7 +98,11 @@ export function NavBarMobile() {
                           </S.ButtonLanding>
                         </S.WrapperButton>
                         <S.WrapperButton>
-                          <S.ButtonLanding onClick={() => handleOpenNav(false)}>
+                          <S.ButtonLanding
+                            onClick={() =>
+                              handleNavigation('/signup/form-school')
+                            }
+                          >
                             Cadastrar-se
                           </S.ButtonLanding>
                         </S.WrapperButton>

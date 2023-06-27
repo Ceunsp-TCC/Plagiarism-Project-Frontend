@@ -20,7 +20,7 @@ export function useFormSchoolCredentials() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
     reset,
   } = useForm<FormSchoolCredentialsFields>({
     mode: 'onSubmit',
@@ -60,14 +60,14 @@ export function useFormSchoolCredentials() {
 
   const onSubmit = async (data: FormSchoolCredentialsFields) => {
     setSchoolCredentialsState(data)
+    mutate()
   }
 
   useEffect(() => {
     if (isWrongStep && !isLoading) {
       handleNavigate('/signup/form-school')
     }
-    if (isSubmitSuccessful) mutate()
-  }, [step, isSubmitSuccessful])
+  }, [step])
   return {
     errors,
     isLoading,
