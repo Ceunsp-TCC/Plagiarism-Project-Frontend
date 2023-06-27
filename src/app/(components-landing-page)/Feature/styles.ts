@@ -18,6 +18,7 @@ md:px-16
 border
 border-gray-800
 rounded-3xl
+
 `
 export const ContainerCard = tw.div`
 flex 

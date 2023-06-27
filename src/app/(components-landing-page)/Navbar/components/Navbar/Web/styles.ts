@@ -7,6 +7,7 @@ pb-10
 overflow-hidden
 hidden
 lg:flex
+
 `
 
 export const Content = tw.div`
@@ -23,6 +24,7 @@ px-6 py-3.5
 border
 border-gray-800 
 rounded-full
+
 `
 
 export const ContainerLogo = tw.div`

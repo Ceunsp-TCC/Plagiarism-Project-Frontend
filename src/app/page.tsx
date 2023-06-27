@@ -1,4 +1,4 @@
-import { Navbar, Hero, Feature } from '@/app/(components-landing-page)'
+import { Navbar, Hero, Feature, Contact } from '@/app/(components-landing-page)'
 
 export default function Home() {
   return (
@@ -6,6 +6,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Feature />
+      <Contact />
     </>
   )
 }

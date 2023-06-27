@@ -1,2 +1,2 @@
-export * from './Web'
-export * from './Mobile'
+export { LinkWebLandingPage } from './Web'
+export { LinkMobileLandingPage } from './Mobile'
