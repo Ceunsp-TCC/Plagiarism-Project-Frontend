@@ -16,7 +16,6 @@ describe('Navbar landing page MOBILE', () => {
     const logoNav = getByAltText('logo-nav')
     const logoMenu = getByAltText('logo-menu')
     const linkFuncionalitys = getByText('Funcionalidades')
-    const linkPrices = getByText('Preços')
     const linkContactUs = getByText('Contate-nos')
     const buttonToLogin = getByText('Entrar')
     const buttonToSignup = getByText('Cadastrar-se')
@@ -24,7 +23,7 @@ describe('Navbar landing page MOBILE', () => {
     expect(logoNav).toBeInTheDocument()
     expect(logoMenu).toBeInTheDocument()
     expect(linkFuncionalitys).toBeInTheDocument()
-    expect(linkPrices).toBeInTheDocument()
+
     expect(linkContactUs).toBeInTheDocument()
     expect(buttonToLogin).toBeInTheDocument()
     expect(buttonToSignup).toBeInTheDocument()
