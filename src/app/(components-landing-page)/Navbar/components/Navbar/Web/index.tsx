@@ -19,11 +19,10 @@ export function NavbarWeb() {
                 Funcionalidades
               </LinkWebLandingPage>
             </S.WrapperLink>
-            <S.WrapperLink>
-              <LinkWebLandingPage href="#">Preços</LinkWebLandingPage>
-            </S.WrapperLink>
             <>
-              <LinkWebLandingPage href="#">Contate-nos</LinkWebLandingPage>
+              <LinkWebLandingPage href="#contact">
+                Contate-nos
+              </LinkWebLandingPage>
             </>
           </S.ContainerLinks>
           <S.ContainerButtons>
