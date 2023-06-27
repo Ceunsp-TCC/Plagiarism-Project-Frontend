@@ -68,17 +68,10 @@ export function NavBarMobile() {
                             Funcionalidades
                           </LinkMobileLandingPage>
                         </S.LinkWrapper>
+
                         <S.LinkWrapper>
                           <LinkMobileLandingPage
-                            href="#"
-                            onClick={() => handleOpenNav(false)}
-                          >
-                            Preços
-                          </LinkMobileLandingPage>
-                        </S.LinkWrapper>
-                        <S.LinkWrapper>
-                          <LinkMobileLandingPage
-                            href="#"
+                            href="#contact"
                             onClick={() => handleOpenNav(false)}
                           >
                             Contate-nos

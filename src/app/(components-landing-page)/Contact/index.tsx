@@ -4,7 +4,7 @@ import * as S from './styles'
 
 export function Contact() {
   return (
-    <S.Container>
+    <S.Container id="contact">
       <S.Content>
         <S.Card>
           <S.CardContent>
