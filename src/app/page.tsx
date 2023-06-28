@@ -4,6 +4,7 @@ import {
   Feature,
   Contact,
   Footer,
+  Statistics,
 } from '@/app/(components-landing-page)'
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Feature />
+      <Statistics />
       <Contact />
       <Footer />
     </>
