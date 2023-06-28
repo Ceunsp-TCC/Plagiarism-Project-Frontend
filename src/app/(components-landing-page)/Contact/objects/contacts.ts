@@ -6,13 +6,13 @@ export const contacts = [
   {
     id: 1,
     title: 'Envie um Email',
-    info: 'schoolguardian@outlook.com',
+    info: 'schoolguardian01@outlook.com',
     Icon: HiMail,
   },
   {
     id: 2,
     title: 'Chame no Whatsapp',
-    info: '(11) 94242-1224',
+    info: '(11) 99186-0862',
     Icon: IoLogoWhatsapp,
   },
   {

@@ -68,6 +68,14 @@ export function NavBarMobile() {
                             Funcionalidades
                           </LinkMobileLandingPage>
                         </S.LinkWrapper>
+                        <S.LinkWrapper>
+                          <LinkMobileLandingPage
+                            href="#statistics"
+                            onClick={() => handleOpenNav(false)}
+                          >
+                            Estatísticas
+                          </LinkMobileLandingPage>
+                        </S.LinkWrapper>
 
                         <S.LinkWrapper>
                           <LinkMobileLandingPage
@@ -85,7 +93,7 @@ export function NavBarMobile() {
                           <S.ButtonLanding
                             $isSecondary
                             variant="secondary"
-                            onClick={() => handleOpenNav(false)}
+                            onClick={() => handleNavigation('/login')}
                           >
                             Entrar
                           </S.ButtonLanding>
