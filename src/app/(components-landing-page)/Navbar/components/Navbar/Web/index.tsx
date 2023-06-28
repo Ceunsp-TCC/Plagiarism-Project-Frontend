@@ -19,6 +19,11 @@ export function NavbarWeb() {
                 Funcionalidades
               </LinkWebLandingPage>
             </S.WrapperLink>
+            <S.WrapperLink>
+              <LinkWebLandingPage href="#statistics">
+                Estatísticas
+              </LinkWebLandingPage>
+            </S.WrapperLink>
             <>
               <LinkWebLandingPage href="#contact">
                 Contate-nos
@@ -27,7 +32,12 @@ export function NavbarWeb() {
           </S.ContainerLinks>
           <S.ContainerButtons>
             <S.WrapperButton>
-              <S.ButtonLanding variant="secondary">Entrar</S.ButtonLanding>
+              <S.ButtonLanding
+                onClick={() => handleNavigation('/login')}
+                variant="secondary"
+              >
+                Entrar
+              </S.ButtonLanding>
             </S.WrapperButton>
             <S.WrapperButton>
               <S.ButtonLanding

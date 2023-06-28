@@ -16,6 +16,7 @@ describe('Navbar landing page MOBILE', () => {
     const logoNav = getByAltText('logo-nav')
     const logoMenu = getByAltText('logo-menu')
     const linkFuncionalitys = getByText('Funcionalidades')
+    const linkStatistics = getByText('Estatísticas')
     const linkContactUs = getByText('Contate-nos')
     const buttonToLogin = getByText('Entrar')
     const buttonToSignup = getByText('Cadastrar-se')
@@ -23,8 +24,8 @@ describe('Navbar landing page MOBILE', () => {
     expect(logoNav).toBeInTheDocument()
     expect(logoMenu).toBeInTheDocument()
     expect(linkFuncionalitys).toBeInTheDocument()
-
     expect(linkContactUs).toBeInTheDocument()
+    expect(linkStatistics).toBeInTheDocument()
     expect(buttonToLogin).toBeInTheDocument()
     expect(buttonToSignup).toBeInTheDocument()
   })
@@ -44,5 +45,22 @@ describe('Navbar landing page MOBILE', () => {
     })
     const atualPath = mockRouter.asPath
     expect(atualPath).toBe('/signup/form-school')
+  })
+  it('Should be navigate to login', () => {
+    const { getByText, getByRole } = render(<NavBarMobile />)
+
+    mockRouter.push('/')
+    const buttonMenu = getByRole('menu-landing')
+
+    act(() => {
+      fireEvent.click(buttonMenu)
+    })
+    const buttonToLogin = getByText('Entrar')
+
+    act(() => {
+      fireEvent.click(buttonToLogin)
+    })
+    const atualPath = mockRouter.asPath
+    expect(atualPath).toBe('/login')
   })
 })

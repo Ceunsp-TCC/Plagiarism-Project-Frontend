@@ -11,11 +11,13 @@ describe('Navbar landing page WEB', () => {
     const logo = getByAltText('logo')
     const linkFuncionalitys = getByText('Funcionalidades')
     const linkContactUs = getByText('Contate-nos')
+    const linkStatistics = getByText('Estatísticas')
     const buttonToLogin = getByText('Entrar')
     const buttonToSignup = getByText('Cadastrar-se')
 
     expect(logo).toBeInTheDocument()
     expect(linkFuncionalitys).toBeInTheDocument()
+    expect(linkStatistics).toBeInTheDocument()
     expect(linkContactUs).toBeInTheDocument()
     expect(buttonToLogin).toBeInTheDocument()
     expect(buttonToSignup).toBeInTheDocument()
@@ -31,5 +33,18 @@ describe('Navbar landing page WEB', () => {
     })
     const atualPath = mockRouter.asPath
     expect(atualPath).toBe('/signup/form-school')
+  })
+  it('Should be navigate to login', () => {
+    const { getByText } = render(<NavbarWeb />)
+
+    mockRouter.push('/')
+
+    const buttonToLogin = getByText('Entrar')
+
+    act(() => {
+      fireEvent.click(buttonToLogin)
+    })
+    const atualPath = mockRouter.asPath
+    expect(atualPath).toBe('/login')
   })
 })

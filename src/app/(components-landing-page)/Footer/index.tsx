@@ -20,6 +20,9 @@ export function Footer() {
               <S.ContainerLinks>
                 <S.ListLinks>
                   <S.LinkWrapper>
+                    <LinkFooter href="#statistics">Estatísticas</LinkFooter>
+                  </S.LinkWrapper>
+                  <S.LinkWrapper>
                     <LinkFooter href="#feature">Funcionalidades</LinkFooter>
                   </S.LinkWrapper>
                   <S.LinkWrapper>
