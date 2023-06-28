@@ -12,9 +12,9 @@ describe('Contact us landing page', () => {
       'Conecte-se conosco e descubra como podemos auxiliá-lo.',
     )
     const cardTitleEmail = getByText('Envie um Email')
-    const cardInfoEmail = getByText('schoolguardian@outlook.com')
+    const cardInfoEmail = getByText('schoolguardian01@outlook.com')
     const cardTitleWhatsapp = getByText('Chame no Whatsapp')
-    const cardInfoWhatsapp = getByText('(11) 94242-1224')
+    const cardInfoWhatsapp = getByText('(11) 99186-0862')
     const cardTitleAddress = getByText('Endereço')
     const cardInfoAddress = getByText(
       'R. José Weissohn, 153 - Centro, Salto - SP, 13328-300',
