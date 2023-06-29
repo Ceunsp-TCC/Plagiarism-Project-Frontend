@@ -1,1 +1,1 @@
-export type { PayloadSignUp, SignupState, StepsSignUp } from './signup-state'
+export type * from './signup-state'

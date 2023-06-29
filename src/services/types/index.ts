@@ -1,1 +1,2 @@
-export type { CreateProps } from './school-service-props'
+export type * from './school-service-props'
+export type * from './auth-service-props'

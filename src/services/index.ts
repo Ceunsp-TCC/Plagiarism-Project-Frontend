@@ -1,2 +1,2 @@
-export { schoolGuardianApi } from './apis'
-export { schoolServices, userServices } from './http'
+export * from './apis'
+export * from './http'
