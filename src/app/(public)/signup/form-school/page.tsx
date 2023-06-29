@@ -2,6 +2,7 @@
 import {
   Button,
   Input,
+  InputLabel,
   InputMask,
   ErrorMessage,
   ButtonLoadingLottie,
@@ -21,13 +22,14 @@ export default function FormSchoolAddress() {
         </p>
       </div>
       <div className="flex flex-wrap -m-3">
-        <div className="w-full  p-3">
+        <div className="w-full  px-3 mb-3">
           <Input
             {...register('name')}
             hasError={checkHasError(errors.name)}
             type="text"
             maxLength={255}
             placeholder="Nome"
+            label={() => <InputLabel>Nome</InputLabel>}
             name="name"
             errorMessage={() =>
               checkHasError(errors.name) && (
@@ -36,13 +38,14 @@ export default function FormSchoolAddress() {
             }
           />
         </div>
-        <div className="w-full p-3">
+        <div className="w-full px-3  mb-3">
           <Input
             {...register('email')}
             hasError={checkHasError(errors.email)}
             type="text"
             placeholder="Email"
             maxLength={255}
+            label={() => <InputLabel>Email</InputLabel>}
             name="email"
             errorMessage={() =>
               checkHasError(errors.email) && (
@@ -51,7 +54,7 @@ export default function FormSchoolAddress() {
             }
           />
         </div>
-        <div className="w-full p-3">
+        <div className="w-full px-3  mb-3">
           <InputMask
             {...register('phoneNumber')}
             hasError={checkHasError(errors.phoneNumber)}
@@ -59,6 +62,7 @@ export default function FormSchoolAddress() {
             placeholder="Número de telefone"
             mask="(99) 99999-9999"
             name="phoneNumber"
+            label={() => <InputLabel>Número de Telefone</InputLabel>}
             errorMessage={() =>
               checkHasError(errors.phoneNumber) && (
                 <ErrorMessage>{errors.phoneNumber?.message}</ErrorMessage>
@@ -66,13 +70,14 @@ export default function FormSchoolAddress() {
             }
           />
         </div>
-        <div className="w-full p-3">
+        <div className="w-full px-3  mb-3">
           <InputMask
             {...register('CNPJ')}
             mask="99.999.999/9999-99"
             hasError={checkHasError(errors.CNPJ)}
             type="text"
             placeholder="CNPJ"
+            label={() => <InputLabel>CNPJ</InputLabel>}
             name="CNPJ"
             errorMessage={() =>
               checkHasError(errors.CNPJ) && (

@@ -4,4 +4,5 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string
   errorMessage?: () => ReactNode
   hasError?: boolean
+  label?: () => ReactNode
 }

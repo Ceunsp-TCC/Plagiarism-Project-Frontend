@@ -5,6 +5,7 @@ import {
   Input,
   InputMask,
   ErrorMessage,
+  InputLabel,
 } from '@/components'
 import { useFormSchoolAddress } from '@/app/(public)/signup/hooks'
 import { checkHasError } from '@/functions'
@@ -19,13 +20,14 @@ export default function FormSchoolAddress() {
         <p className="text-gray-500 font-bold">Agora precisamos do endereço</p>
       </div>
       <div className="flex flex-wrap -m-3">
-        <div className="w-full p-3">
+        <div className="w-full px-3  mb-3">
           <InputMask
             {...register('CEP')}
             mask="99999-999"
             hasError={checkHasError(errors.CEP)}
             type="text"
             placeholder="CEP"
+            label={() => <InputLabel>CEP</InputLabel>}
             name="CEP"
             errorMessage={() =>
               checkHasError(errors.CEP) && (
@@ -35,18 +37,20 @@ export default function FormSchoolAddress() {
           />
         </div>
 
-        <div className="w-full p-3">
+        <div className="w-full px-3  mb-3">
           <Input
             {...register('complement')}
             type="text"
             placeholder="Complemento"
+            label={() => <InputLabel>Complemento</InputLabel>}
             name="complement"
           />
         </div>
-        <div className="w-full p-3">
+        <div className="w-full px-3  mb-3">
           <Input
             {...register('number')}
             type="text"
+            label={() => <InputLabel>Número</InputLabel>}
             placeholder="Número"
             name="number"
           />
