@@ -8,7 +8,7 @@ import { act } from 'react-dom/test-utils'
 import mockRouter from 'next-router-mock'
 import { useSignupStore } from '@/store'
 import { createSchoolMock } from '@tests/helpers'
-import { ToastContainerCustom } from '@/components'
+import { ToastContainerCustom } from '@components'
 
 const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: ReactNode }) => (

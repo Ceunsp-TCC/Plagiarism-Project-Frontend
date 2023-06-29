@@ -5,7 +5,6 @@ export const formSchoolCredentialsSchema = z
     password: z
       .string()
       .nonempty('Por favor, insira uma senha')
-
       .regex(
         new RegExp(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$])[A-Za-z\d@#$]{8,}$/,

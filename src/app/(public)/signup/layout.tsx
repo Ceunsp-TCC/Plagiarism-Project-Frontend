@@ -4,6 +4,7 @@ import { LinkCustom } from '@components'
 import Image from 'next/image'
 import Lottie from 'lottie-react'
 import boy from '@public/animations-lottie/boy-studying.json'
+
 type LayoutSignupProps = {
   children: ReactNode
 }
