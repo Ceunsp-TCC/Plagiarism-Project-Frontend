@@ -1,2 +1,1 @@
-export * from './mock-requests'
-export * from './server'
+export * from './mocks'
