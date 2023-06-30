@@ -32,7 +32,7 @@ describe('useAuthStore', () => {
   it('Should return correct properties', () => {
     const { result } = renderHook(() => useAuthStore())
 
-    expect(result.current.user).toBeDefined()
+    expect(result.current.data).toBeDefined()
     expect(result.current.setUserState).toBeDefined()
   })
   it('Should be set user state', () => {
@@ -42,7 +42,7 @@ describe('useAuthStore', () => {
       result.current.setUserState(mockUserState)
     })
 
-    expect(result.current.user).toBe(mockUserState)
+    expect(result.current.data).toBe(mockUserState)
   })
   it('Should be set user state in local Storage', () => {
     const { result } = renderHook(() => useAuthStore())

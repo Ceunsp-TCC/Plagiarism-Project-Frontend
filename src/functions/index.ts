@@ -1,1 +1,2 @@
-export { checkHasError } from './check-has-error'
+export * from './check-has-error'
+export * from './check-user-is-authenticated'
