@@ -1,10 +1,7 @@
-import * as S from './not-found-styles'
-import { checkUserIsAuthenticated } from '@functions'
 import Image from 'next/image'
+import * as S from './not-found-styles'
 
 export default function NotFound() {
-  const urlBack = checkUserIsAuthenticated() ? '/home' : '/'
-
   return (
     <S.Container>
       <S.Content>
@@ -23,9 +20,7 @@ export default function NotFound() {
               <S.Message>Pagina não encontrada</S.Message>
               <S.ContainerButton>
                 <S.WrapperLink>
-                  <S.CustomLink href={urlBack}>
-                    Voltar para tela inicial
-                  </S.CustomLink>
+                  <S.CustomLink href="/">Voltar para tela inicial</S.CustomLink>
                 </S.WrapperLink>
               </S.ContainerButton>
             </S.ContainerInsideCard>
