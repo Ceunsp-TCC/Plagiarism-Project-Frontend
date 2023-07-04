@@ -1,4 +1,4 @@
-import { checkHasError } from '@/functions'
+import { checkHasError } from '@functions'
 
 describe('Check has error', () => {
   it('Should be has error', () => {
