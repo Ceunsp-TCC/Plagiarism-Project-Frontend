@@ -8,7 +8,7 @@ export function usePermissionMiddleware() {
   const pathName = usePathname()
 
   const hasPermission = checkPermissionPerUrl(pathName as Paths)
-  console.log(hasPermission)
+
   useEffect(() => {
     if (!hasPermission) notFound()
   }, [pathName])
