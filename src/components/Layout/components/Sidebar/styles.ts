@@ -14,8 +14,6 @@ border-r
 sm:translate-x-0 
 bg-gray-800 
 border-gray-700
-
-
 `
 export const ContainerGroupItems = tw.div`
 h-full 

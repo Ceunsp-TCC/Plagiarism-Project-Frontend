@@ -21,6 +21,13 @@ export const mockUserSchoolState = {
       number: 102,
       status: 'COMPLETED',
     },
-    permissions: [],
+    permissions: [
+      'teachers',
+      'createTeacher',
+      'getTeachers',
+      'students',
+      'createStudent',
+      'getStudents',
+    ],
   },
 }

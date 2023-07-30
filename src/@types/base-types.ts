@@ -28,5 +28,11 @@ export type Permissions =
   | 'viewRole'
   | 'deleteRole'
   | 'syncRolesPermissions'
+  | 'teachers'
+  | 'createTeacher'
+  | 'getTeachers'
+  | 'students'
+  | 'createStudent'
+  | 'getStudents'
 
 export type Paths = keyof typeof permissionsUrls
