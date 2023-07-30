@@ -7,6 +7,7 @@
     "react/display-name": "off",
     "prefer-regex-literals": "off",
     "no-useless-escape": "off",
-    "no-labels":"off"
+    "no-labels": "off",
+    "react-hooks/rules-of-hooks": "off"
   }
 }

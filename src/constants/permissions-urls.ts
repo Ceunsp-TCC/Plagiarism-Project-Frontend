@@ -1,3 +1,5 @@
 export const permissionsUrls = {
-  '/home': 'createPermission',
+  '/teachers': 'teachers',
+  '/students': 'students',
+  '/permissions': 'permissions',
 }
