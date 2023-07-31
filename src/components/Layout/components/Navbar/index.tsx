@@ -5,14 +5,19 @@ import { Dropdown, Avatar } from 'flowbite-react'
 import * as S from './styles'
 
 export function Navbar() {
-  const { user, handleLogout } = useNavbar()
+  const {
+    user,
+    openSidebarInMobileMode,
+    handleLogout,
+    handleSidebarOpenOrClose,
+  } = useNavbar()
   return (
     <S.Nav>
       <S.ContentNav>
         <S.SubContainer>
           <S.ContainerLogoAvatar>
-            <S.ButtonSidebar type="button">
-              <S.MenuIcon />
+            <S.ButtonSidebar onClick={handleSidebarOpenOrClose} type="button">
+              {openSidebarInMobileMode ? <S.CloseIcon /> : <S.MenuIcon />}
             </S.ButtonSidebar>
             <S.ContainerLogo>
               <Image

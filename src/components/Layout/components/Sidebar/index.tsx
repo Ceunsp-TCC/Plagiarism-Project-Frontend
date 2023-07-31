@@ -2,13 +2,13 @@
 import { SidebarItem } from './components'
 import { GiTeacher } from 'react-icons/gi'
 import { PiStudentFill } from 'react-icons/pi'
+import { useSidebar } from '@/components/Layout/hooks'
 import * as S from './styles'
-import { usePermissions } from '@hooks'
 
 export function Sidebar() {
-  const { checkHasPermission } = usePermissions()
+  const { openSidebarInMobileMode, checkHasPermission } = useSidebar()
   return (
-    <S.Container>
+    <S.Container $openSidebarInMobileMode={openSidebarInMobileMode}>
       <S.ContainerGroupItems>
         <S.GroupItems>
           {checkHasPermission('teachers') && (

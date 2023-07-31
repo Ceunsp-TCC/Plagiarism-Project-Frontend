@@ -1,6 +1,7 @@
 import tw from 'tailwind-styled-components'
 import { Dropdown } from 'flowbite-react'
 import { BiMenuAltLeft } from 'react-icons/bi'
+import { IoCloseSharp } from 'react-icons/io5'
 export const Nav = tw.nav`
 fixed 
 top-0 
@@ -92,5 +93,9 @@ hover:bg-gray-700
 `
 
 export const MenuIcon = tw(BiMenuAltLeft)`
+text-2xl
+`
+
+export const CloseIcon = tw(IoCloseSharp)`
 text-2xl
 `
