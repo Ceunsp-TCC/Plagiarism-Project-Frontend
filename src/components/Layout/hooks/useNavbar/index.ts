@@ -1,5 +1,5 @@
 'use client'
-import { useAuthStore } from '@store'
+import { useAuthStore, useSettingsStore } from '@store'
 import { authServices } from '@services'
 import { useMutation } from '@tanstack/react-query'
 import { useNavigation } from '@hooks'
@@ -7,6 +7,8 @@ import { useNavigation } from '@hooks'
 export function useNavbar() {
   const { navigate } = useNavigation()
   const { data, clearState } = useAuthStore()
+  const { openSidebarInMobileMode, setOpenSidebarInMobileMode } =
+    useSettingsStore()
 
   const { user } = data
 
@@ -21,9 +23,14 @@ export function useNavbar() {
     },
   })
 
+  const handleSidebarOpenOrClose = () =>
+    setOpenSidebarInMobileMode(!openSidebarInMobileMode)
+
   const handleLogout = () => mutate()
   return {
+    openSidebarInMobileMode,
     user,
+    handleSidebarOpenOrClose,
     handleLogout,
   }
 }

@@ -27,6 +27,8 @@ describe('useNavbar', () => {
 
     expect(result.current.handleLogout).toBeDefined()
     expect(result.current.user).toBeDefined()
+    expect(result.current.handleSidebarOpenOrClose).toBeDefined()
+    expect(result.current.openSidebarInMobileMode).toBeDefined()
   })
 
   it('Should be call hande logout', async () => {
