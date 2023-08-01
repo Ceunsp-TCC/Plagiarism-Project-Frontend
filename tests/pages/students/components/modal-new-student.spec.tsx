@@ -3,7 +3,7 @@ import { fireEvent, render, renderHook, waitFor } from '@testing-library/react'
 import { useStudentsStore } from '@store'
 import React from 'react'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
-import { ToastContainerCustom } from '@components'
+import { ToastContainerCustom, RandomPasswordModal } from '@components'
 import type { ReactNode } from 'react'
 import { act } from 'react-dom/test-utils'
 import { faker } from '@faker-js/faker'
@@ -13,6 +13,7 @@ const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <ToastContainerCustom />
+    <RandomPasswordModal />
     {children}
   </QueryClientProvider>
 )
@@ -72,9 +73,12 @@ describe('ModalNewStudent', () => {
     act(() => {
       result.current.setIsOpenModalNewStudent(true)
     })
-    const { getByText, getByPlaceholderText } = render(<ModalNewStudent />, {
-      wrapper,
-    })
+    const { getByText, getByPlaceholderText, debug } = render(
+      <ModalNewStudent />,
+      {
+        wrapper,
+      },
+    )
     const title = getByText('Registre seu aluno')
     const inputName = getByPlaceholderText('Digite o nome do aluno')
     const inputEmail = getByPlaceholderText('Digite o email do aluno')
@@ -100,6 +104,11 @@ describe('ModalNewStudent', () => {
 
     await waitFor(() => {
       expect(title).not.toBeInTheDocument()
+      const titleModalRandomPassword = getByText(
+        'Aluno registrado com sucesso!',
+      )
+
+      expect(titleModalRandomPassword).toBeInTheDocument()
     })
   })
 })

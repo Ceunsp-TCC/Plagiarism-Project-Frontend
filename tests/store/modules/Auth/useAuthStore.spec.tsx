@@ -20,7 +20,7 @@ describe('useAuthStore', () => {
 
     expect(result.current.data).toBe(mockUserSchoolState)
   })
-  it('Should be set user state in local Storage', () => {
+  it('Should be set user state in session storage', () => {
     const { result } = renderHook(() => useAuthStore())
 
     act(() => {
