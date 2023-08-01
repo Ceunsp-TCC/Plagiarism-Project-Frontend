@@ -1,5 +1,5 @@
 'use client'
-import { useStudentsStore } from '@store'
+import { useStudentsStore, useRandomPasswordModalStore } from '@store'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newStudentSchema } from '@/app/(private)/students/schemas'
@@ -11,6 +11,8 @@ import type { CreateStudentProps } from '@/services/types'
 
 export function useNewStudent() {
   const { isOpenModalNewStudent, setIsOpenModalNewStudent } = useStudentsStore()
+  const { setOpenModalRandomPassword, setCloseModalRandomPassword } =
+    useRandomPasswordModalStore()
   const {
     register,
     handleSubmit,
@@ -23,28 +25,28 @@ export function useNewStudent() {
     reValidateMode: 'onSubmit',
     resolver: zodResolver(newStudentSchema),
   })
-  const onSuccess = async () => {
-    setIsOpenModalNewStudent(false)
-    ShowToast({
-      title: 'Aluno salvo!',
-      description: 'Aluno salvo com sucesso',
-      toastType: 'SUCCESS',
-    })
-  }
 
-  const onError = async () => {
-    setIsOpenModalNewStudent(false)
-    ShowToast({
-      title: 'Ocorreu um erro',
-      toastType: 'ERROR',
-      description: 'Falha ao salvar aluno ,tente novamente mais tarde!s',
-    })
-  }
-  const { mutate } = useMutation(
+  const { mutate, isLoading } = useMutation(
     (data: CreateStudentProps) => studentServices.create(data),
     {
-      onSuccess,
-      onError,
+      onSuccess: (data) => {
+        setIsOpenModalNewStudent(false)
+        setOpenModalRandomPassword({
+          title: 'Aluno registrado com sucesso!',
+          description:
+            'Agora compartilhe a senha abaixo com ele de maneira segura 😉',
+          randomPassword: data.content.randomPassword,
+          onClickButton: () => setCloseModalRandomPassword(),
+        })
+      },
+      onError: () => {
+        setIsOpenModalNewStudent(false)
+        ShowToast({
+          title: 'Ocorreu um erro',
+          toastType: 'ERROR',
+          description: 'Falha ao salvar aluno ,tente novamente mais tarde!',
+        })
+      },
     },
   )
   const onSubmit = (data: NewStudentFields) => {
@@ -61,6 +63,7 @@ export function useNewStudent() {
     isOpenModalNewStudent,
     errors,
     isSubmitting,
+    isLoading,
     handleSubmit,
     onCloseModal,
     onSubmit,

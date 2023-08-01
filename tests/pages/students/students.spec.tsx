@@ -28,7 +28,7 @@ describe('Students', () => {
     expect(newStudentButton).toBeInTheDocument()
   })
   it('Should be open modal new student', async () => {
-    const { getByText, debug } = render(<Students />, {
+    const { getByText } = render(<Students />, {
       wrapper,
     })
 

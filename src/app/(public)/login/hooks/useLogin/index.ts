@@ -9,6 +9,7 @@ import { useMutation } from '@tanstack/react-query'
 import { ShowToast } from '@components'
 import type { AxiosError } from 'axios'
 import type { LoginProps } from '@/services/types'
+import { appRoutes } from '@constants'
 import { useAuthStore } from '@store'
 
 export function useLogin() {
@@ -32,7 +33,7 @@ export function useLogin() {
     {
       onSuccess: (data) => {
         setUserState(data)
-        handleNavigation('/home')
+        handleNavigation(appRoutes.private.students)
       },
       onError: (error: AxiosError) => {
         const isNotAuthorized = error.response?.status === 403

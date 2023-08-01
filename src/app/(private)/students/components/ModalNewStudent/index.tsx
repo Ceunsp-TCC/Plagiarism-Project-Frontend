@@ -16,6 +16,7 @@ export function ModalNewStudent() {
     isOpenModalNewStudent,
     errors,
     isSubmitting,
+    isLoading,
     onCloseModal,
     handleSubmit,
     onSubmit,
@@ -86,7 +87,7 @@ export function ModalNewStudent() {
           <S.ContainerButtons>
             <S.ButtonWrapper>
               <S.ButtonCustom
-                isLoading={isSubmitting}
+                isLoading={isSubmitting || isLoading}
                 loading={() => <ButtonLoadingLottie />}
                 onClick={handleSubmit(onSubmit)}
               >

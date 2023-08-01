@@ -4,3 +4,7 @@ export type CreateStudentProps = {
   email: string
   CPF: string
 }
+
+export type CreateStudentContent = {
+  randomPassword: string
+}

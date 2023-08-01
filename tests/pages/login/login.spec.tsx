@@ -152,7 +152,7 @@ describe('Login', () => {
     await waitFor(() => {
       expect(result.current.data).toStrictEqual(mockStateUser)
       const atualPath = mockRouter.asPath
-      expect(atualPath).toBe('/home')
+      expect(atualPath).toBe('/students')
     })
   })
 })

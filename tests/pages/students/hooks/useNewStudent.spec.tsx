@@ -22,5 +22,6 @@ describe('useNewStudent', () => {
     expect(result.current.errors).toBeDefined()
     expect(result.current.isOpenModalNewStudent).toBeDefined()
     expect(result.current.isSubmitting).toBeDefined()
+    expect(result.current.isLoading).toBeDefined()
   })
 })
