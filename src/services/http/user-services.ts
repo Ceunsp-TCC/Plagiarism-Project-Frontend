@@ -10,6 +10,14 @@ export const userServices = {
     const response = await schoolGuardianApi.post<DefaultResponse>(
       '/v1/users/valid-email',
       body,
+      {
+        auth: {
+          username:
+            process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_AUTHENTICATOR_USERNAME,
+          password:
+            process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_AUTHENTICATOR_PASSWORD,
+        },
+      },
     )
 
     return response.data
