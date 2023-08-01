@@ -1,13 +1,12 @@
 import { schoolGuardianApi } from '@/services'
-import type { DefaultResponse } from '@/@types/base-types'
-import type { CreateStudentProps } from '@/services/types'
+import type { DefaultResponseWithContent } from '@/@types/base-types'
+import type { CreateStudentProps, CreateStudentContent } from '@/services/types'
 
 export const studentServices = {
   create: async (body: CreateStudentProps) => {
-    const response = await schoolGuardianApi.post<DefaultResponse>(
-      'v1/students/create',
-      body,
-    )
+    const response = await schoolGuardianApi.post<
+      DefaultResponseWithContent<CreateStudentContent>
+    >('v1/students/create', body)
 
     return response.data
   },
