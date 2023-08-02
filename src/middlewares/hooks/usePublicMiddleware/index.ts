@@ -11,7 +11,7 @@ export function usePublicMiddleware() {
   const userAuthenticated = checkUserIsAuthenticated()
   useEffect(() => {
     if (userAuthenticated) {
-      push(appRoutes.private.home)
+      push(appRoutes.private.students)
     }
 
     setIsAuthenticated(userAuthenticated)

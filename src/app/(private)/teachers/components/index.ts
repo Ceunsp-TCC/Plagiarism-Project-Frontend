@@ -1,0 +1,1 @@
+export { ModalNewTeacher } from './ModalNewTeacher'

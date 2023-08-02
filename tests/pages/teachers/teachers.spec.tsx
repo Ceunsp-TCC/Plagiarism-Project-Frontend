@@ -1,4 +1,4 @@
-import Students from '@/app/(private)/students/page'
+import Teachers from '@/app/(private)/teachers/page'
 import { fireEvent, render } from '@testing-library/react'
 import React from 'react'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
@@ -13,32 +13,32 @@ const wrapper = ({ children }: { children: ReactNode }) => (
     {children}
   </QueryClientProvider>
 )
-describe('Students', () => {
-  it('Should be render a students page', async () => {
-    const { getByText } = render(<Students />, {
+describe('Teachers', () => {
+  it('Should be render a teachers page', async () => {
+    const { getByText } = render(<Teachers />, {
       wrapper,
     })
 
-    const title = getByText('Alunos')
-    const description = getByText('Gerencie seus alunos')
-    const newStudentButton = getByText('Novo')
+    const title = getByText('Professores')
+    const description = getByText('Gerencie seus professores')
+    const newTeacherButton = getByText('Novo')
 
     expect(title).toBeInTheDocument()
     expect(description).toBeInTheDocument()
-    expect(newStudentButton).toBeInTheDocument()
+    expect(newTeacherButton).toBeInTheDocument()
   })
-  it('Should be open modal new student', async () => {
-    const { getByText } = render(<Students />, {
+  it('Should be open modal new teacher', async () => {
+    const { getByText } = render(<Teachers />, {
       wrapper,
     })
 
-    const newStudentButton = getByText('Novo')
+    const newTeacherButton = getByText('Novo')
 
     act(() => {
-      fireEvent.click(newStudentButton)
+      fireEvent.click(newTeacherButton)
     })
 
-    const titleModal = getByText('Registre seu aluno')
+    const titleModal = getByText('Registre seu professor')
 
     expect(titleModal).toBeInTheDocument()
   })
