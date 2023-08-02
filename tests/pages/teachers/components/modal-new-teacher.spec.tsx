@@ -1,13 +1,13 @@
-import { ModalNewStudent } from '@/app/(private)/students/components'
 import { fireEvent, render, renderHook, waitFor } from '@testing-library/react'
-import { useStudentsStore } from '@store'
+import { useTeachersStore } from '@store'
 import React from 'react'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ToastContainerCustom, RandomPasswordModal } from '@components'
 import type { ReactNode } from 'react'
 import { act } from 'react-dom/test-utils'
 import { faker } from '@faker-js/faker'
-import { validEmailMock, createStudentMock } from '@tests/helpers'
+import { ModalNewTeacher } from '@/app/(private)/teachers/components'
+import { validEmailMock, createTeacherMock } from '@tests/helpers'
 
 const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: ReactNode }) => (
@@ -17,20 +17,21 @@ const wrapper = ({ children }: { children: ReactNode }) => (
     {children}
   </QueryClientProvider>
 )
-describe('ModalNewStudent', () => {
-  it('Should be render a modal new student', async () => {
-    const { result } = renderHook(() => useStudentsStore())
+describe('ModalNewTeacher', () => {
+  it('Should be render a modal new teacher', async () => {
+    const { result } = renderHook(() => useTeachersStore())
     act(() => {
-      result.current.setIsOpenModalNewStudent(true)
+      result.current.setIsOpenModalNewTeacher(true)
     })
-    const { getByText } = render(<ModalNewStudent />, {
+    const { getByText, getByPlaceholderText } = render(<ModalNewTeacher />, {
       wrapper,
     })
-    const title = getByText('Registre seu aluno')
-    const inputName = getByText('Nome')
-    const inputEmail = getByText('Email')
-    const inputCPF = getByText('CPF')
-    const inputPhoneNumber = getByText('Celular')
+    const title = getByText('Registre seu professor')
+    const inputName = getByPlaceholderText('Digite o nome do professor')
+    const inputEmail = getByPlaceholderText('Digite o email do professor')
+    const inputCPF = getByPlaceholderText('999.999.999-99')
+    const inputPhoneNumber = getByPlaceholderText('(99) 99999-9999')
+    const inputCND = getByPlaceholderText('Digite o CND do professor')
     const buttonSave = getByText('Salvar')
 
     expect(title).toBeInTheDocument()
@@ -38,15 +39,16 @@ describe('ModalNewStudent', () => {
     expect(inputEmail).toBeInTheDocument()
     expect(inputCPF).toBeInTheDocument()
     expect(inputPhoneNumber).toBeInTheDocument()
+    expect(inputCND).toBeInTheDocument()
     expect(buttonSave).toBeInTheDocument()
   })
   it('Should be validation fields', async () => {
     validEmailMock(422)
-    const { result } = renderHook(() => useStudentsStore())
+    const { result } = renderHook(() => useTeachersStore())
     act(() => {
-      result.current.setIsOpenModalNewStudent(true)
+      result.current.setIsOpenModalNewTeacher(true)
     })
-    const { getByText } = render(<ModalNewStudent />, {
+    const { getByText } = render(<ModalNewTeacher />, {
       wrapper,
     })
     const buttonSave = getByText('Salvar')
@@ -59,28 +61,31 @@ describe('ModalNewStudent', () => {
       const errorPhoneNumber = getByText('Insira um telefone celular válido')
       const errorMessageEmail = getByText('Insira um email válido')
       const errorMessageCPF = getByText('Insira um cpf válido')
+      const errorMessageCND = getByText('Insira um CND válido')
 
       expect(errorMessageName).toBeInTheDocument()
       expect(errorPhoneNumber).toBeInTheDocument()
       expect(errorMessageCPF).toBeInTheDocument()
       expect(errorMessageEmail).toBeInTheDocument()
+      expect(errorMessageCND).toBeInTheDocument()
     })
   })
-  it('Should be create student', async () => {
+  it('Should be create teacher', async () => {
     validEmailMock(200)
-    createStudentMock(200)
-    const { result } = renderHook(() => useStudentsStore())
+    createTeacherMock(200)
+    const { result } = renderHook(() => useTeachersStore())
     act(() => {
-      result.current.setIsOpenModalNewStudent(true)
+      result.current.setIsOpenModalNewTeacher(true)
     })
-    const { getByText, getByPlaceholderText } = render(<ModalNewStudent />, {
+    const { getByText, getByPlaceholderText } = render(<ModalNewTeacher />, {
       wrapper,
     })
-    const title = getByText('Registre seu aluno')
-    const inputName = getByPlaceholderText('Digite o nome do aluno')
-    const inputEmail = getByPlaceholderText('Digite o email do aluno')
+    const title = getByText('Registre seu professor')
+    const inputName = getByPlaceholderText('Digite o nome do professor')
+    const inputEmail = getByPlaceholderText('Digite o email do professor')
     const inputCPF = getByPlaceholderText('999.999.999-99')
     const inputPhoneNumber = getByPlaceholderText('(99) 99999-9999')
+    const inputCND = getByPlaceholderText('Digite o CND do professor')
     const buttonSave = getByText('Salvar')
 
     act(() => {
@@ -96,13 +101,16 @@ describe('ModalNewStudent', () => {
       fireEvent.change(inputPhoneNumber, {
         target: { value: '11942421224' },
       })
+      fireEvent.change(inputCND, {
+        target: { value: '123232323232' },
+      })
       fireEvent.click(buttonSave)
     })
 
     await waitFor(() => {
       expect(title).not.toBeInTheDocument()
       const titleModalRandomPassword = getByText(
-        'Aluno registrado com sucesso!',
+        'Professor registrado com sucesso!',
       )
 
       expect(titleModalRandomPassword).toBeInTheDocument()
