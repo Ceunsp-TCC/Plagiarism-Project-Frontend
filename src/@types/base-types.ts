@@ -36,3 +36,5 @@ export type Permissions =
   | 'getStudents'
 
 export type Paths = keyof typeof permissionsUrls
+
+export type StatusOtherUsers = 'ACTIVE' | 'INACTIVE'
