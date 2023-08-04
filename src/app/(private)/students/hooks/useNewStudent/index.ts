@@ -7,7 +7,7 @@ import { studentServices } from '@services'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { ShowToast } from '@components'
 import type { NewStudentFields } from '@/app/(private)/students/types'
-import type { CreateStudentProps } from '@/services/types'
+import type { CreateStudentProps } from '@services'
 
 export function useNewStudent() {
   const queryClient = useQueryClient()

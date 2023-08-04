@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react'
-import { useFilters } from '@/app/(private)/students/components/Table/hooks'
+import { useFilters } from '@/app/(private)/teachers/components/Table/hooks'
 
 describe('useFilters', () => {
   it('Should return correct properties', () => {

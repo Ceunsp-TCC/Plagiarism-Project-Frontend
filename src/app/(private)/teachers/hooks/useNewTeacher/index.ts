@@ -4,12 +4,13 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newTeacherSchema } from '@/app/(private)/teachers/schemas'
 import { teacherServices } from '@services'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { ShowToast } from '@components'
 import type { NewTeacherFields } from '@/app/(private)/teachers/types'
-import type { CreateTeacherProps } from '@/services/types'
+import type { CreateTeacherProps } from '@services'
 
 export function useNewTeacher() {
+  const queryClient = useQueryClient()
   const { isOpenModalNewTeacher, setIsOpenModalNewTeacher } = useTeachersStore()
   const { setOpenModalRandomPassword, setCloseModalRandomPassword } =
     useRandomPasswordModalStore()
@@ -38,6 +39,7 @@ export function useNewTeacher() {
           randomPassword: data.content.randomPassword,
           onClickButton: () => setCloseModalRandomPassword(),
         })
+        queryClient.refetchQueries(['teachers'])
       },
       onError: () => {
         setIsOpenModalNewTeacher(false)

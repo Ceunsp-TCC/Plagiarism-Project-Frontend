@@ -1,9 +1,6 @@
-import { schoolGuardianApi } from '@/services'
-import type { LoginProps, ContentLogin } from '@/services/types'
-import type {
-  DefaultResponseWithContent,
-  DefaultResponse,
-} from '@/@types/base-types'
+import { schoolGuardianApi } from '@services'
+import type { LoginProps, ContentLogin } from '@services'
+import type { DefaultResponseWithContent, DefaultResponse } from '@types'
 import { browserName } from 'react-device-detect'
 
 export const authServices = {

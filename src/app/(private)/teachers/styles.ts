@@ -5,6 +5,7 @@ export const ContainerNewTeacher = tw.div`
 w-full
 flex
 justify-end
+mb-3
 `
 
 export const ButtonWrapper = tw.div`
