@@ -1,6 +1,6 @@
 'use client'
 import { studentServices } from '@services'
-import { isError, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useStudentsStore } from '@store'
 
 export function useStudentsTable() {

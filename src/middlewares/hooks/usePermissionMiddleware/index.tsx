@@ -2,7 +2,7 @@
 import { usePermissions, useNavigation } from '@hooks'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import type { Paths } from '@/@types/base-types'
+import type { Paths } from '@types'
 
 export function usePermissionMiddleware() {
   const { navigate } = useNavigation()

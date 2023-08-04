@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { schoolServices } from '@/services'
+import { schoolServices } from '@services'
 import type { AxiosError } from 'axios'
 export const checkIfDocumentIsValid = async (document: string) => {
   try {

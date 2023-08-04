@@ -1,4 +1,4 @@
-import type { Permissions } from '@/@types/base-types'
+import type { Permissions } from '@types'
 export type LoginProps = {
   email: string
   password: string

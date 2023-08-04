@@ -1,4 +1,4 @@
-import type { ContentLogin } from '@/services/types'
+import type { ContentLogin } from '@services'
 
 export type AuthState = {
   data: ContentLogin

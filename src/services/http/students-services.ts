@@ -1,8 +1,5 @@
 import { schoolGuardianApi } from '@services'
-import type {
-  DefaultResponseWithContent,
-  DefaultPaginate,
-} from '@/@types/base-types'
+import type { DefaultResponseWithContent, DefaultPaginate } from '@types'
 import type {
   CreateStudentProps,
   CreateStudentContent,

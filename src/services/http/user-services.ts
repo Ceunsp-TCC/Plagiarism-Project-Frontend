@@ -1,5 +1,5 @@
-import { schoolGuardianApi } from '@/services'
-import type { DefaultResponse } from '@/@types/base-types'
+import { schoolGuardianApi } from '@services'
+import type { DefaultResponse } from '@types'
 
 export const userServices = {
   validEmail: async (email: string) => {
