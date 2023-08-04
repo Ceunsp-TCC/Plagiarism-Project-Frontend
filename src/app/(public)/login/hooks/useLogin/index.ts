@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import { ShowToast } from '@components'
 import type { AxiosError } from 'axios'
-import type { LoginProps } from '@/services/types'
+import type { LoginProps } from '@services'
 import { appRoutes } from '@constants'
 import { useAuthStore } from '@store'
 

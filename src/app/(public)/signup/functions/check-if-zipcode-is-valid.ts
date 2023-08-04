@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { userServices } from '@/services'
+import { userServices } from '@services'
 import type { AxiosError } from 'axios'
 export const checkIfZipcodeIsValid = async (zipcode: string) => {
   try {

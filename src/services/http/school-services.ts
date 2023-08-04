@@ -1,6 +1,6 @@
-import { schoolGuardianApi } from '@/services'
-import type { CreateProps } from '@/services/types'
-import type { DefaultResponse } from '@/@types/base-types'
+import { schoolGuardianApi } from '@services'
+import type { CreateProps } from '@services'
+import type { DefaultResponse } from '@types'
 
 export const schoolServices = {
   create: async (body: CreateProps) => {

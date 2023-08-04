@@ -1,4 +1,5 @@
-import type { StatusOtherUsers } from '@/@types/base-types'
+import type { StatusOtherUsers } from '@types'
+
 export type CreateStudentProps = {
   name: string
   phoneNumber: string

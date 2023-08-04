@@ -1,6 +1,6 @@
 'use client'
 import { useAuthStore } from '@store'
-import type { Paths, Permissions } from '@/@types/base-types'
+import type { Paths, Permissions } from '@types'
 import { permissionsUrls } from '@constants'
 
 export function usePermissions() {
