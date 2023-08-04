@@ -4,12 +4,13 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { newStudentSchema } from '@/app/(private)/students/schemas'
 import { studentServices } from '@services'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { ShowToast } from '@components'
 import type { NewStudentFields } from '@/app/(private)/students/types'
 import type { CreateStudentProps } from '@/services/types'
 
 export function useNewStudent() {
+  const queryClient = useQueryClient()
   const { isOpenModalNewStudent, setIsOpenModalNewStudent } = useStudentsStore()
   const { setOpenModalRandomPassword, setCloseModalRandomPassword } =
     useRandomPasswordModalStore()
@@ -25,12 +26,17 @@ export function useNewStudent() {
     reValidateMode: 'onSubmit',
     resolver: zodResolver(newStudentSchema),
   })
-
+  const clearFields = () => {
+    reset()
+    setValue('CPF', '')
+    setValue('phoneNumber', '')
+  }
   const { mutate, isLoading } = useMutation(
     (data: CreateStudentProps) => studentServices.create(data),
     {
       onSuccess: (data) => {
         setIsOpenModalNewStudent(false)
+        clearFields()
         setOpenModalRandomPassword({
           title: 'Aluno registrado com sucesso!',
           description:
@@ -38,6 +44,7 @@ export function useNewStudent() {
           randomPassword: data.content.randomPassword,
           onClickButton: () => setCloseModalRandomPassword(),
         })
+        queryClient.refetchQueries(['students'])
       },
       onError: () => {
         setIsOpenModalNewStudent(false)
@@ -53,9 +60,7 @@ export function useNewStudent() {
     mutate(data)
   }
   const onCloseModal = () => {
-    reset()
-    setValue('CPF', '')
-    setValue('phoneNumber', '')
+    clearFields()
     setIsOpenModalNewStudent(false)
   }
 
