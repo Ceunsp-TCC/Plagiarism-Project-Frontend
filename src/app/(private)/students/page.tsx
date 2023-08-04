@@ -1,6 +1,6 @@
 'use client'
 import { PageHeader } from '@components'
-import { ModalNewStudent } from './components'
+import { ModalNewStudent, StudentsTable } from './components'
 import { useStudentsStore } from '@store'
 import * as S from './styles'
 
@@ -16,6 +16,7 @@ export default function Students() {
           </S.ButtonCustom>
         </S.ButtonWrapper>
       </S.ContainerNewStudent>
+      <StudentsTable />
       <ModalNewStudent />
     </>
   )
