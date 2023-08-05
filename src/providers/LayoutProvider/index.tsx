@@ -2,7 +2,11 @@
 import type { LayoutProviderProps } from '@/providers/types'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { ToastContainerCustom, RandomPasswordModal } from '@components'
+import {
+  ToastContainerCustom,
+  RandomPasswordModal,
+  NewPasswordModal,
+} from '@components'
 
 const queryClient = new QueryClient()
 
@@ -13,6 +17,7 @@ export function LayoutProvider({ children }: LayoutProviderProps) {
     <QueryClientProvider client={queryClient}>
       <ToastContainerCustom />
       <RandomPasswordModal />
+      <NewPasswordModal />
       {enabledDevTools && <ReactQueryDevtools initialIsOpen={false} />}
       {children}
     </QueryClientProvider>

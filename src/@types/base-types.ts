@@ -38,3 +38,5 @@ export type Permissions =
 export type Paths = keyof typeof permissionsUrls
 
 export type StatusOtherUsers = 'ACTIVE' | 'INACTIVE'
+
+export type Role = 'SCHOOL' | 'ADMIN' | 'TEACHER' | 'STUDENT'

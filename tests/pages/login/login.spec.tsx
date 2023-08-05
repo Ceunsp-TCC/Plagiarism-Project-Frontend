@@ -6,9 +6,12 @@ import userEvent from '@testing-library/user-event'
 import { faker } from '@faker-js/faker'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
-import { ToastContainerCustom } from '@components'
+import { ToastContainerCustom, NewPasswordModal } from '@components'
 import { useAuthStore } from '@store'
-import { loginMock } from '@tests/helpers'
+import {
+  loginMock,
+  loginStudentOrTeacherRandomPasswordMock,
+} from '@tests/helpers'
 import mockRouter from 'next-router-mock'
 
 const mockEmail = faker.internet.email()
@@ -44,6 +47,7 @@ const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <ToastContainerCustom />
+    <NewPasswordModal />
     {children}
   </QueryClientProvider>
 )
@@ -153,6 +157,35 @@ describe('Login', () => {
       expect(result.current.data).toStrictEqual(mockStateUser)
       const atualPath = mockRouter.asPath
       expect(atualPath).toBe('/students')
+    })
+  })
+  it('Should be teacher change your password', async () => {
+    loginStudentOrTeacherRandomPasswordMock(200)
+    act(() => {
+      mockRouter.push('/login')
+    })
+
+    const { getByPlaceholderText, getByText, debug } = render(<Login />, {
+      wrapper,
+    })
+    const InputEmail = getByPlaceholderText('Insira seu endereço de email')
+    const InputPassword = getByPlaceholderText('*************')
+    const loginButton = getByText('Entrar')
+
+    act(() => {
+      fireEvent.change(InputEmail, {
+        target: { value: mockEmail },
+      })
+      fireEvent.change(InputPassword, {
+        target: { value: mockPassword },
+      })
+
+      userEvent.click(loginButton)
+    })
+
+    await waitFor(() => {
+      const modal = getByText('Antes de Acessar: Troque Sua Senha')
+      expect(modal).toBeInTheDocument()
     })
   })
 })

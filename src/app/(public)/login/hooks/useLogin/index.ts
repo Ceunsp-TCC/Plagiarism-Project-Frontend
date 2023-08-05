@@ -7,12 +7,13 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import { ShowToast } from '@components'
+import { appRoutes } from '@constants'
+import { useAuthStore, useNewPasswordModalStore } from '@store'
 import type { AxiosError } from 'axios'
 import type { LoginProps } from '@services'
-import { appRoutes } from '@constants'
-import { useAuthStore } from '@store'
 
 export function useLogin() {
+  const { setOpenModalNewPassword } = useNewPasswordModalStore()
   const { setUserState } = useAuthStore()
   const { push } = useRouter()
   const {
@@ -32,6 +33,22 @@ export function useLogin() {
     (data: LoginProps) => authServices.login(data),
     {
       onSuccess: (data) => {
+        const isTeacher = data.user.roleName === 'TEACHER'
+        const isStudent = data.user.roleName === 'STUDENT'
+
+        if (isStudent || isTeacher) {
+          const randomPasswordStudent = data.user.studentData?.randomPassword
+          const randomPasswordTeacher = data.user.teacherData?.randomPassword
+          if (randomPasswordStudent || randomPasswordTeacher) {
+            return setOpenModalNewPassword({
+              title: 'Antes de Acessar: Troque Sua Senha',
+              description:
+                'Troque sua senha gerada por uma senha pessoal antes de acessar.',
+              userId: data.user.id,
+            })
+          }
+        }
+
         setUserState(data)
         handleNavigation(appRoutes.private.students)
       },

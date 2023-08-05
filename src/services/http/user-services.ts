@@ -1,4 +1,5 @@
 import { schoolGuardianApi } from '@services'
+import type { UpdatePasswordProps } from '@services'
 import type { DefaultResponse } from '@types'
 
 export const userServices = {
@@ -29,6 +30,23 @@ export const userServices = {
 
     const response = await schoolGuardianApi.post<DefaultResponse>(
       '/v1/users/valid-zipcode',
+      body,
+    )
+
+    return response.data
+  },
+  updatePassword: async ({
+    password = '',
+    confirmPassword = '',
+    userId,
+  }: UpdatePasswordProps) => {
+    const body = {
+      password,
+      confirmPassword,
+    }
+
+    const response = await schoolGuardianApi.put<DefaultResponse>(
+      `/v1/users/update-password/${userId}`,
       body,
     )
 
