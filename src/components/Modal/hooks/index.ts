@@ -1,0 +1,1 @@
+export { useNewPasswordModal } from './useNewPasswordModal'
