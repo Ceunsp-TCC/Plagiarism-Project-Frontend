@@ -28,7 +28,7 @@ export function ModalNewTeacher() {
         <S.Title>Registre seu professor</S.Title>
         <S.Form method="POST">
           <S.ContentForm>
-            <S.InputWrapper className="w-80">
+            <S.InputWrapper className="w-72 md:w-80">
               <Input
                 {...register('name')}
                 hasError={checkHasError(errors.name)}
@@ -41,7 +41,7 @@ export function ModalNewTeacher() {
                 }
               />
             </S.InputWrapper>
-            <S.InputWrapper className="w-80">
+            <S.InputWrapper className="w-72 md:w-80">
               <Input
                 {...register('email')}
                 hasError={checkHasError(errors.email)}
@@ -54,7 +54,7 @@ export function ModalNewTeacher() {
                 }
               />
             </S.InputWrapper>
-            <S.InputWrapper className="w-80">
+            <S.InputWrapper className="w-72 md:w-80">
               <InputMask
                 {...register('CPF')}
                 mask="999.999.999-99"
@@ -68,7 +68,7 @@ export function ModalNewTeacher() {
                 }
               />
             </S.InputWrapper>
-            <S.InputWrapper className="w-80">
+            <S.InputWrapper className="w-72 md:w-80">
               <InputMask
                 {...register('phoneNumber')}
                 mask="(99) 99999-9999"
@@ -82,7 +82,7 @@ export function ModalNewTeacher() {
                 }
               />
             </S.InputWrapper>
-            <S.InputWrapper className="w-80">
+            <S.InputWrapper className="w-72 md:w-80">
               <InputMask
                 {...register('CND')}
                 mask="9999999999999999"
