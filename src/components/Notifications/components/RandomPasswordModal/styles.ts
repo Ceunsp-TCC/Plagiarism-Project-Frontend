@@ -6,7 +6,8 @@ export const Content = tw.div`
 flex
 flex-col
 items-center
-w-96
+w-72
+md:w-96
 `
 
 export const SuccessIcon = tw(BsFillCheckCircleFill)`
@@ -31,7 +32,8 @@ mb-8
 export const BoxRandomPassword = tw.div`
 flex
 items-center
-w-80
+w-60
+md:w-80
 p-5
 border-2
 border-blue-500
