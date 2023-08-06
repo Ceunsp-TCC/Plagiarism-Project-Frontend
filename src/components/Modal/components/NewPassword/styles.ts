@@ -4,13 +4,15 @@ import { Button } from '@components'
 export const Content = tw.div`
 flex
 flex-col
-w-[30rem]
+w-72
+md:w-[30rem]
 `
 
 export const Title = tw.h1`
 text-white
 font-semibold
-text-base
+text-sm
+md:text-base
 mb-1
 `
 export const Description = tw.p`

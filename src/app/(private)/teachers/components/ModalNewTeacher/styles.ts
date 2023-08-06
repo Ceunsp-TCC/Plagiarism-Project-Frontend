@@ -3,8 +3,8 @@ import { Button } from '@components'
 export const Container = tw.section`
 flex
 flex-col
+w-72
 md:w-[43rem]
-w-80
 `
 
 export const Title = tw.h1`
