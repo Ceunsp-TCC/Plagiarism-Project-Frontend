@@ -1,0 +1,1 @@
+export { useCoursesTable } from './useCoursesTable'

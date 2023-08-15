@@ -2,6 +2,7 @@ import { renderHook } from '@testing-library/react'
 import { useAuthStore } from '@store'
 import { act } from 'react-dom/test-utils'
 import { mockUserSchoolState } from '@tests/helpers'
+import { getCookie } from 'cookies-next'
 
 describe('useAuthStore', () => {
   it('Should return correct properties', () => {
@@ -20,16 +21,16 @@ describe('useAuthStore', () => {
 
     expect(result.current.data).toBe(mockUserSchoolState)
   })
-  it('Should be set user state in session storage', () => {
+  it('Should be set user state in cookies', () => {
     const { result } = renderHook(() => useAuthStore())
 
     act(() => {
       result.current.setUserState(mockUserSchoolState as any)
     })
 
-    const userInLocalStorage = localStorage.getItem('auth-school-guardian')
+    const userInCookies = getCookie('auth-school-guardian')
 
-    expect(userInLocalStorage).toEqual(expect.anything())
+    expect(userInCookies).toEqual(expect.anything())
   })
   it('Should be clear state', () => {
     const { result } = renderHook(() => useAuthStore())
