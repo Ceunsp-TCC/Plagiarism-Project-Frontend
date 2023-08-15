@@ -38,7 +38,8 @@ describe('usePermissions', () => {
     })
     const { result } = renderHook(() => usePermissions())
 
-    const hasPermission = result.current.checkPermissionPerUrl('/students')
+    const hasPermission =
+      result.current.checkPermissionPerUrl('/school/students')
     expect(hasPermission).toBe(true)
   })
   it('Should be not has permission per url', () => {

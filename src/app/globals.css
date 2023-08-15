@@ -11,3 +11,19 @@ body{
     @apply bg-gray-900;
     -webkit-font-smoothing: antialiased;
 }
+
+@layer{
+    ::-webkit-scrollbar-thumb{
+        @apply bg-transparent shadow-sm w-2
+        }
+        ::-webkit-scrollbar-thumb::horizontal {
+            @apply rounded-md bg-gray-400
+          }
+        ::-webkit-scrollbar{
+        @apply w-2 bg-gray-800 rounded-md
+           
+        }
+        ::-webkit-scrollbar-thumb{
+        @apply rounded-md bg-gray-400 
+        }
+}

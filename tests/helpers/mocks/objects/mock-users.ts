@@ -28,6 +28,12 @@ export const mockUserSchoolState = {
       'students',
       'createStudent',
       'getStudents',
+      'courses',
+      'createCourse',
+      'getCourses',
+      'getCourse',
+      'createSemester',
+      'createLesson',
     ],
   },
 }

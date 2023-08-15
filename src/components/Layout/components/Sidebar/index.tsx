@@ -2,6 +2,7 @@
 import { SidebarItem } from './components'
 import { GiTeacher } from 'react-icons/gi'
 import { PiStudentFill } from 'react-icons/pi'
+import { BiSolidBookAlt } from 'react-icons/bi'
 import { useSidebar } from '@/components/Layout/hooks'
 import * as S from './styles'
 
@@ -14,12 +15,23 @@ export function Sidebar() {
           {checkHasPermission('teachers') && (
             <SidebarItem
               label="Professores"
-              href="/teachers"
+              href="/school/teachers"
               Icon={GiTeacher}
             />
           )}
           {checkHasPermission('students') && (
-            <SidebarItem label="Alunos" href="/students" Icon={PiStudentFill} />
+            <SidebarItem
+              label="Alunos"
+              href="/school/students"
+              Icon={PiStudentFill}
+            />
+          )}
+          {checkHasPermission('courses') && (
+            <SidebarItem
+              label="Cursos"
+              href="/school/courses"
+              Icon={BiSolidBookAlt}
+            />
           )}
         </S.GroupItems>
       </S.ContainerGroupItems>
