@@ -1,7 +1,6 @@
 export { useSignupStore } from './Signup'
 export { useAuthStore } from './Auth'
 export { useSettingsStore } from './Settings'
-export { useStudentsStore } from './Students'
-export { useTeachersStore } from './Teachers'
 export * from './Notifications'
 export * from './Modals'
+export * from './School'

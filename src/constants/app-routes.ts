@@ -1,8 +1,9 @@
 export const appRoutes = {
   private: {
     home: '/home',
-    students: '/students',
-    teachers: '/teachers',
+    students: '/school/students',
+    teachers: '/school/teachers',
+    schoolCourses: '/school/courses',
   },
   public: {
     login: '/login',

@@ -1,6 +1,7 @@
 export const permissionsUrls = {
   '/home': '',
-  '/teachers': 'teachers',
-  '/students': 'students',
+  '/school/teachers': 'teachers',
+  '/school/students': 'students',
+  '/school/courses': 'courses',
   '/permissions': 'permissions',
 }

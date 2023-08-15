@@ -34,9 +34,34 @@ export type Permissions =
   | 'students'
   | 'createStudent'
   | 'getStudents'
+  | 'courses'
+  | 'createCourse'
+  | 'getCourses'
+  | 'getCourse'
+  | 'createSemester'
+  | 'createLesson'
 
 export type Paths = keyof typeof permissionsUrls
 
 export type StatusOtherUsers = 'ACTIVE' | 'INACTIVE'
 
 export type Role = 'SCHOOL' | 'ADMIN' | 'TEACHER' | 'STUDENT'
+
+export type Modality = 'HYBRID' | 'INPERSON' | 'ONLINE'
+
+export type CourseCategory =
+  | 'NATURALSCIENCES'
+  | 'SOCIALSCIENCES'
+  | 'ARTSHUMANITIES'
+  | 'INFORMATIONTECHNOLOGY'
+  | 'ENGINEERING'
+  | 'BUSINESSADMINISTRATION'
+  | 'HEALTHMEDICINE'
+  | 'EDUCATION'
+  | 'LAW'
+  | 'COMMUNICATIONJOURNALISM'
+  | 'ENVIRONMENTSUSTAINABILITY'
+  | 'PSYCHOLOGY'
+  | 'ARCHITECTUREURBANPLANNING'
+  | 'MARKETING'
+  | 'AGRICULTURALSCIENCES'
