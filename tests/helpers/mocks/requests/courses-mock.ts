@@ -1,6 +1,26 @@
 import { server } from '@tests/helpers'
 import { rest } from 'msw'
 
+export const createCourseMock = (status: number) => {
+  const isFailed = status !== 200
+  server.use(
+    rest.post(
+      `${process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_API}/v1/courses/create`,
+      (req, res, ctx) => {
+        if (isFailed) {
+          return res(ctx.status(status))
+        }
+        return res(
+          ctx.status(status),
+          ctx.json({
+            statusCode: 201,
+            message: 'Course created successfully',
+          }),
+        )
+      },
+    ),
+  )
+}
 export const getAllCoursesMock = (status: number) => {
   const isFailed = status !== 200
   server.use(

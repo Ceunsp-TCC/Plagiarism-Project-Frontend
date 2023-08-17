@@ -27,6 +27,7 @@
       "@/*": ["./src/*"],
       "@public/*": ["./public/*"],
       "@tests/*": ["./tests/*"],
+      "@tests": ["./tests"],
       "@components": ["./src/components"],
       "@functions": ["./src/functions"],
       "@providers": ["./src/providers"],
@@ -36,7 +37,8 @@
       "@middlewares":["./src/middlewares"],
       "@constants":  ["./src/constants"],
       "@utils":  ["./src/utils"],
-      "@types":["./src/@types"]
+      "@types":["./src/@types"],
+      "@objects":  ["./src/objects"],
     }
   },
   "include": [

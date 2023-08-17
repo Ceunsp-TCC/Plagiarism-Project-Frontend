@@ -3,7 +3,7 @@ import { fireEvent, render, renderHook } from '@testing-library/react'
 import React from 'react'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { act } from 'react-dom/test-utils'
-import { mockUserSchoolState } from '@tests/helpers'
+import { mockUserSchoolState, getAllCoursesMock } from '@tests/helpers'
 import { ToastContainerCustom } from '@components'
 import { useAuthStore } from '@store'
 import type { ReactNode } from 'react'
@@ -17,6 +17,7 @@ const wrapper = ({ children }: { children: ReactNode }) => (
 )
 describe('Courses', () => {
   it('Should be render a courses page', async () => {
+    getAllCoursesMock(200)
     const { result } = renderHook(() => useAuthStore())
 
     act(() => {
@@ -34,19 +35,20 @@ describe('Courses', () => {
     expect(description).toBeInTheDocument()
     expect(newCourseButton).toBeInTheDocument()
   })
-  //   it('Should be open modal new course', async () => {
-  //     const { getByText } = render(<Teachers />, {
-  //       wrapper,
-  //     })
+  it('Should be open modal new course', async () => {
+    getAllCoursesMock(200)
+    const { getByText } = render(<Courses />, {
+      wrapper,
+    })
 
-  //     const newTeacherButton = getByText('Novo')
+    const newCourseButton = getByText('Novo')
 
-  //     act(() => {
-  //       fireEvent.click(newTeacherButton)
-  //     })
+    act(() => {
+      fireEvent.click(newCourseButton)
+    })
 
-  //     const titleModal = getByText('Registre seu professor')
+    const titleModal = getByText('Registre seu curso')
 
-  //     expect(titleModal).toBeInTheDocument()
-  //   })
+    expect(titleModal).toBeInTheDocument()
+  })
 })

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export const Card = tw.div`
 w-full
-md:h-44
+md:h-60
 bg-gray-700
 border-[1px]
 border-gray-400
@@ -25,8 +25,8 @@ items-center
 justify-center
 `
 export const ImageCustom = tw.img`
-w-40
-h-32
+w-60
+h-48
 rounded-lg
 `
 
@@ -51,6 +51,8 @@ font-medium
 text-base
 mb-6
 text-center
+h-72
+overflow-y-auto
 md:text-left
 `
 
