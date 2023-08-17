@@ -16,7 +16,9 @@ border-gray-700
 focus:ring-4
 focus:ring-blue-200 
 rounded-full
-px-6 py-3.5 w-full
+px-6 
+py-[15px]
+w-full
 ${({ $hasError }) =>
   $hasError ? 'ring-4 ring-red-600 focus:ring-red-600' : ''}
 `
