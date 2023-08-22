@@ -15,6 +15,14 @@ const wrapper = ({ children }: { children: ReactNode }) => (
     {children}
   </QueryClientProvider>
 )
+jest.mock('next/navigation', () => ({
+  usePathname: jest.fn(),
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    back: jest.fn(),
+    forward: jest.fn(),
+  })),
+}))
 describe('Courses', () => {
   it('Should be render a courses page', async () => {
     getAllCoursesMock(200)

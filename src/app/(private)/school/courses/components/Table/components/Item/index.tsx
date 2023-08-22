@@ -14,9 +14,10 @@ export function Item({
   modality = 'HYBRID',
   price = 0,
   createdAt = '',
+  onClick = () => {},
 }: ItemProps) {
   return (
-    <S.Card>
+    <S.Card onClick={onClick}>
       <S.ContainerImage>
         <S.ImageCustom src={image} alt="image-course" />
       </S.ContainerImage>

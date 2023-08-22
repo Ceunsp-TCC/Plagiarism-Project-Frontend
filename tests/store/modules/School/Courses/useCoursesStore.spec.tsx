@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react'
 import { useCoursesStore } from '@store'
 import { act } from 'react-dom/test-utils'
 
-describe('uuseCoursesStore', () => {
+describe('useCoursesStore', () => {
   it('Should return correct properties', () => {
     const { result } = renderHook(() => useCoursesStore())
 

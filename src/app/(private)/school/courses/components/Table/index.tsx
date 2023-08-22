@@ -1,8 +1,8 @@
 'use client'
 import { TableLoading, Pagination } from '@components'
-import { Item, Filters } from './components'
+import { useNavigation } from '@hooks'
 import { useCoursesTable } from '@/app/(private)/school/courses/hooks'
-
+import { Item, Filters } from './components'
 import * as S from './styles'
 
 export function CoursesTable() {
@@ -16,7 +16,7 @@ export function CoursesTable() {
     numberPages,
     setCurrentPage,
   } = useCoursesTable()
-
+  const { navigate } = useNavigation()
   return (
     <>
       <S.FiltersContainer>
@@ -41,6 +41,7 @@ export function CoursesTable() {
                 modality={course.modality}
                 price={course.price}
                 createdAt={course.createdAt}
+                onClick={() => navigate(`/school/courses/${course.id}`)}
               />
             ))}
           </S.ContainerItems>

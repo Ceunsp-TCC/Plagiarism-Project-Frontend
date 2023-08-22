@@ -12,7 +12,9 @@ export function usePermissions() {
   }
   const checkPermissionPerUrl = (path: Paths) => {
     const permission = permissionsUrls[path] as unknown as Permissions
-    return checkHasPermission(permission)
+
+    const notHasPermissionToThisUrl = permission === undefined
+    return checkHasPermission(permission) || notHasPermissionToThisUrl
   }
 
   return {
