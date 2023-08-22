@@ -8,4 +8,5 @@ export type ItemProps = {
   modality: Modality
   price: number
   createdAt: string
+  onClick: () => void
 }

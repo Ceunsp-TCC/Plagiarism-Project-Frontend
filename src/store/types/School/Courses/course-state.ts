@@ -1,11 +1,11 @@
-import type { FiltersFields } from '@/app/(private)/school/courses/types'
+type PayloadModalNewLesson = {
+  isOpen?: boolean
+  semesterId?: number
+}
 
-type Filters = FiltersFields
 export type CourseState = {
-  currentPage: number
-  isOpenModalNewCourse: boolean
-  filters: Filters
-  setIsOpenModalNewCourse: (isOpenModalNewCourse: boolean) => void
-  setCurrentPage: (currentPage: number) => void
-  setFilters: (filters: Filters) => void
+  isOpenModalNewSemester: boolean
+  payloadModalNewLesson: PayloadModalNewLesson
+  setIsOpenModalNewSemester: (isOpenModalNewSemester: boolean) => void
+  setIsOpenModalNewLesson: (payload: PayloadModalNewLesson) => void
 }
