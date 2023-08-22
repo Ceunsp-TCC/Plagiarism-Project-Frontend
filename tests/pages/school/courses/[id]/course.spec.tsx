@@ -33,8 +33,9 @@ describe('Course', () => {
     await waitFor(() => expect(loading).not.toBeInTheDocument())
     const name = getByText('Animação Digital')
     const description = getByText(
-      'A Animação Digital é uma das grandes áreas que envolvem a produção de Jogos Digitais. Saber animar um personagem ou uma cena em duas e/ou três dimensões é uma competência que todo desenvolvedor de jogos deve ter.A Animação Digital é uma das grandes áreas que envolvem a produção de Jogos Digitais. Saber animar um personagem ou uma cena em duas e/ou três dimensões é uma competência que todo desenvolvedor de jogos deve ter.',
+      'A Animação Digital é uma das grandes áreas que envolvem a produção de Jogos Digitais. Saber animar um personagem ou uma cena em duas e/ou três dimensões é uma competência que todo desenvolvedor de jogos deve ter.',
     )
+
     const buttonNewSemester = getByText('Adicionar semestre')
     const accordionSemester = getByText('semestre test')
     expect(name).toBeVisible()

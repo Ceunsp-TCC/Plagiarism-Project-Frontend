@@ -1,18 +1,12 @@
 'use client'
-import { useQueryClient } from '@tanstack/react-query'
 import { useCourseStore } from '@store'
 import { useState } from 'react'
-import type { Course } from '@services'
 
 export function useSemesters() {
   const [semestersOpened, setSemestersOpened] = useState<number[]>([])
   const [lessonsOpened, setLessonsOpened] = useState<number[]>([])
   const { setIsOpenModalNewSemester, setIsOpenModalNewLesson } =
     useCourseStore()
-  const queryClient = useQueryClient()
-  const course = queryClient.getQueryData(['course']) as Course
-
-  const semesters = course ? course.semesters : []
 
   const checkAccordionIsOpened = (
     id: number,
@@ -51,7 +45,6 @@ export function useSemesters() {
   }
 
   return {
-    semesters,
     setIsOpenModalNewSemester,
     checkAccordionIsOpened,
     onOpenOrCloseAccordions,
