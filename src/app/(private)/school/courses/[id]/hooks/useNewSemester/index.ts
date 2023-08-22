@@ -39,6 +39,7 @@ export function useNewSemester() {
           toastType: 'SUCCESS',
         })
         queryClient.refetchQueries(['course'])
+        queryClient.invalidateQueries(['course'])
       },
       onError: () => {
         onClose()

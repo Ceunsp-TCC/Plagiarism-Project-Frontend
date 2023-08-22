@@ -8,8 +8,12 @@ import { useEffect } from 'react'
 export function useGetCourse() {
   const { checkHasPermission } = usePermissions()
   const { id } = useParams()
-  const { isLoading, isError } = useQuery({
-    queryKey: ['course'],
+  const {
+    isLoading,
+    isError,
+    data: course,
+  } = useQuery({
+    queryKey: ['course', id],
     queryFn: () => courseServices.getOne({ courseId: Number(id) }),
   })
 
@@ -21,5 +25,6 @@ export function useGetCourse() {
 
   return {
     isLoading,
+    course,
   }
 }

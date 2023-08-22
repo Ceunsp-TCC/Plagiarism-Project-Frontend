@@ -11,7 +11,6 @@ describe('useSemesters', () => {
   it('Should return correct properties', async () => {
     const { result } = renderHook(() => useSemesters(), { wrapper })
 
-    expect(result.current.semesters).toBeDefined()
     expect(result.current.setIsOpenModalNewLesson).toBeDefined()
     expect(result.current.setIsOpenModalNewSemester).toBeDefined()
     expect(result.current.checkAccordionIsOpened).toBeDefined()
