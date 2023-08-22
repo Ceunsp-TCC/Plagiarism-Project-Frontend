@@ -11,6 +11,14 @@ const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 )
+jest.mock('next/navigation', () => ({
+  usePathname: jest.fn(),
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    back: jest.fn(),
+    forward: jest.fn(),
+  })),
+}))
 describe('CoursesTable', () => {
   beforeEach(() => {
     queryClient.clear()

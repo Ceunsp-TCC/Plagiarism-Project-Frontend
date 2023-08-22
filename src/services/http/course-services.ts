@@ -1,8 +1,9 @@
 import { schoolGuardianApi } from '@services'
 import type {
-  CourseItem,
+  Course,
   GetAllCoursesProps,
   CreateCourseProps,
+  GetOneCourseProps,
 } from '@services'
 import type {
   DefaultResponseWithContent,
@@ -36,8 +37,15 @@ export const courseServices = {
       name,
     }
     const response = await schoolGuardianApi.get<
-      DefaultResponseWithContent<DefaultPaginate<CourseItem>>
+      DefaultResponseWithContent<DefaultPaginate<Course>>
     >('v1/courses/get-all', { params })
+
+    return response.data.content
+  },
+  getOne: async ({ courseId = 0 }: GetOneCourseProps) => {
+    const response = await schoolGuardianApi.get<
+      DefaultResponseWithContent<Course>
+    >(`v1/courses/get-by-id/${courseId}`)
 
     return response.data.content
   },
