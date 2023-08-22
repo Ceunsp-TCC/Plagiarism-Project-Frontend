@@ -6,11 +6,11 @@ import {
   ModalNewSemester,
   ModalNewLesson,
 } from '@/app/(private)/school/courses/[id]/components'
+import type { SemestersProps } from '@/app/(private)/school/courses/[id]/types'
 import * as S from './styles'
 
-export function Semesters() {
+export function Semesters({ semesters = [] }: SemestersProps) {
   const {
-    semesters,
     setIsOpenModalNewSemester,
     setIsOpenModalNewLesson,
     checkAccordionIsOpened,

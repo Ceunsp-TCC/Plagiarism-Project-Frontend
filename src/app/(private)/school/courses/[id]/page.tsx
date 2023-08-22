@@ -8,7 +8,7 @@ import { SectionLoading } from '@components'
 import * as S from './styles'
 
 export default function Course() {
-  const { isLoading } = useGetCourse()
+  const { isLoading, course } = useGetCourse()
 
   if (isLoading) {
     return (
@@ -19,11 +19,16 @@ export default function Course() {
       </S.ContainerLoading>
     )
   }
+
   return (
     <div className="h-full">
       <S.Container>
-        <NameAndDescription />
-        <Semesters />
+        <NameAndDescription
+          name={course?.name!}
+          description={course?.description!}
+          image={course?.image!}
+        />
+        <Semesters semesters={course?.semesters!} />
       </S.Container>
     </div>
   )
