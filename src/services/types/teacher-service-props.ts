@@ -15,6 +15,7 @@ export type CreateTeacherContent = {
 export type GetAllTeachersProps = {
   currentPage?: number
   name?: string
+  numberlinesPerPage?: number
 }
 export type Teacher = {
   id: number
@@ -24,4 +25,5 @@ export type Teacher = {
   cpf: string
   status: StatusOtherUsers
   createdAt: string
+  teacherId: number
 }

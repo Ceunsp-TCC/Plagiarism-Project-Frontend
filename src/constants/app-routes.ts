@@ -5,6 +5,8 @@ export const appRoutes = {
     teachers: '/school/teachers',
     schoolCourses: '/school/courses',
     schoolCourse: (courseId: number) => `/school/courses/${courseId}`,
+    classes: '/school/classes',
+    class: (classId: number) => `/school/classes/${classId}`,
   },
   public: {
     login: '/login',

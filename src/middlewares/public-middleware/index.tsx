@@ -1,6 +1,6 @@
 'use client'
-import type { PublicMiddlewareProps } from '@/middlewares/types'
 import { usePublicMiddleware } from '@/middlewares/hooks'
+import type { PublicMiddlewareProps } from '@/middlewares/types'
 
 export function PublicMiddleware({ children }: PublicMiddlewareProps) {
   const { isAuthenticated } = usePublicMiddleware()

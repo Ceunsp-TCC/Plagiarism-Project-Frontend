@@ -15,9 +15,13 @@ export const teacherServices = {
 
     return response.data
   },
-  getAll: async ({ currentPage = 1, name = '' }: GetAllTeachersProps) => {
+  getAll: async ({
+    currentPage = 1,
+    name = '',
+    numberlinesPerPage = 10,
+  }: GetAllTeachersProps) => {
     const params = {
-      numberlinesPerPage: 10,
+      numberlinesPerPage,
       currentPage,
       name,
     }

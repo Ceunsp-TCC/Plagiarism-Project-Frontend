@@ -1,7 +1,7 @@
 'use client'
 import { useAuthStore } from '@store'
-import type { Paths, Permissions } from '@types'
 import { permissionsUrls } from '@constants'
+import type { Paths, Permissions } from '@types'
 
 export function usePermissions() {
   const { data } = useAuthStore()

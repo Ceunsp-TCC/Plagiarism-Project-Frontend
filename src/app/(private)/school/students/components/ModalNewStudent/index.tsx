@@ -4,10 +4,16 @@ import {
   Input,
   InputMask,
   InputLabel,
+  Select,
+  SelectLabel,
+  SelectOption,
   ErrorMessage,
   ButtonLoadingLottie,
 } from '@components'
-import { useNewStudent } from '@/app/(private)/school/students/hooks'
+import {
+  useNewStudent,
+  useGetClasses,
+} from '@/app/(private)/school/students/hooks'
 import { checkHasError } from '@functions'
 import * as S from './styles'
 
@@ -22,6 +28,9 @@ export function ModalNewStudent() {
     onSubmit,
     register,
   } = useNewStudent()
+
+  const { classes } = useGetClasses()
+
   return (
     <Modal isOpen={isOpenModalNewStudent} onClose={onCloseModal}>
       <S.Container>
@@ -81,6 +90,26 @@ export function ModalNewStudent() {
                   )
                 }
               />
+            </S.InputWrapper>
+            <S.InputWrapper className="col-span-2">
+              <Select
+                {...register('class')}
+                hasError={checkHasError(errors.class)}
+                label={() => <SelectLabel>Turma</SelectLabel>}
+                placeholder="Selecione uma turma"
+                errorMessage={() =>
+                  checkHasError(errors.class) && (
+                    <ErrorMessage>{errors.class?.message}</ErrorMessage>
+                  )
+                }
+              >
+                <SelectOption value="">Selecione uma turma</SelectOption>
+                {classes?.items.map((classe) => (
+                  <SelectOption key={classe.id} value={classe.id}>
+                    {classe.name}
+                  </SelectOption>
+                ))}
+              </Select>
             </S.InputWrapper>
           </S.ContentForm>
 

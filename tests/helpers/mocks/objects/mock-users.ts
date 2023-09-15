@@ -34,6 +34,12 @@ export const mockUserSchoolState = {
       'getCourse',
       'createSemester',
       'createLesson',
+      'classes',
+      'createClass',
+      'getClasses',
+      'getClass',
+      'getStudentsByClass',
+      'linkTeacherAndLessonInClass',
     ],
   },
 }

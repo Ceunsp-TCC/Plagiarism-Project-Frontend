@@ -5,6 +5,7 @@ export type CreateStudentProps = {
   phoneNumber: string
   email: string
   CPF: string
+  classId: number
 }
 
 export type CreateStudentContent = {

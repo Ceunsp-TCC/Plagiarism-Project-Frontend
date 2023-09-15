@@ -1,6 +1,6 @@
 import { Course } from '@services'
 
-export type NameAndDescriptionProps = {
+export type HeaderProps = {
   image: string
   name: string
   description: string

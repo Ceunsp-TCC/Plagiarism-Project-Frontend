@@ -23,4 +23,5 @@ export const newStudentSchema = z.object({
       message: 'Insira um telefone celular válido',
     })
     .transform((value) => value.replace(/\D/g, '')),
+  class: z.string().nonempty('Insira uma turma válida'),
 })

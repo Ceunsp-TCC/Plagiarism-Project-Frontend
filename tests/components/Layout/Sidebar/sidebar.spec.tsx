@@ -15,9 +15,11 @@ describe('Sidebar', () => {
     const linkStudents = getByText('Alunos')
     const linkTeachers = getByText('Professores')
     const linkCourses = getByText('Cursos')
+    const linkClasses = getByText('Turmas')
 
     expect(linkStudents).toBeInTheDocument()
     expect(linkTeachers).toBeInTheDocument()
     expect(linkCourses).toBeInTheDocument()
+    expect(linkClasses).toBeInTheDocument()
   })
 })
