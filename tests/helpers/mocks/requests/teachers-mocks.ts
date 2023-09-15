@@ -52,6 +52,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 66,
@@ -61,6 +62,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 67,
@@ -70,6 +72,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 68,
@@ -79,6 +82,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 69,
@@ -88,6 +92,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 70,
@@ -97,6 +102,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 71,
@@ -106,6 +112,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 72,
@@ -115,6 +122,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 73,
@@ -124,6 +132,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 74,
@@ -133,6 +142,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 75,
@@ -142,6 +152,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
                 {
                   id: 76,
@@ -151,6 +162,7 @@ export const getAllTeachersMock = (status: number) => {
                   cpf: '64404484399',
                   status: 'ACTIVE',
                   createdAt: '23/07/2023 20:50:48',
+                  teacherId: 1,
                 },
               ],
             },

@@ -6,6 +6,7 @@ import {
   ToastContainerCustom,
   RandomPasswordModal,
   NewPasswordModal,
+  ConfirmationModal,
 } from '@components'
 
 const queryClient = new QueryClient()
@@ -18,6 +19,7 @@ export function LayoutProvider({ children }: LayoutProviderProps) {
       <ToastContainerCustom />
       <RandomPasswordModal />
       <NewPasswordModal />
+      <ConfirmationModal />
       {enabledDevTools && <ReactQueryDevtools initialIsOpen={false} />}
       {children}
     </QueryClientProvider>
