@@ -50,7 +50,7 @@ export function useLogin() {
         }
 
         setUserState(data)
-        handleNavigation(appRoutes.private.students)
+        handleNavigation(appRoutes.private.home)
       },
       onError: (error: AxiosError) => {
         const isNotAuthorized = error.response?.status === 403

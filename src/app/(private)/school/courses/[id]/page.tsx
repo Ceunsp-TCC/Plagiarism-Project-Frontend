@@ -1,7 +1,7 @@
 'use client'
 import { useGetCourse } from '@/app/(private)/school/courses/[id]/hooks'
 import {
-  NameAndDescription,
+  Header,
   Semesters,
 } from '@/app/(private)/school/courses/[id]/components'
 import { SectionLoading } from '@components'
@@ -23,7 +23,7 @@ export default function Course() {
   return (
     <div className="h-full">
       <S.Container>
-        <NameAndDescription
+        <Header
           name={course?.name!}
           description={course?.description!}
           image={course?.image!}

@@ -57,7 +57,7 @@ export function useNewStudent() {
     },
   )
   const onSubmit = (data: NewStudentFields) => {
-    mutate(data)
+    mutate({ ...data, classId: Number(data.class) })
   }
   const onCloseModal = () => {
     clearFields()

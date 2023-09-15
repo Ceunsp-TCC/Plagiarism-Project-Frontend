@@ -156,7 +156,7 @@ describe('Login', () => {
     await waitFor(() => {
       expect(result.current.data).toStrictEqual(mockStateUser)
       const atualPath = mockRouter.asPath
-      expect(atualPath).toBe('/school/students')
+      expect(atualPath).toBe('/home')
     })
   })
   it('Should be teacher change your password', async () => {
