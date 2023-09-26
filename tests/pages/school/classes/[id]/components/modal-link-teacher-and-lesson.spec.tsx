@@ -6,7 +6,6 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ToastContainerCustom } from '@components'
 import { act } from 'react-dom/test-utils'
 import { getAllTeachersMock, linkTeacherAndLessonMock } from '@tests/helpers'
-import { faker } from '@faker-js/faker'
 import type { ReactNode } from 'react'
 
 const queryClient = new QueryClient()
