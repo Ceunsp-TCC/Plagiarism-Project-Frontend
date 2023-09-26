@@ -43,3 +43,29 @@ export const mockUserSchoolState = {
     ],
   },
 }
+export const mockUserStudentState = {
+  accessToken: {
+    type: 'bearer',
+    token: 'Ng.b97dVl42kAceEHxwSr1Tun4n9F5OsGmwr_dzZZEO_BhjwQW9PImQ4hx1wl4e',
+  },
+  user: {
+    id: 8,
+    name: 'Tereza Agatha Almada',
+    email: 'terezaagathaalmada@usp.br',
+    phoneNumber: '86986193499',
+    roleName: 'STUDENT',
+    createdAt: '12/09/2023 21:20:56',
+    studentData: {
+      id: 4,
+      cpf: '10030039584',
+      randomPassword: true,
+      status: 'ACTIVE',
+    },
+    permissions: [
+      'getLessonsByStudent',
+      'activities',
+      'getActivities',
+      'lessons',
+    ],
+  },
+}

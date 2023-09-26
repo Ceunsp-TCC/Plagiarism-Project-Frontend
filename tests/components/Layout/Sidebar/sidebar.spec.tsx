@@ -1,7 +1,7 @@
 import { Sidebar } from '@components'
-import { render, renderHook, waitFor } from '@testing-library/react'
+import { render, renderHook } from '@testing-library/react'
 import { useAuthStore } from '@store'
-import { mockUserSchoolState } from '@tests/helpers'
+import { mockUserSchoolState, mockUserStudentState } from '@tests/helpers'
 import { act } from 'react-dom/test-utils'
 
 describe('Sidebar', () => {
@@ -21,5 +21,16 @@ describe('Sidebar', () => {
     expect(linkTeachers).toBeInTheDocument()
     expect(linkCourses).toBeInTheDocument()
     expect(linkClasses).toBeInTheDocument()
+  })
+  it('Should be render a sidebar when is teacher or student user', async () => {
+    const { result } = renderHook(() => useAuthStore())
+    act(() => {
+      result.current.setUserState(mockUserStudentState as any)
+    })
+    const { getByText } = render(<Sidebar />)
+
+    const linkLessons = getByText('Aulas')
+
+    expect(linkLessons).toBeInTheDocument()
   })
 })

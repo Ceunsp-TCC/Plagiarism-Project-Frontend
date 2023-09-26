@@ -3,7 +3,7 @@ import { SidebarItem } from './components'
 import { GiTeacher } from 'react-icons/gi'
 import { PiStudentFill } from 'react-icons/pi'
 import { BiSolidBookAlt } from 'react-icons/bi'
-import { FaGraduationCap } from 'react-icons/fa'
+import { FaGraduationCap, FaChalkboardTeacher } from 'react-icons/fa'
 import { useSidebar } from '@/components/Layout/hooks'
 
 import * as S from './styles'
@@ -40,6 +40,13 @@ export function Sidebar() {
               label="Turmas"
               href="/school/classes"
               Icon={FaGraduationCap}
+            />
+          )}
+          {checkHasPermission('lessons') && (
+            <SidebarItem
+              label="Aulas"
+              href="/lessons"
+              Icon={FaChalkboardTeacher}
             />
           )}
         </S.GroupItems>
