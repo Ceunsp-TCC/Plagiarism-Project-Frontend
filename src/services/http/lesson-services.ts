@@ -1,6 +1,15 @@
 import { schoolGuardianApi } from '@services'
-import type { CreateLessonProps } from '@services'
-import type { DefaultResponse } from '@types'
+import type {
+  CreateLessonProps,
+  Lesson,
+  GetAllLessonsByTeacherProps,
+  GetAllLessonsByStudentProps,
+} from '@services'
+import type {
+  DefaultResponse,
+  DefaultResponseWithContent,
+  DefaultPaginate,
+} from '@types'
 
 export const lessonServices = {
   create: async ({
@@ -20,5 +29,28 @@ export const lessonServices = {
     )
 
     return response.data
+  },
+  getByTeacher: async ({ currentPage = 1 }: GetAllLessonsByTeacherProps) => {
+    const params = {
+      numberlinesPerPage: 10,
+      currentPage,
+    }
+    const response = await schoolGuardianApi.get<
+      DefaultResponseWithContent<DefaultPaginate<Lesson>>
+    >(`v1/lessons/get-lessons-by-teacher`, { params })
+
+    return response.data.content
+  },
+
+  getByStudent: async ({ currentPage = 1 }: GetAllLessonsByStudentProps) => {
+    const params = {
+      numberlinesPerPage: 10,
+      currentPage,
+    }
+    const response = await schoolGuardianApi.get<
+      DefaultResponseWithContent<DefaultPaginate<Lesson>>
+    >(`v1/lessons/get-lessons-by-student`, { params })
+
+    return response.data.content
   },
 }
