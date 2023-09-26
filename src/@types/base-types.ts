@@ -78,3 +78,5 @@ export type CourseCategory =
   | 'MARKETING'
   | 'AGRICULTURALSCIENCES'
 export type Cases = 'SUCCESS' | 'ERROR' | 'WARNING' | 'INFORMATION'
+
+export type ActivityType = 'NOTICE' | 'ACADEMICPAPER'

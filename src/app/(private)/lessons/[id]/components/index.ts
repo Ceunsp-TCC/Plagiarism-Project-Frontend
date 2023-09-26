@@ -1,0 +1,1 @@
+export { ModalNewActivity } from './ModalNewActivity'
