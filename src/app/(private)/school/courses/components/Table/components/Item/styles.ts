@@ -1,5 +1,4 @@
 import tw from 'tailwind-styled-components'
-import Image from 'next/image'
 
 export const Card = tw.div`
 w-full

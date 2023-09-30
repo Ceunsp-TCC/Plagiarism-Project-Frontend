@@ -1,6 +1,10 @@
 import { schoolGuardianApi } from '@services'
-import type { CreateActivityProps } from '@services'
-import type { DefaultResponse } from '@types'
+import type {
+  CreateActivityProps,
+  Activity,
+  GetAllActivitiesProps,
+} from '@services'
+import type { DefaultResponse, DefaultResponseWithContent } from '@types'
 
 export const activitiesServices = {
   create: async ({
@@ -20,5 +24,12 @@ export const activitiesServices = {
     )
 
     return response.data
+  },
+  getAll: async ({ lessonId = 0 }: GetAllActivitiesProps) => {
+    const response = await schoolGuardianApi.get<
+      DefaultResponseWithContent<Activity[]>
+    >(`v1/activities/get-all/${lessonId}`)
+
+    return response.data.content
   },
 }

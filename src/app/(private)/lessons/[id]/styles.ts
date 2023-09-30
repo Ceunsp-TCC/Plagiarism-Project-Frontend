@@ -5,7 +5,7 @@ export const ContainerNewActivity = tw.div`
 w-full
 flex
 justify-end
-mb-3
+mb-12
 `
 
 export const ButtonWrapper = tw.div`
