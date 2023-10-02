@@ -17,3 +17,6 @@ export type Activity = {
 export type GetAllActivitiesProps = {
   lessonId: number
 }
+export type GetActivityByIdProps = {
+  activityId: number
+}

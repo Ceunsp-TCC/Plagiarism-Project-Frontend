@@ -25,6 +25,7 @@ export function LessonsTable() {
     setCurrentPage,
     navigate,
   } = useLessonsTable()
+
   return (
     <div className="mt-12">
       {isLoading && <TableLoading />}

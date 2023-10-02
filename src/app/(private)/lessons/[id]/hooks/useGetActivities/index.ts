@@ -1,8 +1,10 @@
 import { activitiesServices } from '@services'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'next/navigation'
+import { useNavigation } from '@/hooks'
 
 export function useGetActivities() {
+  const { navigate } = useNavigation()
   const { id } = useParams()
   const {
     data: activities,
@@ -15,10 +17,14 @@ export function useGetActivities() {
     retry: false,
   })
 
+  const navigateToDetails = (activityId: number) => {
+    navigate(`/lessons/activity/${activityId}`)
+  }
   const isEmpty = isError
   return {
     activities,
     isLoading,
     isEmpty,
+    navigateToDetails,
   }
 }

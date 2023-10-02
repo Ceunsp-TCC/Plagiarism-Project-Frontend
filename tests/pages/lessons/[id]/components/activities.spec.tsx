@@ -11,6 +11,12 @@ const wrapper = ({ children }: { children: ReactNode }) => (
 )
 jest.mock('next/navigation', () => ({
   useParams: jest.fn().mockReturnValue({ id: 1 }),
+  usePathname: jest.fn(),
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    back: jest.fn(),
+    forward: jest.fn(),
+  })),
 }))
 describe('Activities', () => {
   beforeEach(() => {
