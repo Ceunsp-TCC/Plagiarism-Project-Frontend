@@ -3,8 +3,7 @@ node_modules
 .vscode
 .env
 Dockerfile
-Dockerfile-staging
-Dockerfile-production
+Dockerfile.dev
+Dockerfile.production
 .vscode
 npm-debug.log
-package-lock.json
