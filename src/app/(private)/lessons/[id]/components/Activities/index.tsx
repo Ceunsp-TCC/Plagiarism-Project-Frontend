@@ -1,20 +1,21 @@
 'use client'
 import { ActivityItem } from './components'
-import { SectionLoading, TableLoading } from '@components'
+import { TableLoading } from '@components'
 import { useGetActivities } from '@/app/(private)/lessons/[id]/hooks'
 import * as S from './styles'
 
 export function Activities() {
-  const { activities, isLoading, isEmpty } = useGetActivities()
+  const { activities, isLoading, isEmpty, navigateToDetails } =
+    useGetActivities()
 
   if (isLoading) {
     return <TableLoading />
   }
   return (
     <S.ContainerItems>
+      <S.Title>Atividades</S.Title>
       {!isEmpty && (
         <>
-          <S.Title>Atividades</S.Title>
           {activities?.map((activity) => (
             <ActivityItem
               key={activity.id}
@@ -22,7 +23,7 @@ export function Activities() {
               type={activity.type}
               comments={activity.comments}
               createdAt={activity.createdAt}
-              onClick={() => console.log('click')}
+              onClick={() => navigateToDetails(activity.id)}
             />
           ))}
         </>

@@ -3,6 +3,7 @@ import type {
   CreateActivityProps,
   Activity,
   GetAllActivitiesProps,
+  GetActivityByIdProps,
 } from '@services'
 import type { DefaultResponse, DefaultResponseWithContent } from '@types'
 
@@ -29,6 +30,13 @@ export const activitiesServices = {
     const response = await schoolGuardianApi.get<
       DefaultResponseWithContent<Activity[]>
     >(`v1/activities/get-all/${lessonId}`)
+
+    return response.data.content
+  },
+  getById: async ({ activityId = 0 }: GetActivityByIdProps) => {
+    const response = await schoolGuardianApi.get<
+      DefaultResponseWithContent<Activity>
+    >(`v1/activities/get-by-id/${activityId}`)
 
     return response.data.content
   },
