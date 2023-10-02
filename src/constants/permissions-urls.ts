@@ -3,5 +3,6 @@ export const permissionsUrls = {
   '/school/students': 'students',
   '/school/courses': 'courses',
   '/school/classes': 'classes',
+  '/lessons': 'lessons',
   '/permissions': 'permissions',
 }

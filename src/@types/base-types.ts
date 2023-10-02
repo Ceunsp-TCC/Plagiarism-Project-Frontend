@@ -39,13 +39,19 @@ export type Permissions =
   | 'getCourses'
   | 'getCourse'
   | 'createSemester'
+  | 'lessons'
   | 'createLesson'
+  | 'getLessonsByTeacher'
+  | 'getLessonsByStudent'
   | 'classes'
   | 'createClass'
   | 'getClasses'
   | 'getClass'
   | 'getStudentsByClass'
   | 'linkTeacherAndLessonInClass'
+  | 'activities'
+  | 'createActivity'
+  | 'getActivities'
 
 export type Paths = keyof typeof permissionsUrls
 
@@ -72,3 +78,5 @@ export type CourseCategory =
   | 'MARKETING'
   | 'AGRICULTURALSCIENCES'
 export type Cases = 'SUCCESS' | 'ERROR' | 'WARNING' | 'INFORMATION'
+
+export type ActivityType = 'NOTICE' | 'ACADEMICPAPER'

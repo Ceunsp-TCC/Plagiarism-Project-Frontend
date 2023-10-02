@@ -2,10 +2,10 @@ import { StudentsTable } from '@/app/(private)/school/students/components'
 import { fireEvent, render, renderHook, waitFor } from '@testing-library/react'
 import React from 'react'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
-import type { ReactNode } from 'react'
 import { useStudentsStore } from '@store'
 import { getAllStudentsMock } from '@tests/helpers'
 import { act } from 'react-dom/test-utils'
+import type { ReactNode } from 'react'
 
 const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: ReactNode }) => (
