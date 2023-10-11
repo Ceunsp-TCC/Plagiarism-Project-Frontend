@@ -9,4 +9,5 @@ export const Title = tw.h4`
 text-white
 text-2xl
 font-semibold
+mt-7
 `
