@@ -5,6 +5,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { act } from 'react-dom/test-utils'
 import {
   getActivityMock,
+  getAllAcademicPapersMock,
   mockUserStudentState,
   mockUserTeacherState,
 } from '@tests/helpers'
@@ -53,13 +54,14 @@ describe('Activity', () => {
   })
   it('Should be render a activity page if is academic paper and is teacher', async () => {
     getActivityMock(200, 'ACADEMICPAPER')
+    getAllAcademicPapersMock(200)
     const { result } = renderHook(() => useAuthStore())
 
     act(() => {
       result.current.setUserState(mockUserTeacherState as any)
     })
 
-    const { getByText, queryByText } = render(<Activity />, {
+    const { getByText, queryByText, debug } = render(<Activity />, {
       wrapper,
     })
     const loading = getByText('Carregando dados...')
@@ -68,9 +70,14 @@ describe('Activity', () => {
 
     const title = getByText('Envio de trabalho')
     const comments = getByText('Envio até amanha')
+    await waitFor(() => expect(loading).not.toBeInTheDocument())
+    debug()
+
+    const columnForVerifyIfTableIsInTheDocument = getByText('Id')
 
     expect(title).toBeInTheDocument()
     expect(comments).toBeInTheDocument()
     expect(queryByText('Observações')).toBeNull()
+    expect(columnForVerifyIfTableIsInTheDocument).toBeInTheDocument()
   })
 })

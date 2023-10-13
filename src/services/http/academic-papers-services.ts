@@ -1,6 +1,14 @@
 import { schoolGuardianApi } from '@services'
-import type { SendAcademicPaperProps } from '@services'
-import type { DefaultResponse } from '@types'
+import type {
+  SendAcademicPaperProps,
+  GetAllAcademicPapersProps,
+  AcademicPaper,
+} from '@services'
+import type {
+  DefaultResponse,
+  DefaultResponseWithContent,
+  DefaultPaginate,
+} from '@types'
 
 export const academicPapersServices = {
   send: async (body: SendAcademicPaperProps, activityId: number) => {
@@ -16,5 +24,20 @@ export const academicPapersServices = {
     )
 
     return response.data
+  },
+  getAll: async ({
+    activityId = 0,
+    currentPage = 1,
+  }: GetAllAcademicPapersProps) => {
+    const params = {
+      currentPage,
+      numberlinesPerPage: 5,
+    }
+
+    const response = await schoolGuardianApi.get<
+      DefaultResponseWithContent<DefaultPaginate<AcademicPaper>>
+    >(`v1/academic-paper/get-all/${activityId}`, { params })
+
+    return response.data.content
   },
 }

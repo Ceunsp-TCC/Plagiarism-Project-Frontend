@@ -20,13 +20,17 @@ export function useGetActivity() {
 
   const isEmpty = isError
   const isAcademicPaper = activity?.type === 'ACADEMICPAPER'
+
   const isEnabledToSendAcademicPaper =
     checkHasPermission('sendAcademicPaper') && isAcademicPaper
+  const isEnabledToViewAcademicPapers =
+    checkHasPermission('getAcademicPapers') && isAcademicPaper
 
   return {
     activity,
     isLoading,
     isEmpty,
     isEnabledToSendAcademicPaper,
+    isEnabledToViewAcademicPapers,
   }
 }

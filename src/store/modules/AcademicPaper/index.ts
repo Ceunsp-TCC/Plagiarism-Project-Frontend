@@ -1,0 +1,1 @@
+export { useAcademicPaperTableStore } from './AcademicPaperTable'
