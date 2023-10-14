@@ -23,7 +23,7 @@ export function ActivityItem({
         </S.Title>
         <S.ContainerObservationAndIsSent>
           <S.Observation>{comments}</S.Observation>
-          {isStudent && (
+          {isStudent && isAcademicPaper && (
             <S.BadgeWrapper>
               <Badge color={sent ? 'GREEN' : 'RED'}>
                 {sent ? 'Enviado' : 'Não enviado'}
