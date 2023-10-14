@@ -4,5 +4,7 @@ export type ItemProps = {
   comments?: string
   createdAt: string
   type: ActivityType
+  sent?: boolean
+  isStudent: boolean
   onClick: () => void
 }

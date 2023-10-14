@@ -12,6 +12,7 @@ export type Activity = {
   comments?: string
   type: ActivityType
   createdAt: string
+  sent?: boolean
 }
 
 export type GetAllActivitiesProps = {
