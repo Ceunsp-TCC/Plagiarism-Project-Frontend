@@ -38,14 +38,18 @@ text-gray-500
 text-lg
 ml-1
 `
+export const ContainerObservationAndIsSent = tw.div`
+flex
+gap-2
+h-max
+`
 
 export const Observation = tw.p`
 text-gray-500
 font-medium
 text-base
-mb-6
 text-center
-h-52
+h-16
 overflow-y-auto
 md:text-left
 `
@@ -54,5 +58,10 @@ export const CreatedAt = tw.p`
 text-gray-500
 font-medium
 text-base
+
+`
+
+export const BadgeWrapper = tw.div`
+h-10
 
 `

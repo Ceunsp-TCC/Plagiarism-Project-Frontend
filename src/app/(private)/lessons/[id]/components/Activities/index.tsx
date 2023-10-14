@@ -5,7 +5,7 @@ import { useGetActivities } from '@/app/(private)/lessons/[id]/hooks'
 import * as S from './styles'
 
 export function Activities() {
-  const { activities, isLoading, isEmpty, navigateToDetails } =
+  const { activities, isLoading, isEmpty, isStudent, navigateToDetails } =
     useGetActivities()
 
   if (isLoading) {
@@ -23,6 +23,8 @@ export function Activities() {
               type={activity.type}
               comments={activity.comments}
               createdAt={activity.createdAt}
+              sent={activity.sent}
+              isStudent={isStudent}
               onClick={() => navigateToDetails(activity.id)}
             />
           ))}

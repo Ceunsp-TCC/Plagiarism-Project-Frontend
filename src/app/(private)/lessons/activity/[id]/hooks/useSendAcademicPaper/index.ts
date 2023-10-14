@@ -1,12 +1,13 @@
 'use client'
 import { ShowToast } from '@components'
 import { useParams } from 'next/navigation'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { sendAcademicPaperSchema } from '@/app/(private)/lessons/activity/[id]/schemas'
 import { academicPapersServices } from '@services'
 import { useNavigation } from '@hooks'
+
 import type { SendAcademicPaperFields } from '@/app/(private)/lessons/activity/[id]/types'
 import type { DefaultResponse } from '@types'
 import type { AxiosError } from 'axios'
@@ -15,7 +16,7 @@ import type { SendAcademicPaperProps } from '@services'
 export function useSendAcademicPaper() {
   const { id } = useParams()
   const { navigateBack } = useNavigation()
-
+  const queryClient = useQueryClient()
   const {
     register,
     handleSubmit,
@@ -39,6 +40,7 @@ export function useSendAcademicPaper() {
           description: 'O trabalho foi enviado e será avaliado pelo professor',
           toastType: 'SUCCESS',
         })
+        queryClient.refetchQueries(['activities'])
         navigateBack()
       },
       onError: (error: AxiosError<DefaultResponse>) => {
