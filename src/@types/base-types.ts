@@ -51,7 +51,11 @@ export type Permissions =
   | 'linkTeacherAndLessonInClass'
   | 'activities'
   | 'createActivity'
+  | 'getActivity'
   | 'getActivities'
+  | 'academicPapers'
+  | 'sendAcademicPaper'
+  | 'getAcademicPapers'
 
 export type Paths = keyof typeof permissionsUrls
 

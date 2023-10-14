@@ -1,11 +1,14 @@
 import { activitiesServices } from '@services'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'next/navigation'
-import { useNavigation } from '@/hooks'
+import { useNavigation } from '@hooks'
+import { useAuthStore } from '@store'
 
 export function useGetActivities() {
   const { navigate } = useNavigation()
+  const { data } = useAuthStore()
   const { id } = useParams()
+  const isStudent = data.user.roleName === 'STUDENT'
   const {
     data: activities,
     isLoading,
@@ -25,6 +28,7 @@ export function useGetActivities() {
     activities,
     isLoading,
     isEmpty,
+    isStudent,
     navigateToDetails,
   }
 }

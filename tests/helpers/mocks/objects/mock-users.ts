@@ -62,10 +62,44 @@ export const mockUserStudentState = {
       status: 'ACTIVE',
     },
     permissions: [
+      'lessons',
       'getLessonsByStudent',
       'activities',
+      'getActivity',
+      'getActivities',
+      'sendAcademicPaper',
+    ],
+  },
+}
+export const mockUserTeacherState = {
+  accessToken: {
+    type: 'bearer',
+    token: 'MjE.iDix6Cq-l5Z7FFcTMdsXn3yEkp6HtCYxflM1yIite8kq1NbzcFIgRUVjQeE9',
+  },
+  user: {
+    id: 6,
+    name: 'Hugo Martin André Pinto',
+    email: 'hugo.martin.pinto@cabletech.com',
+    phoneNumber: '71987101751',
+    roleName: 'TEACHER',
+    createdAt: '09/09/2023 17:43:21',
+    teacherData: {
+      id: 1,
+      cpf: '286001180342',
+      cnd: '919823193918',
+      randomPassword: false,
+      status: 'ACTIVE',
+    },
+    permissions: [
+      'getLessonsByTeacher',
+      'activities',
+      'createActivity',
+      'getActivities',
       'getActivities',
       'lessons',
+      'getActivity',
+      'academicPapers',
+      'getAcademicPapers',
     ],
   },
 }
