@@ -8,6 +8,10 @@ export type GetAllAcademicPapersProps = {
   currentPage?: number
 }
 
+export type GetAcademicPaperByIdProps = {
+  academicPaperId: number
+}
+
 type User = {
   name: string
 }

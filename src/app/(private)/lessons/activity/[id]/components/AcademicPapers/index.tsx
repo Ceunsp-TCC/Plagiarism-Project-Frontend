@@ -23,6 +23,7 @@ export function AcademicPapers() {
     numberPages,
     currentPage,
     setCurrentPage,
+    navigate,
   } = useGetAcademicPapers()
 
   return (
@@ -66,7 +67,11 @@ export function AcademicPapers() {
                       <TableCell element="td">
                         <S.ButtonWrapper>
                           <S.ButtonCustom
-                            onClick={() => console.log('ver detalhes')}
+                            onClick={() =>
+                              navigate(
+                                `/lessons/activity/academic-paper/${academicPaper.id}`,
+                              )
+                            }
                           >
                             Ver trabalho
                           </S.ButtonCustom>

@@ -2,10 +2,12 @@ import { academicPapersServices } from '@services'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'next/navigation'
 import { useAcademicPaperTableStore } from '@store'
+import { useNavigation } from '@hooks'
 
 export function useGetAcademicPapers() {
   const { id } = useParams()
   const { currentPage, setCurrentPage } = useAcademicPaperTableStore()
+  const { navigate } = useNavigation()
 
   const {
     data: academicPapers,
@@ -33,5 +35,6 @@ export function useGetAcademicPapers() {
     numberPages,
     currentPage,
     setCurrentPage,
+    navigate,
   }
 }

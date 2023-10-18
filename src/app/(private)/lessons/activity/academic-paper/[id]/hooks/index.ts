@@ -1,0 +1,1 @@
+export { useGetAcademicPaper } from './useGetAcademicPaper'
