@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react'
-import { useGetAcademicPapers } from '@/app/(private)/lessons/activity/[id]/hooks'
+import { useGetAcademicPaper } from '@/app/(private)/lessons/activity/academic-paper/[id]/hooks'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
-import { getAllAcademicPapersMock } from '@tests/helpers'
+import { getAcademicPaperByIdMock } from '@tests/helpers'
 import type { ReactNode } from 'react'
 
 const queryClient = new QueryClient()
@@ -18,19 +18,13 @@ jest.mock('next/navigation', () => ({
     forward: jest.fn(),
   })),
 }))
-describe('useGetAcademicPapers', () => {
+describe('useGetAcademicPaper', () => {
   it('Should return correct properties', async () => {
-    getAllAcademicPapersMock(200)
-    const { result } = renderHook(() => useGetAcademicPapers(), { wrapper })
+    getAcademicPaperByIdMock(200)
+    const { result } = renderHook(() => useGetAcademicPaper(), { wrapper })
 
     await waitFor(() => expect(result.current.isLoading).toBe(false))
     expect(result.current.isLoading).toBeDefined()
-    expect(result.current.academicPapers).toBeDefined()
-    expect(result.current.isEmpty).toBeDefined()
-    expect(result.current.currentPage).toBeDefined()
-    expect(result.current.numberPages).toBeDefined()
-    expect(result.current.enabledPagination).toBeDefined()
-    expect(result.current.enabledItems).toBeDefined()
-    expect(result.current.setCurrentPage).toBeDefined()
+    expect(result.current.academicPaper).toBeDefined()
   })
 })

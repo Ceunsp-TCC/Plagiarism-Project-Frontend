@@ -56,6 +56,7 @@ export type Permissions =
   | 'academicPapers'
   | 'sendAcademicPaper'
   | 'getAcademicPapers'
+  | 'getAcademicPaper'
 
 export type Paths = keyof typeof permissionsUrls
 
