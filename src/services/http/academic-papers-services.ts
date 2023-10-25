@@ -2,6 +2,7 @@ import { schoolGuardianApi } from '@services'
 import type {
   SendAcademicPaperProps,
   GetAllAcademicPapersProps,
+  GetAcademicPaperByIdProps,
   AcademicPaper,
 } from '@services'
 import type {
@@ -37,6 +38,13 @@ export const academicPapersServices = {
     const response = await schoolGuardianApi.get<
       DefaultResponseWithContent<DefaultPaginate<AcademicPaper>>
     >(`v1/academic-paper/get-all/${activityId}`, { params })
+
+    return response.data.content
+  },
+  getById: async ({ academicPaperId = 0 }: GetAcademicPaperByIdProps) => {
+    const response = await schoolGuardianApi.get<
+      DefaultResponseWithContent<AcademicPaper>
+    >(`v1/academic-paper/get-by-id/${academicPaperId}`)
 
     return response.data.content
   },

@@ -154,3 +154,30 @@ export const getAllAcademicPapersMock = (status: number) => {
     ),
   )
 }
+export const getAcademicPaperByIdMock = (status: number) => {
+  const isFailed = status !== 200
+  server.use(
+    rest.get(
+      `${process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_API}/v1/academic-paper/get-by-id/1`,
+      (req, res, ctx) => {
+        if (isFailed) {
+          return res(ctx.status(status))
+        }
+        return res(
+          ctx.status(status),
+          ctx.json({
+            statusCode: 200,
+            message: 'Academic paper found',
+            content: {
+              id: 19,
+              paper:
+                'http://localhost:3335/uploads/academic-papers/3clnpcq3sj0001r2nt3suwe1z4.pdf',
+              comments: 'testee',
+              createdAt: '13/10/2023 22:21:07',
+            },
+          }),
+        )
+      },
+    ),
+  )
+}

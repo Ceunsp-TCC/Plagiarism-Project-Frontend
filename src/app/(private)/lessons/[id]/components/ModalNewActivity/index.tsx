@@ -3,8 +3,6 @@ import {
   Modal,
   Input,
   InputLabel,
-  InputMoney,
-  InputFile,
   ErrorMessage,
   ButtonLoadingLottie,
   TextArea,

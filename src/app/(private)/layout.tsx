@@ -1,13 +1,16 @@
 'use client'
-import type { ReactNode } from 'react'
 import { Layout } from '@components'
 import { ProtectedMiddleware, PermissionsMiddleware } from '@middlewares'
+import { NotificationProvider } from '@providers'
+import type { ReactNode } from 'react'
 
 export default function ProtectedLayout({ children }: { children: ReactNode }) {
   return (
     <ProtectedMiddleware>
       <PermissionsMiddleware>
-        <Layout>{children}</Layout>
+        <Layout>
+          <NotificationProvider>{children}</NotificationProvider>
+        </Layout>
       </PermissionsMiddleware>
     </ProtectedMiddleware>
   )
