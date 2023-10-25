@@ -12,6 +12,7 @@ mt-auto
 ml-auto 
 bg-gray-700 
 rounded-lg
+cursor-pointer
 `
 
 export const Content = tw.div`

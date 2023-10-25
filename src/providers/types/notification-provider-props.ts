@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
 
-export type LayoutProviderProps = {
+export type NotificationProviderProps = {
   children: ReactNode
 }

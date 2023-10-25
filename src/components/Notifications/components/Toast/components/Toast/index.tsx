@@ -6,13 +6,14 @@ export function Toast({
   title = '',
   description = '',
   toastType = 'INFO',
+  onClick,
 }: ToastProps) {
   const enabledIconAttention = toastType === 'INFO' || toastType === 'WARNING'
   const isErrorType = toastType === 'ERROR'
   const isSuccessType = toastType === 'SUCCESS'
   const isWarningType = toastType === 'WARNING'
   return (
-    <S.Card>
+    <S.Card onClick={onClick}>
       <S.Content>
         <S.ContainerTitleIcon>
           <S.SpanIcon>
