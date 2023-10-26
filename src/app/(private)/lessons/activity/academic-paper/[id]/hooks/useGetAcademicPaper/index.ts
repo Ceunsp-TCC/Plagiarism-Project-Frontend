@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 
 export function useGetAcademicPaper() {
   const { id } = useParams()
+  const timeRefetchInterval = 10000 // 10 seconds
 
   const { data: academicPaper, isLoading } = useQuery({
     queryKey: ['academic-paper'],
@@ -12,6 +13,8 @@ export function useGetAcademicPaper() {
       academicPapersServices.getById({ academicPaperId: Number(id) }),
     refetchOnWindowFocus: false,
     retry: false,
+    refetchIntervalInBackground: true,
+    refetchInterval: timeRefetchInterval,
   })
 
   return {
