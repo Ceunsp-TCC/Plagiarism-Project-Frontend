@@ -48,4 +48,12 @@ export const academicPapersServices = {
 
     return response.data.content
   },
+
+  sendToReview: async ({ academicPaperId = 0 }: GetAcademicPaperByIdProps) => {
+    const response = await schoolGuardianApi.post<DefaultResponse>(
+      `v1/academic-paper/plagiarism-analyse/${academicPaperId}`,
+    )
+
+    return response.data
+  },
 }

@@ -5,6 +5,7 @@ import {
   AcademicPaperView,
   Header,
   Comments,
+  CardSource,
 } from '@/app/(private)/lessons/activity/academic-paper/[id]/components'
 import * as S from './styles'
 
@@ -24,7 +25,11 @@ export default function AcademicPaper() {
   return (
     <>
       <Header />
-      <AcademicPaperView url={academicPaper?.paper!} />
+      <S.WrapperContent>
+        <AcademicPaperView url={academicPaper?.paper!} />
+        <CardSource />
+      </S.WrapperContent>
+
       <Comments comments={academicPaper?.comments} />
     </>
   )

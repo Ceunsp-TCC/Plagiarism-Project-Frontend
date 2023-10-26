@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3336",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --turbo",
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -32,6 +32,7 @@
     "next": "13.5.5",
     "postcss": "8.4.23",
     "react": "18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-currency-input-field": "^3.6.11",
     "react-device-detect": "^2.2.3",
     "react-dom": "18.2.0",
