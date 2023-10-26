@@ -7,5 +7,5 @@ h-[53rem]
 
 export const Container = tw.div`
 mb-10
-
+w-full
 `
