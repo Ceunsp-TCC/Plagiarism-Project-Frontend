@@ -1,5 +1,5 @@
 'use client'
-import type { LayoutProviderProps } from '@/providers/types'
+import type { LayoutProviderProps } from '@providers'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import {
