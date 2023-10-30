@@ -33,4 +33,17 @@ describe('Sidebar', () => {
 
     expect(linkLessons).toBeInTheDocument()
   })
+  it('Should be render a sidebar when is student user', async () => {
+    const { result } = renderHook(() => useAuthStore())
+    act(() => {
+      result.current.setUserState(mockUserStudentState as any)
+    })
+    const { getByText } = render(<Sidebar />)
+
+    const linkLessons = getByText('Aulas')
+    const linkOrtographyCorrections = getByText('Correção ortográfica')
+
+    expect(linkLessons).toBeInTheDocument()
+    expect(linkOrtographyCorrections).toBeInTheDocument()
+  })
 })
