@@ -1,6 +1,23 @@
 import { server } from '@tests/helpers'
 import { rest } from 'msw'
 
+export const createCorretionMock = (status: number, message: string) => {
+  server.use(
+    rest.post(
+      `${process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_API}/v1/ortography-corrections/create`,
+      (req, res, ctx) => {
+        return res(
+          ctx.status(status),
+          ctx.json({
+            statusCode: status,
+            message,
+          }),
+        )
+      },
+    ),
+  )
+}
+
 export const getAllOrtographyCorrectionsMock = (status: number) => {
   const isFailed = status !== 200
   server.use(
