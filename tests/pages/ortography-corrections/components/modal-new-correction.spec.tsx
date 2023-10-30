@@ -13,7 +13,6 @@ import { ToastContainerCustom } from '@components'
 import { act } from 'react-dom/test-utils'
 import { createCorretionMock } from '@tests/helpers'
 import { faker } from '@faker-js/faker'
-
 import type { ReactNode } from 'react'
 
 const queryClient = new QueryClient()

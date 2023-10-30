@@ -1,10 +1,11 @@
 'use client'
-'use client'
 import { ortographyCorrectionsServices } from '@services'
 import { useQuery } from '@tanstack/react-query'
 import { useOrtographicCorrectionTableStore } from '@store'
+import { useNavigation } from '@hooks'
 
 export function useGetCorrections() {
+  const { navigate } = useNavigation()
   const { currentPage, filters, setCurrentPage } =
     useOrtographicCorrectionTableStore()
   const {
@@ -34,5 +35,6 @@ export function useGetCorrections() {
     enabledPagination,
     isEmpty,
     setCurrentPage,
+    navigate,
   }
 }

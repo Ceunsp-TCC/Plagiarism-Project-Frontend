@@ -44,4 +44,11 @@ export const ortographyCorrectionsServices = {
 
     return response.data.content
   },
+  getOne: async (id: number) => {
+    const response = await schoolGuardianApi.get<
+      DefaultResponseWithContent<OrtographicCorrection>
+    >(`v1/ortography-corrections/get-by-id/${id}`)
+
+    return response.data.content
+  },
 }

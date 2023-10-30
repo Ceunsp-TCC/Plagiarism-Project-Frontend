@@ -156,3 +156,29 @@ export const getAllOrtographyCorrectionsMock = (status: number) => {
     ),
   )
 }
+export const getOrtographyCorretionMock = (status: number) => {
+  server.use(
+    rest.get(
+      `${process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_API}/v1/ortography-corrections/get-by-id/1`,
+      (req, res, ctx) => {
+        return res(
+          ctx.status(status),
+          ctx.json({
+            statusCode: 200,
+            message: 'Corrections found',
+            content: {
+              id: 8,
+              userProvidedIdentifier: 'teste',
+              original:
+                'http://localhost:3335/uploads/ortographic-correction/originals/testedddccccccddddddddcccccloagbsie0001kro566rl3jxp.pdf',
+              result:
+                'http://localhost:3335/uploads/ortographic-correction/results/testedddccccccddddddddcccccloagc26x0005l2o59hvd9aih.pdf',
+              status: 'COMPLETED',
+              createdAt: '28/10/2023 16:45:09',
+            },
+          }),
+        )
+      },
+    ),
+  )
+}
