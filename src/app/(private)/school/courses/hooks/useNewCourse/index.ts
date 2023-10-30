@@ -54,7 +54,7 @@ export function useNewCourse() {
           toastType: 'ERROR',
           description: alreadyExistsCourseWithThisName
             ? 'Já existe um curso com este nome. Por favor, escolha um nome diferente.'
-            : 'Falha ao salvar professor ,tente novamente mais tarde!',
+            : 'Falha ao salvar curso ,tente novamente mais tarde!',
         })
       },
     },

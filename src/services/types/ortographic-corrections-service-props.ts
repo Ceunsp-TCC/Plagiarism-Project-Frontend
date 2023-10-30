@@ -13,3 +13,8 @@ export type GetAllOrtographicCorrectionsProps = {
   currentPage?: number
   identifier?: string
 }
+
+export type CreateOrtographicCorrectionProps = {
+  original: File
+  userProvidedIdentifier: string
+}

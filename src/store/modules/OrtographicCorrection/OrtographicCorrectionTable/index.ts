@@ -7,6 +7,9 @@ export const useOrtographicCorrectionTableStore =
     filters: {
       identifier: '',
     },
+    isModalNewCorrectionOpen: false,
     setCurrentPage: (currentPage) => set({ currentPage }),
     setFilters: (filters) => set({ filters }),
+    setOpenModalNewCorrection: (isModalNewCorrectionOpen) =>
+      set({ isModalNewCorrectionOpen }),
   }))
