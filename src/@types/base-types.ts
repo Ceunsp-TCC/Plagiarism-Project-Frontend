@@ -57,6 +57,10 @@ export type Permissions =
   | 'sendAcademicPaper'
   | 'getAcademicPapers'
   | 'getAcademicPaper'
+  | 'ortographyCorrections'
+  | 'createNewOrtographyCorrection'
+  | 'viewOrtographyCorrections'
+  | 'viewOneOrtographyCorrection'
 
 export type Paths = keyof typeof permissionsUrls
 

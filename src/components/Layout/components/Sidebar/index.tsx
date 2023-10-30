@@ -3,7 +3,11 @@ import { SidebarItem } from './components'
 import { GiTeacher } from 'react-icons/gi'
 import { PiStudentFill } from 'react-icons/pi'
 import { BiSolidBookAlt } from 'react-icons/bi'
-import { FaGraduationCap, FaChalkboardTeacher } from 'react-icons/fa'
+import {
+  FaGraduationCap,
+  FaChalkboardTeacher,
+  FaPencilAlt,
+} from 'react-icons/fa'
 import { useSidebar } from '@/components/Layout/hooks'
 
 import * as S from './styles'
@@ -47,6 +51,13 @@ export function Sidebar() {
               label="Aulas"
               href="/lessons"
               Icon={FaChalkboardTeacher}
+            />
+          )}
+          {checkHasPermission('ortographyCorrections') && (
+            <SidebarItem
+              label="Correção ortográfica"
+              href="/ortography-corrections"
+              Icon={FaPencilAlt}
             />
           )}
         </S.GroupItems>
