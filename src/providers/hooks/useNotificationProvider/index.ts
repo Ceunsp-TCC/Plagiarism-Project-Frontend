@@ -8,7 +8,7 @@ import { useNavigation } from '@/hooks'
 export function useNotificationProvider() {
   const { navigate } = useNavigation()
   const audioRef = useRef<HTMLAudioElement>(null)
-  const REQUEST_INTERVAL = 10000 // ten seconds
+  const REQUEST_INTERVAL = 20000 // twenty seconds
 
   const { data: notification, dataUpdatedAt } = useQuery({
     queryKey: ['notification'],

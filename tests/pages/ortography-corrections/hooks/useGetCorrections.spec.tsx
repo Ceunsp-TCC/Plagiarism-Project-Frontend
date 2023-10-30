@@ -5,10 +5,20 @@ import { getAllOrtographyCorrectionsMock } from '@tests/helpers'
 
 import type { ReactNode } from 'react'
 
+jest.mock('next/navigation', () => ({
+  usePathname: jest.fn(),
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    back: jest.fn(),
+    forward: jest.fn(),
+  })),
+}))
+
 const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 )
+
 describe('useGetCorrections', () => {
   it('Should return correct properties', async () => {
     getAllOrtographyCorrectionsMock(200)

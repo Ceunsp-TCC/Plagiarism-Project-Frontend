@@ -24,6 +24,7 @@ export function OrtographyCorrectionsTable() {
     numberPages,
     ortographicCorrections,
     setCurrentPage,
+    navigate,
   } = useGetCorrections()
 
   return (
@@ -83,7 +84,11 @@ export function OrtographyCorrectionsTable() {
                           ) : (
                             <S.ButtonWrapper>
                               <S.ButtonCustom
-                                onClick={() => console.log('test')}
+                                onClick={() =>
+                                  navigate(
+                                    `/ortography-corrections/${correction.id}`,
+                                  )
+                                }
                               >
                                 Ver resultado
                               </S.ButtonCustom>
