@@ -6,6 +6,7 @@ import {
   Header,
   Comments,
   CardSource,
+  AvaliationModal,
 } from '@/app/(private)/lessons/activity/academic-paper/[id]/components'
 import * as S from './styles'
 
@@ -31,6 +32,7 @@ export default function AcademicPaper() {
       </S.WrapperContent>
 
       <Comments comments={academicPaper?.comments} />
+      <AvaliationModal />
     </>
   )
 }
