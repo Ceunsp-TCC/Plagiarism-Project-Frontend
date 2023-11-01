@@ -42,16 +42,14 @@ hover:text-blue-600
 hover:underline
 `
 
-export const ItemContent = tw.p`
-text-white
-`
-
 export const ContainerItems = tw.p`
 flex
 gap-2
 items-center
 `
-export const TextPlagiarism = tw.p``
+export const TextPlagiarism = tw.p`
+font-semibold
+`
 
 export const ContainerMasterItems = tw.div`
 flex
