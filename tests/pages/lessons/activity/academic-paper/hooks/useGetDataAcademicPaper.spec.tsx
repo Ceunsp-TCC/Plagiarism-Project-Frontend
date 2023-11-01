@@ -23,57 +23,27 @@ jest.mock('next/navigation', () => ({
 }))
 
 describe('check hook to get data request react query', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
+    queryClient.clear()
+  })
+  it('check items has corret with status pending', async () => {
     getAcademicPaperByIdMock(200, 'PENDING')
-    const { result } = renderHook(() => useGetAcademicPaper(), { wrapper })
+    const { result: resultGenerateRequest } = renderHook(
+      () => useGetAcademicPaper(),
+      {
+        wrapper,
+      },
+    )
 
-    await waitFor(() => expect(result.current.isLoading).toBe(false))
-  })
-  it('check items has corret with status pending', () => {
+    await waitFor(() =>
+      expect(resultGenerateRequest.current.isLoading).toBe(false),
+    )
+
     const { result } = renderHook(useGetDataAcademicPaper, { wrapper })
 
-    waitFor(() => {
-      expect(result.current.dataAcademicPaper.student).toBeDefined()
-      expect(result.current.dataAcademicPaper.paper).toBeDefined()
-      expect(result.current.dataAcademicPaper.report).toBeDefined()
-      expect(result.current.dataAcademicPaper.comments).toBeDefined()
-    })
-  })
-
-  beforeEach(async () => {
-    queryClient.clear()
-    getAcademicPaperByIdMock(200, 'PROCESSING')
-    const { result } = renderHook(() => useGetAcademicPaper(), { wrapper })
-
-    await waitFor(() => expect(result.current.isLoading).toBe(false))
-  })
-  it('check items has corret with status processing', () => {
-    const { result } = renderHook(useGetDataAcademicPaper, { wrapper })
-
-    waitFor(() => {
-      expect(result.current.dataAcademicPaper.student).toBeDefined()
-      expect(result.current.dataAcademicPaper.paper).toBeDefined()
-      expect(result.current.dataAcademicPaper.report).toBeDefined()
-      expect(result.current.dataAcademicPaper.comments).toBeDefined()
-    })
-  })
-
-  beforeEach(async () => {
-    queryClient.clear()
-    getAcademicPaperByIdMock(200, 'PROCESSING')
-    const { result } = renderHook(() => useGetAcademicPaper(), { wrapper })
-
-    await waitFor(() => expect(result.current.isLoading).toBe(false))
-  })
-
-  it('check items has corret with status completed', () => {
-    const { result } = renderHook(useGetDataAcademicPaper, { wrapper })
-
-    waitFor(() => {
-      expect(result.current.dataAcademicPaper.student).toBeDefined()
-      expect(result.current.dataAcademicPaper.paper).toBeDefined()
-      expect(result.current.dataAcademicPaper.report).toBeDefined()
-      expect(result.current.dataAcademicPaper.comments).toBeDefined()
-    })
+    expect(result.current.analysisStatus).toBeDefined()
+    expect(result.current.hasSources).toBeDefined()
+    expect(result.current.isCompleted).toBeDefined()
+    expect(result.current.hasSources).toBeDefined()
   })
 })
