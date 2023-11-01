@@ -1,14 +1,15 @@
 'use client'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { notificationsServices } from '@services'
 import { ShowToast } from '@components'
 import { useRef, useEffect } from 'react'
-import { useNavigation } from '@/hooks'
+import { useNavigation } from '@hooks'
 
 export function useNotificationProvider() {
+  const queryClient = useQueryClient()
   const { navigate } = useNavigation()
   const audioRef = useRef<HTMLAudioElement>(null)
-  const REQUEST_INTERVAL = 10000 // ten seconds
+  const REQUEST_INTERVAL = 20000 // twenty seconds
 
   const { data: notification, dataUpdatedAt } = useQuery({
     queryKey: ['notification'],
@@ -21,6 +22,7 @@ export function useNotificationProvider() {
   const hasChangeInRequest = dataUpdatedAt
   const message = notification?.message
   const screen = notification?.data.navigateTo
+  const queryKeys = notification?.data.reactQueryKeys
 
   useEffect(() => {
     if (hasChangeInRequest) {
@@ -29,7 +31,10 @@ export function useNotificationProvider() {
         title: 'Nova notificação',
         toastType: 'WARNING',
         description: message,
-        onClick: () => navigate(screen!),
+        onClick: () => {
+          queryClient.refetchQueries(queryKeys)
+          navigate(screen!)
+        },
       })
     }
   }, [hasChangeInRequest])

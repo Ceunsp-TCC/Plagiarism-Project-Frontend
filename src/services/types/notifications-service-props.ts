@@ -1,5 +1,6 @@
 export type NotificationData = {
   navigateTo: string
+  reactQueryKeys?: string[]
 }
 
 export type GetNotificationContent = {

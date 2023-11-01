@@ -9,7 +9,7 @@ export const ShowToast = ({
   onClick,
 }: ShowToastProps) => {
   toast(Toast({ title, toastType, description, onClick }), {
-    autoClose: false,
+    autoClose: 5000,
     transition: Slide,
     position: 'top-center',
     hideProgressBar: true,

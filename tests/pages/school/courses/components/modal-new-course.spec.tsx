@@ -7,7 +7,6 @@ import { ToastContainerCustom } from '@components'
 import { act } from 'react-dom/test-utils'
 import { createCourseMock } from '@tests/helpers'
 import { faker } from '@faker-js/faker'
-import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 
 const queryClient = new QueryClient()

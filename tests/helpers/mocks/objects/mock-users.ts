@@ -68,6 +68,10 @@ export const mockUserStudentState = {
       'getActivity',
       'getActivities',
       'sendAcademicPaper',
+      'ortographyCorrections',
+      'createNewOrtographyCorrection',
+      'viewOrtographyCorrections',
+      'viewOneOrtographyCorrection',
     ],
   },
 }
