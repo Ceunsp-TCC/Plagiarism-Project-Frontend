@@ -57,10 +57,6 @@ describe('Academic paper', () => {
     expect(textNonFoundSource).toBeVisible()
   })
 
-  beforeEach(() => {
-    queryClient.clear()
-  })
-
   it('Should be render a activity paper without reports', async () => {
     getAcademicPaperByIdMock(200, 'PROCESSING')
 

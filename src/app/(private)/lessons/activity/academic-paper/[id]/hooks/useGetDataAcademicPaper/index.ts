@@ -6,8 +6,23 @@ export const useGetDataAcademicPaper = () => {
   const data = queryClient.getQueriesData({
     queryKey: ['academic-paper'],
   })
-  const dataAcademicPaper = data[0][1] as AcademicPaper
+  const academicPaper = data[0][1] as AcademicPaper
+
+  const analysisStatus = academicPaper.analysisStatus
+  const isCompleted = analysisStatus === 'COMPLETED'
+  const isPending = analysisStatus === 'PENDING'
+  const isNotComplete = academicPaper.analysisStatus !== 'COMPLETED'
+  const hasSources = isCompleted && academicPaper.report!.sources.length > 0
+  const sources = academicPaper.report?.sources
+  const report = academicPaper.report
+
   return {
-    dataAcademicPaper,
+    isCompleted,
+    isPending,
+    isNotComplete,
+    hasSources,
+    sources,
+    report,
+    analysisStatus,
   }
 }

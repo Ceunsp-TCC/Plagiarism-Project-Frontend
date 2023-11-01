@@ -1,2 +1,1 @@
-export { LoadingReport } from './LoadingReport'
-export { HeaderPlagiarismDetails } from './HeaderPlagiarismDetails'
+export { Details } from './Details'

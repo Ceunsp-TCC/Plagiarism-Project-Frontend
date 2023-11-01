@@ -3,18 +3,12 @@ import { formatStatusAcademicPaper } from './format-status-academic-paper'
 export type ItemsHeader = 'Status' | 'Plágio' | 'Originalidade'
 
 export const itemsHeaderDetails = (item: ItemsHeader) => {
-  const { dataAcademicPaper } = useGetDataAcademicPaper()
+  const { analysisStatus, report } = useGetDataAcademicPaper()
   const valueItem = {
-    Status:
-      formatStatusAcademicPaper(dataAcademicPaper.analysisStatus) || 'Pendente',
-    Plágio:
-      dataAcademicPaper.report === null
-        ? 'Arquivo não revisado'
-        : `${dataAcademicPaper.report.plagiarism} %`,
+    Status: formatStatusAcademicPaper(analysisStatus) || 'Pendente',
+    Plágio: report === null ? 'Arquivo não revisado' : `${report.plagiarism} %`,
     Originalidade:
-      dataAcademicPaper.report === null
-        ? 'Arquivo não revisado'
-        : `${dataAcademicPaper.report.originality} %`,
+      report === null ? 'Arquivo não revisado' : `${report.originality} %`,
   }
 
   return valueItem[item] || 'Não encontrado informação'
