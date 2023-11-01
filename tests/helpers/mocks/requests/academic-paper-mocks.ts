@@ -1,3 +1,4 @@
+import { StatusAcademicPaper } from '@/services'
 import { server } from '@tests/helpers'
 import { rest } from 'msw'
 
@@ -154,7 +155,10 @@ export const getAllAcademicPapersMock = (status: number) => {
     ),
   )
 }
-export const getAcademicPaperByIdMock = (status: number) => {
+export const getAcademicPaperByIdMock = (
+  status: number,
+  statusReport: StatusAcademicPaper,
+) => {
   const isFailed = status !== 200
   server.use(
     rest.get(
@@ -169,11 +173,33 @@ export const getAcademicPaperByIdMock = (status: number) => {
             statusCode: 200,
             message: 'Academic paper found',
             content: {
-              id: 19,
+              id: 1,
               paper:
-                'http://localhost:3335/uploads/academic-papers/3clnpcq3sj0001r2nt3suwe1z4.pdf',
-              comments: 'testee',
-              createdAt: '13/10/2023 22:21:07',
+                'http://localhost:3335/uploads/academic-papers/3clo3jsw3j0001m9lr7mmg0n16.pdf',
+              comments: 'test',
+              analysisStatus: statusReport,
+              createdAt: '23/10/2023 20:48:01',
+              report:
+                statusReport !== 'COMPLETED'
+                  ? null
+                  : {
+                      id: 1,
+                      plagiarism: 32.46,
+                      originality: 67.54,
+                      sources: [
+                        {
+                          title: 'vestibulares.estrategia.com',
+                          url: 'https://vestibulares.estrategia.com/portal/materias/historia/historia-do-brasil/',
+                          plagiarism: 96.5,
+                        },
+                        {
+                          title: 'passeidireto.com',
+                          url: 'https://www.passeidireto.com/arquivo/128754777/resumo-historia-do-brasil',
+                          plagiarism: 96.5,
+                        },
+                      ],
+                      createdAt: '23/10/2023 20:52:55',
+                    },
             },
           }),
         )
