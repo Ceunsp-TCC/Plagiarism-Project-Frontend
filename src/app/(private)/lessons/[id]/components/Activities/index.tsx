@@ -25,6 +25,7 @@ export function Activities() {
               createdAt={activity.createdAt}
               sent={activity.sent}
               isStudent={isStudent}
+              note={activity.note!}
               onClick={() => navigateToDetails(activity.id)}
             />
           ))}

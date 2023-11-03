@@ -22,6 +22,7 @@ export const ContainerTitleAndObservationAndCreatedAt = tw.div`
 flex
 flex-col
 ml-4
+w-full
 md:w-1/4
 `
 export const Title = tw.h1`
@@ -52,6 +53,14 @@ text-center
 h-16
 overflow-y-auto
 md:text-left
+w-96
+`
+
+export const BadgesContainer = tw.div`
+flex
+w-[35rem]
+
+
 `
 
 export const CreatedAt = tw.p`
