@@ -5,3 +5,8 @@
 .btn-secondary{
     @apply w-full flex px-8 text-lg justify-center text-white font-bold bg-gray-900 hover:bg-gray-800 border border-gray-800 focus:ring-4 focus:ring-blue-200 rounded-full cursor-pointer;
 } 
+
+button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

@@ -1,5 +1,6 @@
 import { schoolGuardianApi } from '@services'
 import type {
+  SendAcademicPaperNoteProps,
   SendAcademicPaperProps,
   GetAllAcademicPapersProps,
   GetAcademicPaperByIdProps,
@@ -52,6 +53,21 @@ export const academicPapersServices = {
   sendToReview: async ({ academicPaperId = 0 }: GetAcademicPaperByIdProps) => {
     const response = await schoolGuardianApi.post<DefaultResponse>(
       `v1/academic-paper/plagiarism-analyse/${academicPaperId}`,
+    )
+
+    return response.data
+  },
+
+  sendNote: async ({
+    academicPaperId = 0,
+    note,
+  }: SendAcademicPaperNoteProps) => {
+    const body = {
+      note,
+    }
+    const response = await schoolGuardianApi.put<DefaultResponse>(
+      `v1/academic-paper/send-note/${academicPaperId}`,
+      body,
     )
 
     return response.data

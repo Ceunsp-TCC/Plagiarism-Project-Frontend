@@ -207,3 +207,23 @@ export const getAcademicPaperByIdMock = (
     ),
   )
 }
+export const sendAcademicPaperNoteMock = (status: number) => {
+  const isFailed = status !== 200
+  server.use(
+    rest.put(
+      `${process.env.NEXT_PUBLIC_SCHOOL_GUARDIAN_API}/v1/academic-paper/send-note/1`,
+      (req, res, ctx) => {
+        if (isFailed) {
+          return res(ctx.status(status))
+        }
+        return res(
+          ctx.status(status),
+          ctx.json({
+            statusCode: 200,
+            message: 'Note sent successfully',
+          }),
+        )
+      },
+    ),
+  )
+}
