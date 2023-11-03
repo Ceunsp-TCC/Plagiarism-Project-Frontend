@@ -8,10 +8,12 @@ import {
   CardSource,
   AvaliationModal,
 } from '@/app/(private)/lessons/activity/academic-paper/[id]/components'
+import { useAcademicPaperViewStore } from '@store'
 import * as S from './styles'
 
 export default function AcademicPaper() {
-  const { academicPaper, isLoading } = useGetAcademicPaper()
+  const { academicPaper, isLoading, hasAvaliation } = useGetAcademicPaper()
+  const { setStateAvaliationModal } = useAcademicPaperViewStore()
 
   if (isLoading) {
     return (
@@ -25,6 +27,17 @@ export default function AcademicPaper() {
 
   return (
     <>
+      <S.ContainerAvaliationDownload>
+        {!hasAvaliation && (
+          <S.ButtonCustom
+            className="w-44"
+            onClick={() => setStateAvaliationModal(true)}
+          >
+            Avaliar
+          </S.ButtonCustom>
+        )}
+      </S.ContainerAvaliationDownload>
+
       <Header />
       <S.WrapperContent>
         <AcademicPaperView url={academicPaper?.paper!} />

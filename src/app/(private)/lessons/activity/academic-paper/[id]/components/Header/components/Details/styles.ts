@@ -32,5 +32,10 @@ export const ButtonCustom = tw(Button)`
 text-sm
 h-12
 items-center
-mt-10
+`
+
+export const ContainerGraphAvaliationButton = tw.div`
+flex
+flex-col
+
 `

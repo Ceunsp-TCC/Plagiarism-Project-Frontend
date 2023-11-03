@@ -6,7 +6,7 @@ flex
 flex-col
 w-72
 overflow-y-auto
-h-[30rem]
+h-[50rem]
 md:w-[43rem]
 2xl:h-max
 pl-2

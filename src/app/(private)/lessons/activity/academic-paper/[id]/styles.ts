@@ -1,4 +1,5 @@
 import tw from 'tailwind-styled-components'
+import { Button } from '@components'
 
 export const ContainerLoading = tw.div`
 flex
@@ -16,4 +17,14 @@ flex
 gap-10
 w-full
 h-auto
+`
+export const ButtonCustom = tw(Button)`
+text-sm
+h-12
+
+`
+
+export const ContainerAvaliationDownload = tw.div`
+flex
+justify-between
 `

@@ -17,8 +17,10 @@ export function useGetAcademicPaper() {
     refetchInterval: timeRefetchInterval,
   })
 
+  const hasAvaliation = academicPaper?.note !== null
   return {
     academicPaper,
     isLoading,
+    hasAvaliation,
   }
 }

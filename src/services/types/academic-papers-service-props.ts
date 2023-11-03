@@ -1,3 +1,8 @@
+export type SendAcademicPaperNoteProps = {
+  academicPaperId: number
+  note: number
+}
+
 export type SendAcademicPaperProps = {
   paper: File
   comments?: string
@@ -41,6 +46,7 @@ export type AcademicPaper = {
   comments: string
   createdAt: string
   student: Student
+  note?: number
   analysisStatus: StatusAcademicPaper
   report: Report | null
 }

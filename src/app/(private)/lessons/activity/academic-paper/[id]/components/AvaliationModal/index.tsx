@@ -1,20 +1,35 @@
 'use client'
+import { AvaliationButton } from './components'
 import { Modal, ButtonLoadingLottie } from '@components'
-
+import { useAvaliationModal } from '@/app/(private)/lessons/activity/academic-paper/[id]/hooks'
 import * as S from './styles'
 
 export function AvaliationModal() {
+  const {
+    selectedNote,
+    isLoading,
+    openAvaliationModal,
+    hasNote,
+    closeModal,
+    mutate,
+    setSelectedNote,
+  } = useAvaliationModal()
+
   return (
-    <Modal isOpen={true} onClose={() => console.log('oi')}>
+    <Modal isOpen={openAvaliationModal} onClose={closeModal}>
       <S.Container>
-        <S.Title>Registre sua atividade</S.Title>
-        <p>button</p>
+        <S.Title>Escolha uma nota de 0 a 10</S.Title>
+        <AvaliationButton
+          currentNote={selectedNote!}
+          onSelect={(note) => setSelectedNote(note)}
+        />
         <S.ContainerButtons>
           <S.ButtonWrapper>
             <S.ButtonCustom
-              //   isLoading={isLoading}
+              disabled={!hasNote}
+              isLoading={isLoading}
               loading={() => <ButtonLoadingLottie />}
-              //   onClick={handleSubmit(onSubmit)}
+              onClick={() => mutate()}
             >
               Salvar
             </S.ButtonCustom>

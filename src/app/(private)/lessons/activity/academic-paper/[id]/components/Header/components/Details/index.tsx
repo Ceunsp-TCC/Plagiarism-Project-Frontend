@@ -33,6 +33,7 @@ export const Details = () => {
             <S.DescriptionItem>{element}</S.DescriptionItem>
             {enabledToRenderAnalyseButton && (
               <S.ButtonCustom
+                className="mt-10"
                 disabled={isLoading}
                 isLoading={isLoading}
                 loading={() => <ButtonLoadingLottie />}
@@ -45,16 +46,18 @@ export const Details = () => {
         )
       })}
       <S.ContainerMasterItems>
-        <ChartDonut
-          colors={['#3B82F6', '#54D62C']}
-          labels={['Plágio', 'Originalidade']}
-          values={[
-            isNotComplete ? 0 : report?.plagiarism!,
-            isNotComplete ? 0 : report?.originality!,
-          ]}
-          height={350}
-          width={350}
-        />
+        <S.ContainerGraphAvaliationButton>
+          <ChartDonut
+            colors={['#3B82F6', '#54D62C']}
+            labels={['Plágio', 'Originalidade']}
+            values={[
+              isNotComplete ? 0 : report?.plagiarism!,
+              isNotComplete ? 0 : report?.originality!,
+            ]}
+            height={350}
+            width={350}
+          />
+        </S.ContainerGraphAvaliationButton>
       </S.ContainerMasterItems>
     </S.ContainerMaster>
   )
