@@ -6,5 +6,6 @@ export type ItemProps = {
   type: ActivityType
   sent?: boolean
   isStudent: boolean
+  note: number | null
   onClick: () => void
 }

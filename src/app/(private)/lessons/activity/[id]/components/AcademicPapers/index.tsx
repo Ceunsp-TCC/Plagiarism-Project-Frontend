@@ -55,30 +55,38 @@ export function AcademicPapers() {
                   </TableRow>
                 )}
                 {enabledItems &&
-                  academicPapers?.items.map((academicPaper) => (
-                    <TableRow forWhat="CONTENT" key={academicPaper.id}>
-                      <TableCell element="td">{academicPaper.id}</TableCell>
-                      <TableCell element="td">
-                        {academicPaper.student.user.name}
-                      </TableCell>
-                      <TableCell element="td">
-                        {academicPaper.createdAt}
-                      </TableCell>
-                      <TableCell element="td">
-                        <S.ButtonWrapper>
-                          <S.ButtonCustom
-                            onClick={() =>
-                              navigate(
-                                `/lessons/activity/academic-paper/${academicPaper.id}`,
-                              )
-                            }
-                          >
-                            Ver trabalho
-                          </S.ButtonCustom>
-                        </S.ButtonWrapper>
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                  academicPapers?.items.map((academicPaper) => {
+                    const hasNote = academicPaper.note !== null
+                    return (
+                      <TableRow forWhat="CONTENT" key={academicPaper.id}>
+                        <TableCell element="td">{academicPaper.id}</TableCell>
+                        <TableCell element="td">
+                          {academicPaper.student.user.name}
+                        </TableCell>
+                        <TableCell element="td">
+                          {hasNote
+                            ? academicPaper.note
+                            : 'Trabalho não avaliado'}
+                        </TableCell>
+                        <TableCell element="td">
+                          {academicPaper.createdAt}
+                        </TableCell>
+                        <TableCell element="td">
+                          <S.ButtonWrapper>
+                            <S.ButtonCustom
+                              onClick={() =>
+                                navigate(
+                                  `/lessons/activity/academic-paper/${academicPaper.id}`,
+                                )
+                              }
+                            >
+                              Ver trabalho
+                            </S.ButtonCustom>
+                          </S.ButtonWrapper>
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
               </TableBody>
             </Table>
           </TableContainer>

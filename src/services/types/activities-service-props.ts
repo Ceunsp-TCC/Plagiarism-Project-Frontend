@@ -13,6 +13,7 @@ export type Activity = {
   type: ActivityType
   createdAt: string
   sent?: boolean
+  note?: number
 }
 
 export type GetAllActivitiesProps = {

@@ -9,9 +9,11 @@ export function ActivityItem({
   type = 'ACADEMICPAPER',
   sent = false,
   isStudent = false,
+  note = null,
   onClick,
 }: ItemProps) {
   const isAcademicPaper = type === 'ACADEMICPAPER'
+  const hasNote = note !== null
   return (
     <S.Card onClick={onClick} className={sent ? 'pointer-events-none' : ''}>
       <S.ContainerTitleAndObservationAndCreatedAt>
@@ -24,11 +26,18 @@ export function ActivityItem({
         <S.ContainerObservationAndIsSent>
           <S.Observation>{comments}</S.Observation>
           {isStudent && isAcademicPaper && (
-            <S.BadgeWrapper>
-              <Badge color={sent ? 'GREEN' : 'RED'}>
-                {sent ? 'Enviado' : 'Não enviado'}
-              </Badge>
-            </S.BadgeWrapper>
+            <S.BadgesContainer>
+              <S.BadgeWrapper>
+                <Badge color={sent ? 'GREEN' : 'RED'}>
+                  {sent ? 'Enviado' : 'Não enviado'}
+                </Badge>
+              </S.BadgeWrapper>
+              <S.BadgeWrapper>
+                <Badge color={hasNote ? 'GREEN' : 'YELLOW'}>
+                  {hasNote ? note : 'Não avaliado'}
+                </Badge>
+              </S.BadgeWrapper>
+            </S.BadgesContainer>
           )}
         </S.ContainerObservationAndIsSent>
         <S.CreatedAt>{createdAt}</S.CreatedAt>
