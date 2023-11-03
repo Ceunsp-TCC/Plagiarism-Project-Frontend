@@ -21,11 +21,13 @@ h-56
 
 export const TitleItem = tw.p`
 font-extrabold
-text-3xl
+xl:text-3xl
+text-xl
 `
 
 export const DescriptionItem = tw.p`
-text-xl
+xl:text-xl
+text-lg
 `
 
 export const ButtonCustom = tw(Button)`

@@ -1,5 +1,5 @@
 export const itemsHeaderPlagiarismDetails = [
   'Status',
-  'Plágio',
+  'Similaridade',
   'Originalidade',
 ]
