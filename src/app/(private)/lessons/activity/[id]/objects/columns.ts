@@ -1,1 +1,1 @@
-export const columns = ['Id', 'Aluno', 'Data de envio', '']
+export const columns = ['Id', 'Aluno', 'Nota', 'Data de envio', '']
