@@ -4,6 +4,9 @@ export const Container = tw.section`
 flex
 flex-col
 w-72
+h-96
+overflow-y-auto
+lg:h-max
 md:w-[43rem]
 `
 
