@@ -1,6 +1,6 @@
 export const formatToShort = (link: string) => {
   const originalLinkSize = link.length
-  const maxSize = 50
+  const maxSize = 30
   const enabledToFormat = originalLinkSize > maxSize
 
   if (enabledToFormat) {
