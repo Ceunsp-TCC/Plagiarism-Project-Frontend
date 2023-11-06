@@ -49,7 +49,7 @@ export const Details = () => {
         <S.ContainerGraphAvaliationButton>
           <ChartDonut
             colors={['#3B82F6', '#54D62C']}
-            labels={['Plágio', 'Originalidade']}
+            labels={['Similaridade', 'Originalidade']}
             values={[
               isNotComplete ? 0 : report?.plagiarism!,
               isNotComplete ? 0 : report?.originality!,
