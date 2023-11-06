@@ -59,6 +59,7 @@ w-96
 
 export const BadgesContainer = tw.div`
 flex
+flex-col
 w-[35rem]
 
 
@@ -72,6 +73,6 @@ text-base
 `
 
 export const BadgeWrapper = tw.div`
-h-10
+
 
 `
