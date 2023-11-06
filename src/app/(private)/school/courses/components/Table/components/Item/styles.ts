@@ -2,7 +2,7 @@ import tw from 'tailwind-styled-components'
 
 export const Card = tw.div`
 w-full
-md:h-60
+lg:h-60
 bg-gray-700
 border-[1px]
 border-gray-400
@@ -16,7 +16,7 @@ hover:opacity-80
 cursor-pointer
 h-max
 flex-col
-md:flex-row
+lg:flex-row
 `
 export const ContainerImage = tw.div`
 flex

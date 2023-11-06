@@ -6,9 +6,8 @@ flex
 flex-col
 w-72
 overflow-y-auto
-h-[30rem]
+h-max
 md:w-[43rem]
-2xl:h-max
 px-1
 `
 export const Form = tw.form`

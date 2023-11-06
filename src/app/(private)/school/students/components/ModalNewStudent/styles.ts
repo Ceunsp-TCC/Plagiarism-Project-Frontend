@@ -4,7 +4,10 @@ import { Button } from '@components'
 export const Container = tw.section`
 flex
 flex-col
+overflow-y-auto
 w-72
+h-96
+lg:h-max
 md:w-[43rem]
 
 `

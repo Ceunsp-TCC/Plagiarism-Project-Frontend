@@ -37,7 +37,7 @@ export function ModalNewStudent() {
         <S.Title>Registre seu aluno</S.Title>
         <S.Form method="POST">
           <S.ContentForm>
-            <S.InputWrapper className="w-72 md:w-80">
+            <S.InputWrapper className="col-span-2 lg:col-span-1">
               <Input
                 {...register('name')}
                 hasError={checkHasError(errors.name)}
@@ -50,7 +50,7 @@ export function ModalNewStudent() {
                 }
               />
             </S.InputWrapper>
-            <S.InputWrapper className="w-72 md:w-80">
+            <S.InputWrapper className="col-span-2 lg:col-span-1">
               <Input
                 {...register('email')}
                 hasError={checkHasError(errors.email)}
@@ -63,7 +63,7 @@ export function ModalNewStudent() {
                 }
               />
             </S.InputWrapper>
-            <S.InputWrapper className="w-72 md:w-80">
+            <S.InputWrapper className="col-span-2 lg:col-span-1">
               <InputMask
                 {...register('CPF')}
                 mask="999.999.999-99"
@@ -77,7 +77,7 @@ export function ModalNewStudent() {
                 }
               />
             </S.InputWrapper>
-            <S.InputWrapper className="w-72 md:w-80">
+            <S.InputWrapper className="col-span-2 lg:col-span-1">
               <InputMask
                 {...register('phoneNumber')}
                 mask="(99) 99999-9999"
