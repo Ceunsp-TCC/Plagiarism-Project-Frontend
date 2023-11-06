@@ -2,7 +2,8 @@ import tw from 'tailwind-styled-components'
 
 export const Card = tw.div`
 w-full
-h-40
+xl:h-40
+h-48
 bg-gray-700
 border-[1px]
 border-gray-400
@@ -23,7 +24,7 @@ flex
 flex-col
 ml-4
 w-full
-md:w-1/4
+xl:w-1/4
 `
 export const Title = tw.h1`
 text-white

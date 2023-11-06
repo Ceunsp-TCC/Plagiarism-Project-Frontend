@@ -41,7 +41,7 @@ describe('Academic paper', () => {
     })
 
     const elementTextStatus = getByText('Status')
-    const elementTextPlagiarism = getByText('Plágio')
+    const elementTextPlagiarism = getByText('Similaridade')
     const elementTextOriginality = getByText('Originalidade')
     const buttonAnalyseAcademicPaper = getByText('Analisar trabalho')
     const textNonFoundSource = getByText('Arquivo não revisado...')
@@ -71,7 +71,7 @@ describe('Academic paper', () => {
     })
 
     const elementTextStatus = getByText('Status')
-    const elementTextPlagiarism = getByText('Plágio')
+    const elementTextPlagiarism = getByText('Similaridade')
     const elementTextOriginality = getByText('Originalidade')
     const buttonAnalyseAcademicPaper = queryByText('Analisar trabalho')
     const textNonFoundSource = queryByText('Arquivo não revisado...')
@@ -101,7 +101,7 @@ describe('Academic paper', () => {
     })
 
     const elementTextStatus = getByText('Status')
-    const elementTextPlagiarism = getByText('Plágio')
+    const elementTextPlagiarism = getByText('Similaridade')
     const elementTextOriginality = getByText('Originalidade')
     const buttonAnalyseAcademicPaper = queryByText('Analisar trabalho')
     const textNonFoundSource = queryByText('Arquivo não revisado...')
