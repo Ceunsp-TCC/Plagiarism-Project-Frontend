@@ -7,6 +7,7 @@ flex-col
 overflow-y-auto
 w-72
 h-96
+p-2
 lg:h-max
 md:w-[43rem]
 

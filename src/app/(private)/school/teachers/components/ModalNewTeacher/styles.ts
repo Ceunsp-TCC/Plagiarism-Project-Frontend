@@ -8,6 +8,7 @@ h-96
 overflow-y-auto
 lg:h-max
 md:w-[43rem]
+p-2
 `
 
 export const Title = tw.h1`
