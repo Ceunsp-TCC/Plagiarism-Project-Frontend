@@ -24,7 +24,7 @@ export const CardSource = () => {
                 </S.ContainerItems>
                 <S.ContainerItems>
                   <S.TextPlagiarism>
-                    {element.plagiarism}% similar
+                    {Math.floor(element.plagiarism)}% similar
                   </S.TextPlagiarism>
                 </S.ContainerItems>
               </S.ContainerMasterItems>
