@@ -27,7 +27,7 @@ export default function AcademicPaper() {
 
   return (
     <>
-      <S.ContainerAvaliationDownload>
+      <S.ContainerAvaliation>
         {!hasAvaliation && (
           <S.ButtonCustom
             className="w-44"
@@ -36,8 +36,7 @@ export default function AcademicPaper() {
             Avaliar
           </S.ButtonCustom>
         )}
-      </S.ContainerAvaliationDownload>
-
+      </S.ContainerAvaliation>
       <Header />
       <S.WrapperContent>
         <AcademicPaperView url={academicPaper?.paper!} />
