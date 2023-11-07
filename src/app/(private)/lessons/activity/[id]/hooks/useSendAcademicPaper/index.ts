@@ -51,7 +51,7 @@ export function useSendAcademicPaper() {
           title: 'Ocorreu um erro',
           toastType: 'ERROR',
           description: ultrapassedMaxWords
-            ? 'O limite atual de palavras para test foi excedido'
+            ? 'O limite atual de palavras para teste foi excedido'
             : 'Ocorreu um erro ao enviar o trabalho, tente novamente mais tarde!',
         })
       },
