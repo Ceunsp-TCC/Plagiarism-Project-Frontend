@@ -9,7 +9,7 @@ export function useNotificationProvider() {
   const queryClient = useQueryClient()
   const { navigate } = useNavigation()
   const audioRef = useRef<HTMLAudioElement>(null)
-  const REQUEST_INTERVAL = 20000 // twenty seconds
+  const REQUEST_INTERVAL = 15000 // fiveteen seconds
 
   const { data: notification, dataUpdatedAt } = useQuery({
     queryKey: ['notification'],

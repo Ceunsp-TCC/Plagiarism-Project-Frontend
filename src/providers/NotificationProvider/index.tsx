@@ -1,6 +1,5 @@
 'use client'
 import { useNotificationProvider } from '@/providers/hooks'
-
 import type { NotificationProviderProps } from '@providers'
 
 export function NotificationProvider({ children }: NotificationProviderProps) {
