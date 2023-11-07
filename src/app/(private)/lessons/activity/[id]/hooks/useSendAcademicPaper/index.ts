@@ -46,12 +46,12 @@ export function useSendAcademicPaper() {
       onError: (error: AxiosError<DefaultResponse>) => {
         const ultrapassedMaxWords =
           error.response?.data.message ===
-          'The number of words in the PDF exceeds the limit of 100 words'
+          'The number of words in the PDF exceeds the limit of words'
         ShowToast({
           title: 'Ocorreu um erro',
           toastType: 'ERROR',
           description: ultrapassedMaxWords
-            ? 'O limite atual para testes é 100 palavras '
+            ? 'O limite atual de palavras para test foi excedido'
             : 'Ocorreu um erro ao enviar o trabalho, tente novamente mais tarde!',
         })
       },
