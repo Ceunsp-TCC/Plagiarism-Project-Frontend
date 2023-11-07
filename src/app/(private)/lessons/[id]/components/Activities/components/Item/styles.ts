@@ -2,8 +2,8 @@ import tw from 'tailwind-styled-components'
 
 export const Card = tw.div`
 w-full
-xl:h-40
-h-48
+2xl:h-40
+h-[12rem]
 bg-gray-700
 border-[1px]
 border-gray-400
