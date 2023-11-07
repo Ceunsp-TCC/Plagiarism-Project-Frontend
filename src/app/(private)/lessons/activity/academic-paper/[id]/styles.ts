@@ -24,7 +24,7 @@ h-12
 
 `
 
-export const ContainerAvaliationDownload = tw.div`
+export const ContainerAvaliation = tw.div`
 flex
 justify-between
 `
