@@ -47,7 +47,7 @@ export function useNewCourse() {
         queryClient.refetchQueries(['courses'])
       },
       onError: (error: AxiosError<DefaultResponse>) => {
-        const alreadyExistsCourseWithThisName = error.response?.status === 422
+        const alreadyExistsCourseWithThisName = error.response?.status === 400
         onCloseModal()
         ShowToast({
           title: 'Ocorreu um erro',
