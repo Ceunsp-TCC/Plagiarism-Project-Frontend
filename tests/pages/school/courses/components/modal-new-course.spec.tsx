@@ -132,7 +132,7 @@ describe('ModalNewCourse', () => {
     })
   })
   it('Should be create course with name already exists', async () => {
-    createCourseMock(422)
+    createCourseMock(400)
     const { result } = renderHook(() => useCoursesStore())
     act(() => {
       result.current.setIsOpenModalNewCourse(true)
